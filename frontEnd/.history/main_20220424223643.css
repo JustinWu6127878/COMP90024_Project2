@@ -1,0 +1,18 @@
+body {
+    margin: 0;
+    font-family: 'Roboto Slab', sans-serif;
+}
+
+h2{
+    margin-bottom: ;
+}
+
+.header {
+    color: #2e3b69;
+    text-align: center;
+    margin-bottom: 50px;
+    /* max-width: 52em;  */
+    /* margin: auto; */
+}
+
+

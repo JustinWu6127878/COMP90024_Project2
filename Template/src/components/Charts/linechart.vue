@@ -46,7 +46,10 @@ export default {
               axisTick: {
                 show: false,
               },
-              data: this.chartsource.xdata,
+              name: this.chartsource.xdata,
+              nameLocation: "middle",
+              nameTextStyle:{padding: 10, 
+              },
             },
           ],
           yAxis: [
@@ -59,11 +62,22 @@ export default {
             },
           ],
           series: this.chartsource.series,
+
           // [
           //     {
           //         name:'邮件营销',
           //         type:'line',
           //         stack: '总量',
+          // type: "line",
+          // itemStyle: {
+          //   normal: {
+          //     color: "yellow",
+          //   },
+          // },
+
+          // lineStyle: {
+          //   color: "yellow",
+          // },
           //         data:[120, 132, 101, 134, 90, 230, 210]
           //     },
           //     {

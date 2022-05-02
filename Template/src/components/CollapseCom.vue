@@ -20,11 +20,11 @@
           <el-tab-pane style="font-size: 20px" label="Graphs" name="second">
             <div class="chart-container">
               <Piechart :chartsource="piechart1" />
-              <Linechart :chartsource="linechart1" />
+              <Barchart :chartsource="barchart1" :myChart="1" />
             </div>
             <div class="chart-container">
-              <Linechart :chartsource="linechart2" />
-              <Linechart :chartsource="linechart3" />
+              <Barchart :chartsource="barchart2" :myChart="2" />
+              <Barchart :chartsource="barchart3" :myChart="3" />
             </div>
           </el-tab-pane>
         </el-tabs>
@@ -49,18 +49,12 @@
           </el-tab-pane>
           <el-tab-pane label="Graphs" name="second">
             <div class="chart-container">
-              <!-- <Smallchart :chartsource="piechart2" /> -->
-              <Piechart :chartsource="piechart2" />
-              <Piechart :chartsource="piechart3" />
+             <Barchart :chartsource="barchart4" :myChart="4" />
+             <Barchart :chartsource="barchart5" :myChart="5" />
             </div>
             <div class="chart-container">
-              <Linechart :chartsource="linechart4" />
-              <Linechart :chartsource="linechart5" />
-            </div>
-            <div class="chart-container">
-              <!-- <Smallchart :chartsource="piechart2" /> -->
-              <Piechart :chartsource="piechart4" />
-              <Piechart :chartsource="piechart5" />
+             <Barchart :chartsource="barchart6" :myChart="6" />
+             <Barchart :chartsource="barchart7" :myChart="7" />
             </div>
             
 
@@ -122,22 +116,20 @@ export default {
 
   props: [
     "piechart1",
-    "linechart1",
-    "linechart2",
-    "linechart3",
+    "barchart1",
+    "barchart2",
+    "barchart3",
     
     "covidRow1",
     "covidColumn1",
     "covidRow2",
     "covidColumn2",
     
-    "piechart2",
-    "piechart3",
-    "linechart4",
-    "linechart5",
-    "piechart4",
-    "piechart5",
-
+    "barchart4",
+    "barchart5",
+    "barchart6",
+    "barchart7",
+   
     "enagementRow1",
     "enagementColumn1",
     "enagementRow2",
@@ -145,6 +137,9 @@ export default {
 
     "inflationRow1",
     "inflationColumn1",
+
+   
+
   
   ],
 
@@ -163,7 +158,7 @@ export default {
 <style scoped>
 .chart-container {
   position: relative;
-  margin-left:5%;
+  margin-left: 5%;
   height: fit-content;
   display: flex;
 }

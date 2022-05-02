@@ -1,58 +1,89 @@
 <template>
-  <div id="charts" style="width: 600px; height: 400px"></div>
+  <div class="echart" :id="myChart" :style="myChartStyle"></div>
 </template>
 
 <script>
-  import * as echarts from "echarts";
+import * as echarts from "echarts";
 
-  export default {
-   mounted() {
-    this.$nextTick(() => {
-      this.drawBarChart();
-    });
+export default {
+  data() {
+    return {
+      chartBar: null,
+      myChartStyle: { float: "left", width: "50%", height: "400px" } //图表样式
+    };
   },
-    methods: {
-      drawBarCharts() {
-        let charts = this.$echarts.init(document.getElementById("main"),
-        "macarons"
-        );
-        let option = {
-          title: {
-            text: "逐月消费趋势", // 标题
-            subtext: "柱状图", // 副标题
+
+  props: ["myChart","chartsource"],
+
+  mounted() {
+      this.initEcharts();
+  },
+  methods: {
+    initEcharts() {
+      // 多列柱状图
+      let mulColumnZZTData = {
+        title: {
+          text: this.chartsource.title,
+          x:"center",
+        },
+        xAxis: {
+          data: this.chartsource.xdata,
+          axisLabel: this.chartsource.xLabel,
+        },
+        // 图例
+        legend: {
+          data: this.chartsource.legend,
+          y:"bottom",
+          x:"center",
+        },
+    
+        yAxis: this.chartsource.yAxis,
+        //  [{
+        //   name: "zuoce",
+        //   min:0,
+        //   max: 80000,
+        //   splitNumber:6,
+        // },
+        // {
+        //   name: "%",
+        //   min:0,
+        //   max: 100,
+        //   splitNumber:6,
+        // }],
+        series: [
+          {
+            type: "bar" , //形状为柱状图
+            data: this.chartsource.ydata1,
+            name: this.chartsource.legend[0], // legend属性
+            label: {
+              // 柱状图上方文本标签，默认展示数值信息
+              show: true,
+              position: "top"
+            }
           },
-          xAxis: {
-            type: "category",
+          {
+            type: "bar", //形状为柱状图
+            data: this.chartsource.ydata2,
+            name: this.chartsource.legend[1], // legend属性
+            yAxisIndex:this.chartsource.yAxisIndex,
+            label: {
+              // 柱状图上方文本标签，默认展示数值信息
+              show: true,
+              position: "top"
+            },
           },
-          yAxis: {
-            type: "value",
-          },
-          color: ["#1890ff", "#52c41a", " #faad14"], // 柱状图颜色
-          dataset: {
-            source: [
-              // 数据源
-              ["1月", 1330, 666, 560],
-              ["2月", 820, 760, 660],
-              ["3月", 1290, 1230, 780],
-              ["4月", 832, 450, 890],
-              ["5月", 901, 880, 360],
-              ["6月", 934, 600, 700],
-            ],
-          },
-          series: [
-            // 图标列设置
-            { type: "bar", stack: "total", name: "苹果" },
-            { type: "bar", stack: "total", name: "梨子" },
-            { type: "bar", stack: "total", name: "桃子" },
-          ],
-          tooltip: {
-          // 提示框组件
-          }
-        };
-        charts.setOption(option);
-      },
-    },
-  };
+        ]
+      };
+      this.ChartBar = echarts.init(document.getElementById(this.myChart));
+      this.ChartBar.setOption(mulColumnZZTData);
+      //随着屏幕大小调节图表
+      // window.addEventListener("resize", () => {
+      //   myChart.resize();
+      // });
+    }
+  }
+};
 </script>
 
-<style lang="scss" scoped></style>
+
+

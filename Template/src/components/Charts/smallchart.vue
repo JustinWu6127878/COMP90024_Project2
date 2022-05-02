@@ -39,7 +39,7 @@ export default {
         show: true,
         position: "center",
         offset: [40, 50],
-        formatter: "{b} :{d}%",
+        formatter: "{d}%",
         textStyle: mytextStyle,
       };
       this.chartPie = echarts.init(
@@ -53,17 +53,18 @@ export default {
           title: {
             text: this.chartsource.title,
             x: "center",
+            y: "bottom",
           },
           //   tooltip: {
           //     trigger: 'item',
           //     formatter: "{a} <br/>{b} : {c} ({d}%)",
           //   },
-          legend: {
-            data: this.chartsource.legend.data,
-            left: "center",
-            top: "bottom",
-            orient: "horizontal",
-          },
+          // legend: {
+          //   data: this.chartsource.legend.data,
+          //   left: "center",
+          //   top: "bottom",
+          //   orient: "horizontal",
+          // },
           series: [
             {
               name: "Percentage",
@@ -96,6 +97,6 @@ export default {
 <style  scope>
 .pie-wrap {
   width: 50%;
-  height: 400px;
+  height: 50%;
 }
 </style>

@@ -4,7 +4,8 @@
       <div class="dashboard-intro">
         <div class="dashboard-title">
           <h1>{{ melbourne.name }}</h1>
-          <p>State: {{ melbourne.state }}</p>
+          <p>State: </p>
+          <p> {{ melbourne.state }}</p>
         </div>
 
         <div class="dashboard-overview">
@@ -30,7 +31,7 @@
       </div>
 
       <div class="dashboard-image">
-        <img src="./Melbourne.jpeg" height="700px" />
+        <img src="./Melbourne.jpeg" height="700px" width="400px"/>
       </div>
     </div>
 
@@ -47,19 +48,27 @@
     <div class="dashboard-collapse">
       <Collapse
         :piechart1="piechart1"
+        :piechart2="piechart2"
+        :piechart3="piechart3"
+        :piechart4="piechart4"
+        :piechart5="piechart5"
         :linechart1="linechart1"
         :linechart2="linechart2"
+        :linechart3="linechart3"
+        :linechart4="linechart4"
+        :linechart5="linechart5"
         :covidRow1="covidRow1"
         :covidColumn1="covidColumn1"
         :covidRow2="covidRow2"
         :covidColumn2="covidColumn2"
-        :piechart2="piechart2"
-        :linechart3="linechart3"
-        :linechart4="linechart4"
         :enagementRow1="enagementRow1"
         :enagementColumn1="enagementColumn1"
         :enagementRow2="enagementRow2"
         :enagementColumn2="enagementColumn2"
+        :inflationRow1="inflationRow1"
+        :inflationColumn1="inflationColumn1"
+        :inflationRow2="inflationRow2"
+        :inflationColumn2="inflationColumn2"
       />
     </div>
   </div>
@@ -74,6 +83,8 @@ import Enagement from "../../class/Enagement.js";
 
 import TwitterPerDay from "../../class/TwitterPerDay.js";
 
+import Price from "../../class/Price.js";
+
 import Covid from "../../class/Covid.js";
 
 import TableModel from "../../components/TableModel.vue";
@@ -84,7 +95,11 @@ import Piechart from "../../components/Charts/piechart.vue";
 
 import Linechart from "@/components/Charts/linechart.vue";
 
-const enagement = new Enagement(49.5, 30, 29.84, 25);
+const enagement = new Enagement(49.5, 30, 25);
+const enagementSyd = new Enagement(49.5, 30, 25, 30);
+const enagementBris = new Enagement(49.5, 30, 25,30);
+const enagementAde = new Enagement(49.5, 30, 25,30);
+
 const twitterperday = new TwitterPerDay(
   ["29/04/2022", 12345],
   ["29/04/2022", 12345],
@@ -93,7 +108,63 @@ const twitterperday = new TwitterPerDay(
   ["29/04/2022", 12345],
   ["29/04/2022", 12345]
 );
-const covid = new Covid (5000,20000,300,95,33,33,33);
+const twitterperdaySyd = new TwitterPerDay(
+  ["29/04/2022", 12345],
+  ["29/04/2022", 12345],
+  ["29/04/2022", 12345],
+  ["29/04/2022", 12345],
+  ["29/04/2022", 12345],
+  ["29/04/2022", 12345]
+);
+const twitterperdayBris = new TwitterPerDay(
+  ["29/04/2022", 12345],
+  ["29/04/2022", 12345],
+  ["29/04/2022", 12345],
+  ["29/04/2022", 12345],
+  ["29/04/2022", 12345],
+  ["29/04/2022", 12345]
+);
+const twitterperdayAde = new TwitterPerDay(
+  ["29/04/2022", 12345],
+  ["29/04/2022", 12345],
+  ["29/04/2022", 12345],
+  ["29/04/2022", 12345],
+  ["29/04/2022", 12345],
+  ["29/04/2022", 12345]
+);
+
+const gas = new Price(
+  ["2022", 12345],
+  ["2021", 12345],
+  ["2020", 12345],
+  ["2019", 12345],
+  ["2018", 12345],
+  ["2017", 12345]
+);
+
+const house = new Price(
+  ["2022", 12345],
+  ["2021", 12345],
+  ["2020", 12345],
+  ["2019", 12345],
+  ["2018", 12345],
+  ["2017", 12345]
+);
+
+const covid = new Covid(5000, 20000, 300, 95, 33, 33, 33);
+const covidSyd = new Covid(5000, 20000, 300, 95, 33, 33, 33);
+const covidBris = new Covid(5000, 20000, 300, 95, 33, 33, 33);
+const covidAde = new Covid(5000, 20000, 300, 95, 33, 33, 33);
+
+const melbourne = new CityOverview(
+  "Melbourne",
+  "Victoria",
+  5078193,
+  1515597,
+  30,
+  13.8,
+  49260
+);
 
 export default {
   name: "dashboard",
@@ -134,7 +205,7 @@ export default {
         },
         {
           item: "Vaccination rate",
-          num: covid.rate+"%",
+          num: covid.rate + "%",
         },
       ],
       covidColumn1: [
@@ -151,15 +222,15 @@ export default {
       covidRow2: [
         {
           item: "Positive comments rate: ",
-          num: covid.pos +"%",
+          num: covid.pos + "%",
         },
         {
           item: "Negative comments rate: ",
-          num: covid.neg +"%",
+          num: covid.neg + "%",
         },
         {
           item: "Neutral comments rate: ",
-          num: covid.neu +"%",
+          num: covid.neu + "%",
         },
       ],
       covidColumn2: [
@@ -223,10 +294,6 @@ export default {
           item: twitterperday.date4,
           num: twitterperday.number4,
         },
-        {
-          item: "03/05/2022",
-          num: "12345",
-        },
       ],
       enagementColumn2: [
         {
@@ -239,42 +306,154 @@ export default {
         },
       ],
 
+      inflationRow1: [
+        {
+          item: "Gas price",
+          year1: gas.number1,
+          year2: gas.number2,
+          year3: gas.number3,
+          year4: gas.number4,
+          year5: gas.number5,
+        },
+        {
+          item: "House price",
+          year1: house.number1,
+          year2: house.number2,
+          year3: house.number3,
+          year4: house.number4,
+          year5: house.number5,
+        },
+      ],
+
+      inflationColumn1: [
+        {
+          prop: "item",
+          label: "Year",
+        },
+        {
+          prop: "year1",
+          label: gas.year1,
+        },
+        {
+          prop: "year2",
+          label: gas.year2,
+        },
+        {
+          prop: "year3",
+          label: gas.year3,
+        },
+        {
+          prop: "year4",
+          label: gas.year4,
+        },
+        {
+          prop: "year5",
+          label: gas.year5,
+        },
+
+      ],
+
       piechart1: {
         title: "Twitter Comments",
-        legend: { data: ["Positive", "Negative"] },
+        legend: { data: ["Positive", "Neutral", "Negative"] },
         data: [
           { value: covid.pos, name: "Positive" },
-          { value: covid.neu, name: "Nutrual" },
-          { value: covid.neu, name: "Negative" },
+          { value: covid.neu, name: "Neutral" },
+          { value: covid.neg, name: "Negative" },
         ],
       },
 
       piechart2: {
         title: "Gender",
-        legend: { data: ["Male", "Female"] },
+        legend: {},
         data: [
           { value: enagement.male, name: "Male" },
           { value: enagement.female, name: "Female" },
         ],
       },
 
+      piechart3: {
+        title: "Born overseas percentage",
+        legend: {},
+        data: [
+          { value: melbourne.overper, name: "Overseas" },
+          { value: 1 - melbourne.overper, name: "Local" },
+        ],
+      },
+
+      piechart4: {
+        title: "Highest degree",
+        legend: {},
+        data: [
+          { value: enagement.edu, name: "Higher than bechalor" },
+          { value: 100 - enagement.edu, name: "Lower than bechalor" },
+        ],
+      },
+      piechart5: {
+        title: "Annual income",
+        legend: {},
+        data: [
+          { value: enagement.income, name: "> $100,000" },
+          { value: 100 - enagement.income, name: "< $100,000" },
+        ],
+      },
+
       linechart1: {
-        title: "Positive comments vs Hospital numbers",
+        title: "Positive comments vs Medical facilities",
         legend: {
-          data: ["Hospital Numbers in the state"],
+          data: ["Thousand hospitals", "Hundred Vaccination clinics"],
         },
         xdata: [],
-        ydata: "(Positive %)",
+        ydata: "(Positive comments%)",
         series: [
           {
-            name: "Hospital Numbers in the state",
+            name: "Thousand hospitals",
+            type: "line",
+            // itemStyle:{
+            //   normal:{
+            //     color: "yellow",
+            //   }
+            // },
+
+            // lineStyle:{
+            //     color: "yellow",
+            // },
+            data: [
+              [covid.hos / 1000, covid.pos],
+              [covidSyd.hos / 1000, covidSyd.pos],
+              [covidBris.hos / 1000, covidBris.pos],
+              [covidAde.hos / 1000, covidAde.pos],
+            ],
+            markPoint: {
+              data: [
+                {
+                  name: "Thousand hospitals",
+                  xAxis: covid.hos / 1000,
+                  yAxis: covid.pos,
+                  value: "Melbourne",
+                },
+              ],
+            },
+          },
+          {
+            name: "Hundred Vaccination clinics",
             type: "line",
             data: [
-              [covid.hos, covid.pos],
-              [4000,30],
-              [5000,40],
-              [3000,50],
+              [covid.clinincs / 100, covid.pos],
+              [covidSyd.clinincs / 100, covidSyd.pos],
+              [covidBris.clinincs / 100, covidBris.pos],
+              [covidAde.clinincs / 100, covidAde.pos],
             ],
+            markPoint: {
+              data: [
+                {
+                  name: "Hundred Vaccination clinics",
+                  xAxis: covid.clinincs / 100,
+                  yAxis: covid.pos,
+                  value: "Melbourne",
+                },
+              ],
+            },
           },
           // {
           //   name: "Vacci",
@@ -310,22 +489,41 @@ export default {
       },
 
       linechart2: {
-        title: "Positive comments vs Vaccination clinics number",
+        title: "Active cases vs Vaccination rates",
         legend: {
-          data: ["Vaccination clinics Numbers in the state"],
+          data: ["Vaccination rates"],
         },
         xdata: [],
-        ydata: "(Positive %)",
+        ydata: "Active cases",
         series: [
           {
-            name: "Vaccination clinics Numbers in the state",
+            name: "Vaccination rates",
             type: "line",
+            itemStyle: {
+              normal: {
+                color: "green",
+              },
+            },
+
+            lineStyle: {
+              color: "green",
+            },
             data: [
-              [covid.clinincs, covid.pos],
-              [400,30],
-              [500,40],
-              [300,50],
+              [covid.rate, covid.active],
+              [covidSyd.rate, covidSyd.active],
+              [covidBris.rate, covidBris.active],
+              [covidAde.rate, covidAde.active],
             ],
+            markPoint: {
+              data: [
+                {
+                  name: "Vaccination rates",
+                  xAxis: covid.rate,
+                  yAxis: covid.active,
+                  value: "Melbourne",
+                },
+              ],
+            },
           },
         ],
       },
@@ -341,63 +539,162 @@ export default {
           {
             name: "Active cases in the state",
             type: "line",
+            itemStyle: {
+              normal: {
+                color: "purple",
+              },
+            },
+
+            lineStyle: {
+              color: "purple",
+            },
             data: [
               [covid.active, covid.pos],
-              [10000,30],
-              [12300,40],
-              [31200,50],
+              [covidSyd.active, covidSyd.pos],
+              [covidBris.active, covidBris.pos],
+              [covidAde.active, covidAde.pos],
             ],
+            markPoint: {
+              data: [
+                {
+                  name: "Active cases in the state",
+                  xAxis: covid.active,
+                  yAxis: covid.pos,
+                  value: "Melbourne",
+                },
+              ],
+            },
           },
         ],
       },
 
       linechart4: {
-        title: "Enagement",
+        title: "Policy enagement vs education level & income level",
         legend: {
-          data: ["Gender", "Edu", "Immi", "Income"],
+          data: ["higher than bachelor", "annual income >$100,000"],
         },
-        xdata: [10, 20, 30, 40, 50, 60, 70, 80, 90],
+        xdata: [],
         ydata: "# of twitters of a day",
         series: [
           {
-            name: "Gender",
+            name: "higher than bachelor",
             type: "line",
             data: [
-              [49.5, 12234],
-              [49.6, 12356],
-              [48.5, 12453],
-              [49.0, 14352],
+              [enagement.edu, twitterperday.number1],
+              [enagementSyd.edu, twitterperdaySyd.number1],
+              [enagementBris.edu, twitterperdayBris.number1],
+              [enagementAde.edu, twitterperdayAde.number1],
             ],
+            markPoint: {
+              data: [
+                {
+                  name: "higher than bachelor",
+                  xAxis: enagement.edu,
+                  yAxis: twitterperday.number1,
+                  value: "Melbourne",
+                },
+              ],
+            },
           },
           {
-            name: "Edu",
+            name: "annual income >$100,000",
             type: "line",
             data: [
-              [40, 12234],
-              [30, 12356],
-              [20, 12453],
-              [25, 14352],
+              [enagement.income, twitterperday.number1],
+              [enagementSyd.income, twitterperdaySyd.number1],
+              [enagementBris.income, twitterperdayBris.number1],
+              [enagementAde.income, twitterperdayAde.number1],
             ],
+            markPoint: {
+              data: [
+                {
+                  name: "annual income >$100,000",
+                  xAxis: enagement.income,
+                  yAxis: twitterperday.number1,
+                  value: "Melbourne",
+                },
+              ],
+            },
+          },
+          // {
+          //   name: "Immi",
+          //   type: "line",
+          //   data: [
+          //     [33, 12234],
+          //     [23, 12356],
+          //     [45, 12453],
+          //     [30, 14352],
+          //   ],
+          // },
+          // {
+          //   name: "Income",
+          //   type: "line",
+          //   data: [
+          //     [30, 12234],
+          //     [34, 12356],
+          //     [25, 12453],
+          //     [35, 14352],
+          //   ],
+          // },
+        ],
+      },
+
+      linechart5: {
+        title: "Policy enagement vs gender & immigration",
+        legend: {
+          data: ["male percentage", "immigration percentage"],
+        },
+        xdata: [],
+        ydata: "(# of twitters of a day)",
+        series: [
+          {
+            name: "male percentage",
+            type: "line",
+            // itemStyle:{
+            //   normal:{
+            //     color: "yellow",
+            //   }
+            // },
+
+            // lineStyle:{
+            //     color: "yellow",
+            // },
+            data: [
+              [enagement.male, twitterperday.number1],
+              [enagementSyd.male, twitterperdaySyd.number1],
+              [enagementBris.male, twitterperdayBris.number1],
+              [enagementAde.male, twitterperdayAde.number1],
+            ],
+            markPoint: {
+              data: [
+                {
+                  name: "male percentage",
+                  xAxis: enagement.male,
+                  yAxis: twitterperday.number1,
+                  value: "Melbourne",
+                },
+              ],
+            },
           },
           {
-            name: "Immi",
+            name: "immigration percentage",
             type: "line",
             data: [
-              [33, 12234],
-              [23, 12356],
-              [45, 12453],
-              [30, 14352],
+              [melbourne.overper, twitterperday.number1],
+              [enagementSyd.overper, twitterperday.number1],
+              [enagementBris.overper, twitterperday.number1],
+              [enagementAde.overper, twitterperday.number1],
             ],
-          },
-          {
-            name: "Income",
-            type: "line",
-            data: [
-              [30, 12234],
-              [34, 12356],
-              [25, 12453],
-              [35, 14352],
-            ],
+            markPoint: {
+              data: [
+                {
+                  name: "immigration percentage",
+                  xAxis: melbourne.overper,
+                  yAxis: twitterperday.number1,
+                  value: "Melbourne",
+                },
+              ],
+            },
           },
         ],
       },
@@ -426,6 +723,7 @@ export default {
     width: 85%;
   }
   &-intro {
+    margin-left:15%;
     flex: 1;
     order: 2;
   }
@@ -435,9 +733,10 @@ export default {
     color: gray;
   }
   &-image {
+     margin-left: 5%;
     line-height: 46px;
     color: gray;
-    flex: 2;
+    flex: 1;
     order: 1;
   }
   &-overview {
@@ -452,21 +751,20 @@ export default {
     color: black;
   }
 
-  &-text4 {
-    display: flex;
-    font-size: 20px;
-    line-height: 60px;
-    height: 60px;
-    color: black;
-    justify-content: space-around;
-    align-items: center;
-  }
-  &-text5 {
-    margin: 0 auto;
-    width: 90%;
-    margin-left: 20%;
-  }
-
+  // &-text4 {
+  //   display: flex;
+  //   font-size: 20px;
+  //   line-height: 60px;
+  //   height: 60px;
+  //   color: black;
+  //   justify-content: space-around;
+  //   align-items: center;
+  // }
+  // &-text5 {
+  //   margin: 0 auto;
+  //   width: 90%;
+  //   margin-left: 20%;
+  // }
 }
 // .chart-container {
 //   position: relative;

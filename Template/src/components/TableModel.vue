@@ -5,8 +5,7 @@
     stripe>
     <el-table-column v-for= "(c, index) in column" :key= "index" align="center"
       :prop="c.prop"
-      :label="c.label"
-      width="500">
+      :label="c.label">
     </el-table-column>
   </el-table>
 </template>

@@ -1,23 +1,11 @@
 <script src="https://cdn.bootcdn.net/ajax/libs/proj4js/2.7.2/proj4.js"></script>
 <template>
-  <!-- <div>
-    <div style="margin: 10px 50px;">
-      <el-dropdown @command="handleCommand">
-        <el-button type="primary" color="#1745a2">
-          topic<i class="el-icon-arrow-down el-icon--right" />
-        </el-button>
-        <el-dropdown-menu slot="dropdown">
-          <el-dropdown-item command="a">Enagement</el-dropdown-item>
-          <el-dropdown-item command="b">inflation</el-dropdown-item>
-          <el-dropdown-item command="c">COVID-19</el-dropdown-item>
-        </el-dropdown-menu>
-      </el-dropdown>
-    </div> -->
     <div>
-      <highcharts id="highchartsContainer" ref="chart" style="height: 72vh;" :constructor-type="'mapChart'" :options="chartOptions" />
+      <h1 style=" margin: 0 auto;text-align: center;margin-top:5%">
+        Melbourne	the	Most	Liveable	City…?	</h1>
+      <highcharts id="highchartsContainer" ref="chart" style="height: 72vh;margin-top:5%;" :constructor-type="'mapChart'" :options="chartOptions" />
     </div>
 
-  </div>
 </template>
 <script>
 import worldMap from '@highcharts/map-collection/countries/au/au-all.topo.json'

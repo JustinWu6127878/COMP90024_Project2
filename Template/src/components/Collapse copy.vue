@@ -49,20 +49,19 @@
           </el-tab-pane>
           <el-tab-pane label="Graphs" name="second">
             <div class="chart-container">
-              <!-- <Smallchart :chartsource="piechart2" /> -->
-              <Piechart :chartsource="piechart2" />
-              <Piechart :chartsource="piechart3" />
-            </div>
-            <div class="chart-container">
+              <div class="chart-pie">
+              <Smallchart :chartsource="piechart2" />
+              <Smallchart :chartsource="piechart3" />
+              </div>
+              <div class="chart-pie">
+              <Smallchart :chartsource="piechart2" />
+              <Smallchart :chartsource="piechart3" />
+              </div>
               <Linechart :chartsource="linechart4" />
-              <Linechart :chartsource="linechart5" />
             </div>
             <div class="chart-container">
-              <!-- <Smallchart :chartsource="piechart2" /> -->
-              <Piechart :chartsource="piechart4" />
-              <Piechart :chartsource="piechart5" />
+              <Barchart />
             </div>
-            
 
           </el-tab-pane>
         </el-tabs>
@@ -76,12 +75,7 @@
       </template>
       <div>
         <el-tabs v-model="activeName3" @tab-click="handleClick">
-          <el-tab-pane label="Metrics" name="first">
-            <div class="dashboard-text5">
-              <TableModel :row="inflationRow1" :column="inflationColumn1" />
-            </div>
-
-          </el-tab-pane>
+          <el-tab-pane label="Metrics" name="first">Inflation Metrics</el-tab-pane>
           <el-tab-pane label="Graphs" name="second">Inflation Grpahs</el-tab-pane>
         </el-tabs>
       </div>
@@ -95,19 +89,21 @@ import TableModel from "@/components/TableModel.vue";
 
 import Piechart from "@/components/Charts/piechart.vue";
 
-// import Smallchart from "@/components/Charts/smallchart.vue";
+import Smallchart from "@/components/Charts/smallchart.vue";
 
 import Linechart from "@/components/Charts/linechart.vue";
 
 import Barchart from "@/components/Charts/barchart.vue";
 
+
 export default {
   components: {
     TableModel,
     Piechart,
-    // Smallchart,
+    Smallchart,
     Linechart,
     Barchart,
+    Smallchart,
   },
 
   data() {
@@ -123,29 +119,19 @@ export default {
   props: [
     "piechart1",
     "linechart1",
-    "linechart2",
-    "linechart3",
-    
     "covidRow1",
     "covidColumn1",
     "covidRow2",
     "covidColumn2",
-    
     "piechart2",
     "piechart3",
+    "linechart2",
+    "linechart3",
     "linechart4",
-    "linechart5",
-    "piechart4",
-    "piechart5",
-
     "enagementRow1",
     "enagementColumn1",
     "enagementRow2",
     "enagementColumn2",
-
-    "inflationRow1",
-    "inflationColumn1",
-  
   ],
 
   methods: {
@@ -163,9 +149,13 @@ export default {
 <style scoped>
 .chart-container {
   position: relative;
-  margin-left:5%;
+  /* width: 90%; */
+  /* padding:20px; */
   height: fit-content;
   display: flex;
+}
+.chart-pie {
+  width:50%;
 }
 .dashboard-text5 {
   margin: 0 auto;

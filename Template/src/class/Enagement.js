@@ -1,10 +1,10 @@
 class Enagement {
-    constructor (male, edu, over, income){
+    constructor (male, edu, income, overper){
         this.male = male;
         this.female = 100-male;
         this.edu = edu;
-        this.over = over;
         this.income = income;
+        this.overper = overper;
     }
 }
 

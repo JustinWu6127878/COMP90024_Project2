@@ -1,0 +1,30 @@
+---
+# Create an instance for dbServer on NecTAR
+- name: Create an instance for dbServer
+  os_server:
+    name: CouchDB_1
+    image: '{{ instance_image }}'
+    key_name: CouchDB_1
+    flavor: '{{ instance_flavor }}'
+    network: '{{ instance_network }}'
+    availability_zone: '{{ availability_zone }}'
+    security_groups: '{{ sg_names }}'
+    volumes: data@CouchDB_1
+    auto_floating_ip: yes
+    wait: yes
+    timeout: 600
+    state: present
+  register: os_couchdb_1
+
+- debug:
+    msg: "instance dbServer has been created. IP address is {{ os_couchdb_1.openstack.public_v4 }}"
+  when: os_couchdb_1.openstack is defined
+
+
+- name: Print the ip address to inventory
+  shell: echo "[CouchDB_1]\n{{ os_couchdb_1.openstack.public_v4 }} ansible_ssh_private_key_file=./keys/CouchDB_1.pem\n" >> inventory/host.ini
+
+- lineinfile:
+    path: ../host_vars/instance.yaml
+    line: 'couchdb_1: {{ os_couchdb_1.openstack.public_v4 }}'
+    create: yes

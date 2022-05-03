@@ -1,0 +1,29 @@
+---
+- name: apt-get update
+  become: true
+  apt:
+    force_apt_get: yes
+    update_cache: yes
+
+- name: install packages
+  become: true
+  apt: 
+    name:
+      - curl
+      - apt-transport-https
+      - ca-certificates
+      - gnupg-agent
+      - software-properties-common
+    state: present
+
+- name: install docker
+  become: true
+  shell: curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun
+
+- name: install docker compose
+  become: true
+  shell: curl -L "https://github.com/docker/compose/releases/download/v2.2.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+
+- name: chmod
+  become: true
+  shell: chmod +x /usr/local/bin/docker-compose

@@ -1,0 +1,21 @@
+---
+# ****************************** Common vars ******************************
+availability_zone: melbourne-qh2-uom
+instance_network: qh2-uom-internal
+instance_flavor: uom.mse.2c9g
+instance_image: 356ff1ed-5960-4ac2-96a1-0c0198e6a999
+
+# ****************************** Security group ******************************
+security_groups:
+  - name: ssh
+    description: "SSH access"
+  - name: http
+    description: "HTTP"
+  - name: simple_docker
+    description: "simple_docker"
+
+
+
+
+
+

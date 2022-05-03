@@ -1,0 +1,19 @@
+---
+- name: enable_cluster
+  become: true
+  shell: curl -X POST -H "Content-Type: application/json" http://admin:123456@127.0.0.1:5984/_cluster_setup -d '{"action": "enable_cluster", "bind_address":"0.0.0.0", "username": "admin", "password":"123456","node_count":"3"}'
+
+- name: enable_cluster_2
+  become: true
+  shell: curl -X POST -H "Content-Type: application/json" http://admin:123456@127.0.0.1:5984/_cluster_setup -d '{"action": "add_node", "host": "{{ CouchDB_2 }}", "port": "5984", "username": "admin", "password":"123456"}'
+
+- name: enable_cluster_3
+  become: true
+  shell: curl -X POST -H "Content-Type: application/json" http://admin:123456@127.0.0.1:5984/_cluster_setup -d '{"action": "add_node", "host": "{{ CouchDB_3 }}", "port": "5984", "username": "admin", "password":"123456"}'
+
+- name: finish_cluster
+  become: true
+  shell: curl -X POST -H "Content-Type: application/json" http://admin:123456@127.0.0.1:5984/_cluster_setup -d '{"action": "finish_cluster"}'
+
+- name: check_membership
+  shell: curl http://admin:123456@127.0.0.1:5984/_membership

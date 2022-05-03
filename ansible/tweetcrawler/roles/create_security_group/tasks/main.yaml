@@ -1,0 +1,9 @@
+---
+- name: Create a list of security group names
+  ansible.builtin.set_fact:
+    sg_names: '{{ sg_names|default([]) + [ item.name ] }}'
+  loop: '{{ security_groups }}'
+
+- ansible.builtin.debug:
+    msg: "Security group(s) {{ sg_names }} have been created."
+

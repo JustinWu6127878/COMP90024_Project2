@@ -1,0 +1,5 @@
+---
+- hosts: TweetCrawler
+
+  roles:
+     - run_crawler

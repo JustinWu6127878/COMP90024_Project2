@@ -1,0 +1,12 @@
+FROM python:3.8
+
+RUN mkdir /tweetcrawler
+
+WORKDIR /tweetcrawler
+
+COPY requirements.txt tweetHarvest_vacc.py ./
+
+RUN pip install --no-cache-dir -r requirements.txt
+
+ENTRYPOINT ["python", "tweetHarvest_vacc.py"]
+

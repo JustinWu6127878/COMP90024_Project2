@@ -1,0 +1,7 @@
+---
+- hosts: TweetCrawler
+
+  roles:
+     - install_docker
+     - run_simple_docker
+     - run_crawler

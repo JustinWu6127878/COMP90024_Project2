@@ -1,0 +1,63 @@
+---
+- name: Copy files
+  copy:
+    src: TweetCrawler
+    dest: /home/ubuntu/
+
+    
+
+- name: chmod inf_python
+  become: true
+  shell: chmod +x /home/ubuntu/TweetCrawler/inf_python/setup.sh
+
+- name: chmod inf_python_v2
+  become: true
+  shell: chmod +x /home/ubuntu/TweetCrawler/inf_python_v2/setup.sh
+
+- name: chmod government_python
+  become: true
+  shell: chmod +x /home/ubuntu/TweetCrawler/government_python/setup.sh
+
+- name: chmod government_python_v2
+  become: true
+  shell: chmod +x /home/ubuntu/TweetCrawler/government_python_v2/setup.sh
+
+- name: chmod vacc_python
+  become: true
+  shell: chmod +x /home/ubuntu/TweetCrawler/vacc_python/setup.sh
+
+- name: chmod vacc_python_v2
+  become: true
+  shell: chmod +x /home/ubuntu/TweetCrawler/vacc_python_v2/setup.sh
+
+
+
+- name: run governmentnment crawler v1
+  ansible.builtin.shell:
+    chdir: /home/ubuntu/TweetCrawler/government_python/
+    cmd: sh setup.sh
+
+- name: run governmentnment crawler v2
+  ansible.builtin.shell:
+    chdir: /home/ubuntu/TweetCrawler/government_python_v2/
+    cmd: sh setup.sh
+
+- name: run inflation crawler v1
+  ansible.builtin.shell:
+    chdir: /home/ubuntu/TweetCrawler/inf_python/
+    cmd: sh setup.sh
+
+- name: run inflation crawler v2
+  ansible.builtin.shell:
+    chdir: /home/ubuntu/TweetCrawler/inf_python_v2/
+    cmd: sh setup.sh
+
+- name: run vaccination crawler v1
+  ansible.builtin.shell:
+    chdir: /home/ubuntu/TweetCrawler/vacc_python/
+    cmd: sh setup.sh
+
+- name: run vaccination crawler v2
+  ansible.builtin.shell:
+    chdir: /home/ubuntu/TweetCrawler/vacc_python_v2/
+    cmd: sh setup.sh

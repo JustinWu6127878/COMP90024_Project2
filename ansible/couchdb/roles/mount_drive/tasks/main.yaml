@@ -1,0 +1,12 @@
+---
+- name: Format the volume
+  become: true
+  shell: mkfs.ext4 /dev/vdb
+
+- name: Mkdir /data
+  become: true
+  shell: mkdir -p /data
+
+- name: Mount vdb
+  become: true
+  shell: mount -t auto /dev/vdb /data

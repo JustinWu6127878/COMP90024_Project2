@@ -1,0 +1,10 @@
+---
+- name: Copy files
+  copy:
+    src: docker-compose.yml
+    dest: /home/ubuntu/docker-compose.yml
+    
+- name: Run simple docker
+  ansible.builtin.shell:
+    chdir: /home/ubuntu/
+    cmd: sudo docker-compose up -d

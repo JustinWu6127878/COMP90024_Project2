@@ -1,0 +1,14 @@
+---
+- hosts: CouchDB_1, CouchDB_2, CouchDB_3
+  sudo: yes
+  roles:
+     - mount_drive
+     - install_docker
+     - exec_couchdb
+
+- hosts: CouchDB_1
+  vars_files:
+    - host_vars/instance.yaml
+  sudo: yes
+  roles:
+     - setup_cluster

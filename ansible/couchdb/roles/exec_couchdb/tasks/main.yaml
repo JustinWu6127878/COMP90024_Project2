@@ -1,0 +1,9 @@
+---
+- name: Copy docker compose
+  copy:
+    src: docker-compose.yml
+    dest: /home/ubuntu/docker-compose.yml
+
+- name: Start couchdb
+  become: true
+  shell: docker-compose up -d

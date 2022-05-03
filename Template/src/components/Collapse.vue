@@ -82,11 +82,12 @@
             </div>
 
           </el-tab-pane>
-          <el-tab-pane label="Graphs" name="second">Inflation Grpahs</el-tab-pane>
+          <el-tab-pane label="Graphs" name="second">
             <div class="chart-container">
               <WordCloud :chartsource="wordCloudChart" />
               
             </div>
+            </el-tab-pane>
         </el-tabs>
       </div>
     </el-collapse-item>

@@ -49,12 +49,20 @@
           </el-tab-pane>
           <el-tab-pane label="Graphs" name="second">
             <div class="chart-container">
+              <!-- <Smallchart :chartsource="piechart2" /> -->
               <Piechart :chartsource="piechart2" />
-              <Linechart :chartsource="linechart4" />
+              <Piechart :chartsource="piechart3" />
             </div>
             <div class="chart-container">
-              <Barchart />
+              <Linechart :chartsource="linechart4" />
+              <Linechart :chartsource="linechart5" />
             </div>
+            <div class="chart-container">
+              <!-- <Smallchart :chartsource="piechart2" /> -->
+              <Piechart :chartsource="piechart4" />
+              <Piechart :chartsource="piechart5" />
+            </div>
+            
 
           </el-tab-pane>
         </el-tabs>
@@ -68,8 +76,18 @@
       </template>
       <div>
         <el-tabs v-model="activeName3" @tab-click="handleClick">
-          <el-tab-pane label="Metrics" name="first">Inflation Metrics</el-tab-pane>
-          <el-tab-pane label="Graphs" name="second">Inflation Grpahs</el-tab-pane>
+          <el-tab-pane label="Metrics" name="first">
+            <div class="dashboard-text5">
+              <TableModel :row="inflationRow1" :column="inflationColumn1" />
+            </div>
+
+          </el-tab-pane>
+          <el-tab-pane label="Graphs" name="second">
+            <div class="chart-container">
+              <WordCloud :chartsource="wordCloudChart" />
+              
+            </div>
+            </el-tab-pane>
         </el-tabs>
       </div>
     </el-collapse-item>
@@ -82,16 +100,23 @@ import TableModel from "@/components/TableModel.vue";
 
 import Piechart from "@/components/Charts/piechart.vue";
 
+// import Smallchart from "@/components/Charts/smallchart.vue";
+
 import Linechart from "@/components/Charts/linechart.vue";
 
 import Barchart from "@/components/Charts/barchart.vue";
+
+import WordCloud from  "@/components/Charts/wordCloud.vue";
+
 
 export default {
   components: {
     TableModel,
     Piechart,
+    // Smallchart,
     Linechart,
     Barchart,
+    WordCloud,
   },
 
   data() {
@@ -107,18 +132,30 @@ export default {
   props: [
     "piechart1",
     "linechart1",
+    "linechart2",
+    "linechart3",
+    
     "covidRow1",
     "covidColumn1",
     "covidRow2",
     "covidColumn2",
+    
     "piechart2",
-    "linechart2",
-    "linechart3",
+    "piechart3",
     "linechart4",
+    "linechart5",
+    "piechart4",
+    "piechart5",
+
     "enagementRow1",
     "enagementColumn1",
     "enagementRow2",
     "enagementColumn2",
+
+    "inflationRow1",
+    "inflationColumn1",
+    "wordCloudChart"
+  
   ],
 
   methods: {
@@ -136,8 +173,7 @@ export default {
 <style scoped>
 .chart-container {
   position: relative;
-  width: 90%;
-  padding:20px;
+  margin-left:5%;
   height: fit-content;
   display: flex;
 }

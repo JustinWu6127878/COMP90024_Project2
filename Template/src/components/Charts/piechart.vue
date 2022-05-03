@@ -95,7 +95,6 @@ export default {
  
 <style  scope>
 .pie-wrap {
-  margin-left: 5%;
   width: 50%;
   height: 400px;
 }

@@ -96,6 +96,8 @@
 
 
 <script>
+
+
 import TableModel from "@/components/TableModel.vue";
 
 import Piechart from "@/components/Charts/piechart.vue";

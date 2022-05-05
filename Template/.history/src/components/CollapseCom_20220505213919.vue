@@ -107,7 +107,6 @@ export default {
     // Smallchart,
     Linechart,
     Barchart,
-    WordCloud
   },
 
   data() {
@@ -143,7 +142,10 @@ export default {
 
     "inflationRow1",
     "inflationColumn1",
-    "wordCloudChart"
+    
+
+   
+
   
   ],
 

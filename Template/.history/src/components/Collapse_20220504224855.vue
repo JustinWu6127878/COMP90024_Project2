@@ -20,11 +20,11 @@
           <el-tab-pane style="font-size: 20px" label="Graphs" name="second">
             <div class="chart-container">
               <Piechart :chartsource="piechart1" />
-              <Barchart :chartsource="barchart1" :myChart="1" />
+              <Linechart :chartsource="linechart1" />
             </div>
             <div class="chart-container">
-              <Barchart :chartsource="barchart2" :myChart="2" />
-              <Barchart :chartsource="barchart3" :myChart="3" />
+              <Linechart :chartsource="linechart2" />
+              <Linechart :chartsource="linechart3" />
             </div>
           </el-tab-pane>
         </el-tabs>
@@ -49,12 +49,18 @@
           </el-tab-pane>
           <el-tab-pane label="Graphs" name="second">
             <div class="chart-container">
-             <Barchart :chartsource="barchart4" :myChart="4" />
-             <Barchart :chartsource="barchart5" :myChart="5" />
+              <!-- <Smallchart :chartsource="piechart2" /> -->
+              <Piechart :chartsource="piechart2" />
+              <Piechart :chartsource="piechart3" />
             </div>
             <div class="chart-container">
-             <Barchart :chartsource="barchart6" :myChart="6" />
-             <Barchart :chartsource="barchart7" :myChart="7" />
+              <Linechart :chartsource="linechart4" />
+              <Linechart :chartsource="linechart5" />
+            </div>
+            <div class="chart-container">
+              <!-- <Smallchart :chartsource="piechart2" /> -->
+              <Piechart :chartsource="piechart4" />
+              <Piechart :chartsource="piechart5" />
             </div>
             
 
@@ -76,10 +82,12 @@
             </div>
 
           </el-tab-pane>
-          <el-tab-pane label="Graphs" name="second">Inflation Grpahs</el-tab-pane>
+          <el-tab-pane label="Graphs" name="second">
             <div class="chart-container">
               <WordCloud :chartsource="wordCloudChart" />
+              
             </div>
+            </el-tab-pane>
         </el-tabs>
       </div>
     </el-collapse-item>
@@ -88,6 +96,8 @@
 
 
 <script>
+
+
 import TableModel from "@/components/TableModel.vue";
 
 import Piechart from "@/components/Charts/piechart.vue";
@@ -100,6 +110,7 @@ import Barchart from "@/components/Charts/barchart.vue";
 
 import WordCloud from  "@/components/Charts/wordCloud.vue";
 
+
 export default {
   components: {
     TableModel,
@@ -107,7 +118,7 @@ export default {
     // Smallchart,
     Linechart,
     Barchart,
-    WordCloud
+    WordCloud,
   },
 
   data() {
@@ -122,20 +133,22 @@ export default {
 
   props: [
     "piechart1",
-    "barchart1",
-    "barchart2",
-    "barchart3",
+    "linechart1",
+    "linechart2",
+    "linechart3",
     
     "covidRow1",
     "covidColumn1",
     "covidRow2",
     "covidColumn2",
     
-    "barchart4",
-    "barchart5",
-    "barchart6",
-    "barchart7",
-   
+    "piechart2",
+    "piechart3",
+    "linechart4",
+    "linechart5",
+    "piechart4",
+    "piechart5",
+
     "enagementRow1",
     "enagementColumn1",
     "enagementRow2",
@@ -162,7 +175,7 @@ export default {
 <style scoped>
 .chart-container {
   position: relative;
-  margin-left: 5%;
+  margin-left:5%;
   height: fit-content;
   display: flex;
 }

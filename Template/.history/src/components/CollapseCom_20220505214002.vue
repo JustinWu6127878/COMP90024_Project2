@@ -107,7 +107,6 @@ export default {
     // Smallchart,
     Linechart,
     Barchart,
-    WordCloud
   },
 
   data() {

@@ -77,9 +77,7 @@
 
           </el-tab-pane>
           <el-tab-pane label="Graphs" name="second">Inflation Grpahs</el-tab-pane>
-            <div class="chart-container">
-              <WordCloud :chartsource="wordCloudChart" />
-            </div>
+            <div class=>
         </el-tabs>
       </div>
     </el-collapse-item>
@@ -98,8 +96,6 @@ import Linechart from "@/components/Charts/linechart.vue";
 
 import Barchart from "@/components/Charts/barchart.vue";
 
-import WordCloud from  "@/components/Charts/wordCloud.vue";
-
 export default {
   components: {
     TableModel,
@@ -107,7 +103,6 @@ export default {
     // Smallchart,
     Linechart,
     Barchart,
-    WordCloud
   },
 
   data() {
@@ -143,7 +138,9 @@ export default {
 
     "inflationRow1",
     "inflationColumn1",
-    "wordCloudChart"
+
+   
+
   
   ],
 

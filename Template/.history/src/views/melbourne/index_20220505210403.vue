@@ -169,6 +169,17 @@ const melbourne = new CityOverview(
   49260
 );
 
+var JsonList = [
+    {name: "龙头镇", value: "111"},
+    {name: "大埔镇", value: "222"},
+    {name: "太平镇", value: "458"},
+    {name: "沙埔镇", value: "445"},
+    {name: "东泉镇", value: "456"},
+    {name: "凤山镇", value: "647"},
+    {name: "六塘镇", value: "189"},
+    {name: "冲脉镇", value: "864"},
+    {name: "寨隆镇", value: "652"},
+];
 
 export default {
   name: "dashboard",
@@ -706,7 +717,8 @@ export default {
       wordCloudChart: {
         title: "Word Cloud chart of inflation",
         legend: {},
-        data: this.sendWordCloudData('melb'),
+        data: this.sendData(),
+        // happy:this.sendData()
       },
     };
   },
@@ -720,7 +732,7 @@ export default {
         })
       );
     },
-    sendWordCloudData(city){
+    sendData(){
       var result
       $.ajax({
         type:'GET',
@@ -732,12 +744,12 @@ export default {
           console.log(data)
           result = data
         },
-        error:function(){
-          alert("Cannot load the data")
+        error:{
+
         }
       });
 
-      var json_data = result[city]
+      var json_data = result['melb']
       var json_list = []
       for (var i=0; i < json_data.length; i++){
         var json_dict = {

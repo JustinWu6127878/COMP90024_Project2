@@ -3,35 +3,35 @@
     <div style="display: flex">
       <div class="dashboard-intro">
         <div class="dashboard-title">
-          <h1>{{ adelaide.name }}</h1>
+          <h1>{{ sydney.name }}</h1>
           <p>State:</p>
-          <p>{{ adelaide.state }}</p>
+          <p>{{ sydney.state }}</p>
         </div>
 
         <div class="dashboard-overview">
           <p>
             Total population:
-            <b>{{ milliFormat(adelaide.pop) }} </b>
+            <b>{{ milliFormat(sydney.pop) }} </b>
           </p>
           <p>
             Born overseas:
-            <b>{{ milliFormat(adelaide.over) }}</b>
+            <b>{{ milliFormat(sydney.over) }}</b>
           </p>
           <p>
-            Age 50+ percentage: <b>{{ adelaide.age50 + "%" }}</b>
+            Age 50+ percentage: <b>{{ sydney.age50 + "%" }}</b>
           </p>
           <p>
-            Age 60+ percentage: <b>{{ adelaide.age65 + "%" }}</b>
+            Age 60+ percentage: <b>{{ sydney.age65 + "%" }}</b>
           </p>
           <p>
             Median annual income:
-            <b>{{ "$" + milliFormat(adelaide.income) }}</b>
+            <b>{{ "$" + milliFormat(sydney.income) }}</b>
           </p>
         </div>
       </div>
 
       <div class="dashboard-image">
-        <img src="./Adelaide.jpeg" height="700px" width="400px" />
+        <img src="./Sydney.jpeg" height="700px" width="400px"/>
       </div>
     </div>
 
@@ -40,7 +40,7 @@
     <div class="dashboard-topics">
       <h2>Topics</h2>
       <p>
-        These are three topics for Adelaide, SA. Explore the metrics and graphs
+        These are three topics for Sydney, NSW. Explore the metrics and graphs
         behind the numbers.
       </p>
     </div>
@@ -99,8 +99,6 @@ import Piechart from "../../components/Charts/piechart.vue";
 
 import Linechart from "@/components/Charts/linechart.vue";
 
-import $ from 'jquery';
-
 const enagement = new Enagement(49.5, 30, 25);
 const enagementMel = new Enagement(49.5, 30, 25, 30);
 
@@ -146,9 +144,9 @@ const house = new Price(
 const covid = new Covid(5000, 20000, 300, 95, 33, 33, 33);
 const covidMel = new Covid(5000, 20000, 300, 95, 33, 33, 33);
 
-const adelaide = new CityOverview(
-  "Adelaide",
-  "South Australia",
+const sydney = new CityOverview(
+  "Sydney",
+  "New South Wales",
   5312163,
   1769610,
   30.4,
@@ -170,9 +168,9 @@ export default {
   },
   data() {
     return {
-      adelaide: new CityOverview(
-        "Adelaide",
-        "South Australia",
+      sydney: new CityOverview(
+        "Sydney",
+        "New South Wales",
         5312163,
         1769610,
         30.4,
@@ -359,12 +357,12 @@ export default {
         xdata: ["Positive", "Neutral", "Negative"],
         ydata1: [covidMel.pos, covidMel.neu, covidMel.neg],
         ydata2: [covid.pos, covid.neu, covid.neg],
-        legend: ["Melbourne", "Adelaide"],
+        legend: ["Melbourne", "Sydney"],
       },
 
       barchart2: {
         title: "Medical facilities comparison",
-        xdata: ["Melbourne", "Adelaide"],
+        xdata: ["Melbourne", "Sydney"],
         xLabel: {rotate:0},
         yAxis: {},
         ydata1: [covidMel.hos / 1000, covid.hos / 1000],
@@ -389,7 +387,7 @@ export default {
             splitNumber: 6,
           },
         ],
-        xdata: ["Melbourne", "Adelaide"],
+        xdata: ["Melbourne", "Sydney"],
         ydata1: [covidMel.active, covidMel.active],
         ydata2: [covid.rate, covid.rate],
         yAxisIndex: 1,
@@ -403,7 +401,7 @@ export default {
         yAxis: {},
         ydata1: [twitterperday.number1, twitterperday.number2,twitterperday.number3,twitterperday.number4,twitterperday.number5],
         ydata2: [twitterperdayMel.number1, twitterperdayMel.number2,twitterperdayMel.number3,twitterperdayMel.number4,twitterperdayMel.number5],
-        legend: ["Adelaide", "Melbourne"],
+        legend: ["Sydney", "Melbourne"],
       },
     
      barchart5: {
@@ -411,9 +409,9 @@ export default {
         xdata: ["Male%","Born overseas%"],
         xLabel: {rotate:0},
         yAxis: {},
-        ydata1: [enagement.male,adelaide.overper*100],
+        ydata1: [enagement.male,sydney.overper*100],
         ydata2: [enagementMel.male,enagementMel.overper],
-        legend: ["Adelaide", "Melbourne"],
+        legend: ["Sydney", "Melbourne"],
       },
 
       barchart6: {
@@ -423,7 +421,7 @@ export default {
         yAxis: {},
         ydata1: [income],
         ydata2: [incomeMel],
-        legend: ["Adelaide", "Melbourne"],
+        legend: ["Sydney", "Melbourne"],
       },
 
       barchart7: {
@@ -433,14 +431,15 @@ export default {
         yAxis: {},
         ydata1: [income],
         ydata2: [incomeMel],
-        legend: ["Adelaide", "Melbourne"],
+        legend: ["Sydney", "Melbourne"],
       },
 
       wordCloudChart: {
         title: "Word Cloud chart of inflation",
         legend: {},
-        data: this.sendWordCloudData('adel'),
+        data: this.sendWordCloudData('melb'),
       },
+   
     };
   },
 
@@ -453,36 +452,7 @@ export default {
         })
       );
     },
-    sendWordCloudData(city){
-      var result
-      $.ajax({
-        type:'GET',
-        url:"http://127.0.0.1:2889/wordCloud_data",
-        async:false,
-        dataType:'json',
-        success:function(data){
-          // console.log(data['data_line']);
-          console.log(data)
-          result = data
-        },
-        error:function(){
-          alert("Cannot load the data")
-        }
-      });
-
-      var json_data = result[city]
-      var json_list = []
-      for (var i=0; i < json_data.length; i++){
-        var json_dict = {
-          name: json_data[i].name,
-          value: json_data[i].value,
-        }
-        json_list.push(json_dict)
-      }
-        
-      console.log(json_list)
-      return json_list
-    }    
+    
   },
 };
 </script>

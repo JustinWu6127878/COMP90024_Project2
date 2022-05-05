@@ -99,8 +99,6 @@ import Piechart from "../../components/Charts/piechart.vue";
 
 import Linechart from "@/components/Charts/linechart.vue";
 
-import $ from 'jquery';
-
 const enagement = new Enagement(49.5, 30, 25);
 const enagementMel = new Enagement(49.5, 30, 25, 30);
 

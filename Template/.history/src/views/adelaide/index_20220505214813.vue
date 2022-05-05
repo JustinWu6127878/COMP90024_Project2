@@ -71,7 +71,7 @@
         :inflationColumn1="inflationColumn1"
         :inflationRow2="inflationRow2"
         :inflationColumn2="inflationColumn2"
-        :wordCloudChart="wordCloudChart"
+        :wordCloudChart=""
         
       />
     </div>
@@ -98,8 +98,6 @@ import Collapse from "../../components/CollapseCom.vue";
 import Piechart from "../../components/Charts/piechart.vue";
 
 import Linechart from "@/components/Charts/linechart.vue";
-
-import $ from 'jquery';
 
 const enagement = new Enagement(49.5, 30, 25);
 const enagementMel = new Enagement(49.5, 30, 25, 30);
@@ -435,12 +433,7 @@ export default {
         ydata2: [incomeMel],
         legend: ["Adelaide", "Melbourne"],
       },
-
-      wordCloudChart: {
-        title: "Word Cloud chart of inflation",
-        legend: {},
-        data: this.sendWordCloudData('adel'),
-      },
+   
     };
   },
 
@@ -453,36 +446,6 @@ export default {
         })
       );
     },
-    sendWordCloudData(city){
-      var result
-      $.ajax({
-        type:'GET',
-        url:"http://127.0.0.1:2889/wordCloud_data",
-        async:false,
-        dataType:'json',
-        success:function(data){
-          // console.log(data['data_line']);
-          console.log(data)
-          result = data
-        },
-        error:function(){
-          alert("Cannot load the data")
-        }
-      });
-
-      var json_data = result[city]
-      var json_list = []
-      for (var i=0; i < json_data.length; i++){
-        var json_dict = {
-          name: json_data[i].name,
-          value: json_data[i].value,
-        }
-        json_list.push(json_dict)
-      }
-        
-      console.log(json_list)
-      return json_list
-    }    
   },
 };
 </script>

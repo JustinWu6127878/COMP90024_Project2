@@ -363,7 +363,7 @@ export default {
         data: [
           { value: covid.pos, name: "Positive" },
           { value: covid.neu, name: "Neutral" },
-          { value: covid.neg, name: "Negative" },
+          { value: covid.pos, name: "Negative" },
         ],
       },
 

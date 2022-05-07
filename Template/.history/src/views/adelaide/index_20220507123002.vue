@@ -360,7 +360,7 @@ export default {
         yAxis: {},
         xdata: ["Positive", "Neutral", "Negative"],
         ydata1: [covidMel.pos, covidMel.neu, covidMel.neg],
-        ydata2: [covid.pos, covid.neu, covid.neg],
+        ydata2: [covid.pos, this.piechartData('adel', 'neu'), this.piechartData('adel', 'neg')],
         legend: ["Melbourne", "Adelaide"],
       },
 

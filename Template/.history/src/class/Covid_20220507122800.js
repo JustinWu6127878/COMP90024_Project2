@@ -9,6 +9,8 @@ function piechartData(){
       async:false,
       dataType:'json',
       success:function(data){
+        // console.log(data['data_line']);
+        // console.log(data[city][senti])
         result = data
       },
       error:function(){

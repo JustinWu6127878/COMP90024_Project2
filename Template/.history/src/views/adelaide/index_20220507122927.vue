@@ -359,8 +359,8 @@ export default {
         xLabel: {rotate:0},
         yAxis: {},
         xdata: ["Positive", "Neutral", "Negative"],
-        ydata1: [covidMel.pos, covidMel.neu, covidMel.neg],
-        ydata2: [covid.pos, covid.neu, covid.neg],
+        ydata1: [covidMel.pos, covid, this.piechartData('melb', 'neg')],
+        ydata2: [this.piechartData('adel', 'pos'), this.piechartData('adel', 'neu'), this.piechartData('adel', 'neg')],
         legend: ["Melbourne", "Adelaide"],
       },
 

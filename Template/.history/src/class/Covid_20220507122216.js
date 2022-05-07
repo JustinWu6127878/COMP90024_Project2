@@ -1,7 +1,7 @@
 import $ from 'jquery'; 
 
 
-function piechartData(){
+function piechartData(city, senti){
     var result
     $.ajax({
       type:'GET',
@@ -9,6 +9,8 @@ function piechartData(){
       async:false,
       dataType:'json',
       success:function(data){
+        // console.log(data['data_line']);
+        console.log(data[city][senti])
         result = data
       },
       error:function(){
@@ -19,17 +21,17 @@ function piechartData(){
     return result
   }   
 
-var result = piechartData()
+var result = piechartData('adel', 'pos')
 
 class Covid {
-    constructor (hos, active, clinincs, rate, city){
+    constructor (hos, active, clinincs, rate, result[]){
         this.hos = hos;
         this.active = active;
         this.clinincs = clinincs;
         this.rate = rate;
-        this.pos = result[city]['pos'];
-        this.neg = result[city]['neg'];
-        this.neu = result[city]['neu'];
+        this.pos = result;
+        this.neg = neg;
+        this.neu = neu;
     }
 }
 

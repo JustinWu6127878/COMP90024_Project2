@@ -154,10 +154,10 @@ const house = new Price(
   ["2017", 12345]
 );
 
-const covid = new Covid(5000, 20000, 300, 95, 'melb');
-const covidSyd = new Covid(5000, 20000, 300, 95, 'syd');
-const covidBris = new Covid(5000, 20000, 300, 95, 'bris');
-const covidAde = new Covid(5000, 20000, 300, 95, 'adel');
+const covid = new Covid(5000, 20000, 300, 95, 'adel');
+const covidSyd = new Covid(5000, 20000, 300, 95, 33, 33, 33);
+const covidBris = new Covid(5000, 20000, 300, 95, 33, 33, 33);
+const covidAde = new Covid(5000, 20000, 300, 95, 33, 33, 33);
 
 const melbourne = new CityOverview(
   "Melbourne",
@@ -361,9 +361,9 @@ export default {
         title: "Twitter Comments",
         legend: { data: ["Positive", "Neutral", "Negative"] },
         data: [
-          { value: covid.pos, name: "Positive" },
-          { value: covid.neu, name: "Neutral" },
-          { value: covid.neg, name: "Negative" },
+          { value: this.piechartData('melb', 'pos'), name: "Positive" },
+          { value: this.piechartData('melb', 'pos'), name: "Neutral" },
+          { value: this.piechartData('melb', 'pos'), name: "Negative" },
         ],
       },
 

@@ -144,8 +144,8 @@ const house = new Price(
   ["2017", 12345]
 );
 
-const covid = new Covid(5000, 20000, 300, 95, 'adel');
-const covidMel = new Covid(5000, 20000, 300, 95, 'melb');
+const covid = new Covid(5000, 20000, 300, 95, );
+const covidMel = new Covid(5000, 20000, 300, 95, 33, 33, 33);
 
 const adelaide = new CityOverview(
   "Adelaide",
@@ -359,8 +359,8 @@ export default {
         xLabel: {rotate:0},
         yAxis: {},
         xdata: ["Positive", "Neutral", "Negative"],
-        ydata1: [covidMel.pos, covidMel.neu, covidMel.neg],
-        ydata2: [covid.pos, covid.neu, covid.neg],
+        ydata1: [this.piechartData('melb', 'pos'), this.piechartData('melb', 'neu'), this.piechartData('melb', 'neg')],
+        ydata2: [this.piechartData('adel', 'pos'), this.piechartData('adel', 'neu'), this.piechartData('adel', 'neg')],
         legend: ["Melbourne", "Adelaide"],
       },
 

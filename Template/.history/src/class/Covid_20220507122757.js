@@ -9,6 +9,8 @@ function piechartData(){
       async:false,
       dataType:'json',
       success:function(data){
+        // console.log(data['data_line']);
+        // console.log(data[city][senti])
         result = data
       },
       error:function(){
@@ -22,7 +24,7 @@ function piechartData(){
 var result = piechartData()
 
 class Covid {
-    constructor (hos, active, clinincs, rate, city){
+    constructor (hos, active, clinincs, rate, city, senti){
         this.hos = hos;
         this.active = active;
         this.clinincs = clinincs;

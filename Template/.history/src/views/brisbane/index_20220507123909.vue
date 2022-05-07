@@ -3,35 +3,35 @@
     <div style="display: flex">
       <div class="dashboard-intro">
         <div class="dashboard-title">
-          <h1>{{ adelaide.name }}</h1>
+          <h1>{{ brisbane.name }}</h1>
           <p>State:</p>
-          <p>{{ adelaide.state }}</p>
+          <p>{{ brisbane.state }}</p>
         </div>
 
         <div class="dashboard-overview">
           <p>
             Total population:
-            <b>{{ milliFormat(adelaide.pop) }} </b>
+            <b>{{ milliFormat(brisbane.pop) }} </b>
           </p>
           <p>
             Born overseas:
-            <b>{{ milliFormat(adelaide.over) }}</b>
+            <b>{{ milliFormat(brisbane.over) }}</b>
           </p>
           <p>
-            Age 50+ percentage: <b>{{ adelaide.age50 + "%" }}</b>
+            Age 50+ percentage: <b>{{ brisbane.age50 + "%" }}</b>
           </p>
           <p>
-            Age 60+ percentage: <b>{{ adelaide.age65 + "%" }}</b>
+            Age 60+ percentage: <b>{{ brisbane.age65 + "%" }}</b>
           </p>
           <p>
             Median annual income:
-            <b>{{ "$" + milliFormat(adelaide.income) }}</b>
+            <b>{{ "$" + milliFormat(brisbane.income) }}</b>
           </p>
         </div>
       </div>
 
       <div class="dashboard-image">
-        <img src="./Adelaide.jpeg" height="700px" width="400px" />
+        <img src="./Brisbane.jpeg" height="700px" width="400px"/>
       </div>
     </div>
 
@@ -40,7 +40,7 @@
     <div class="dashboard-topics">
       <h2>Topics</h2>
       <p>
-        These are three topics for Adelaide, SA. Explore the metrics and graphs
+        These are three topics for Brisbane, QLD. Explore the metrics and graphs
         behind the numbers.
       </p>
     </div>
@@ -51,28 +51,23 @@
         :barchart1="barchart1"
         :barchart2="barchart2"
         :barchart3="barchart3"
-       
         :covidRow1="covidRow1"
         :covidColumn1="covidColumn1"
         :covidRow2="covidRow2"
         :covidColumn2="covidColumn2"
-
         :barchart4="barchart4"
         :barchart5="barchart5"
         :barchart6="barchart6"
         :barchart7="barchart7"
-
         :enagementRow1="enagementRow1"
         :enagementColumn1="enagementColumn1"
         :enagementRow2="enagementRow2"
         :enagementColumn2="enagementColumn2"
-
         :inflationRow1="inflationRow1"
         :inflationColumn1="inflationColumn1"
         :inflationRow2="inflationRow2"
         :inflationColumn2="inflationColumn2"
         :wordCloudChart="wordCloudChart"
-        
       />
     </div>
   </div>
@@ -101,7 +96,6 @@ import Linechart from "@/components/Charts/linechart.vue";
 
 import $ from 'jquery';
 
-
 const enagement = new Enagement(49.5, 30, 25);
 const enagementMel = new Enagement(49.5, 30, 25, 30);
 
@@ -123,8 +117,8 @@ const twitterperdayMel = new TwitterPerDay(
   ["29/04/2022", 12345]
 );
 
-const income = ["23.8","23.6","24.4","28.2"]
-const incomeMel = [24.4,24.8,25.4,25.5];
+const income = ["23.8", "23.6", "24.4", "28.2"];
+const incomeMel = [24.4, 24.8, 25.4, 25.5];
 
 const gas = new Price(
   ["2022", 12345],
@@ -144,17 +138,17 @@ const house = new Price(
   ["2017", 12345]
 );
 
-const covid = new Covid(5000, 20000, 300, 95, 'adel');
+const covid = new Covid(5000, 20000, 300, 95, 'syd');
 const covidMel = new Covid(5000, 20000, 300, 95, 'melb');
 
-const adelaide = new CityOverview(
-  "Adelaide",
-  "South Australia",
-  5312163,
-  1769610,
-  30.4,
-  14.0,
-  51191
+const brisbane = new CityOverview(
+  "Brisbane",
+  "Queensland",
+  2514184,
+  591344,
+  30.3,
+  13.7,
+  50011
 );
 
 export default {
@@ -169,17 +163,16 @@ export default {
     Piechart,
     Linechart,
   },
-
   data() {
     return {
-      adelaide: new CityOverview(
-        "Adelaide",
-        "South Australia",
-        5312163,
-        1769610,
-        30.4,
-        14.0,
-        51191
+      brisbane: new CityOverview(
+        "Brisbane",
+        "Queensland",
+        2514184,
+        591344,
+        30.3,
+        13.7,
+        50011
       ),
 
       covidRow1: [
@@ -356,18 +349,18 @@ export default {
 
       barchart1: {
         title: "Twitter comments comparison",
-        xLabel: {rotate:0},
+        xLabel: { rotate: 0 },
         yAxis: {},
         xdata: ["Positive", "Neutral", "Negative"],
-        ydata1: [covidMel.pos, covidMel.neu, covidMel.neg],
-        ydata2: [covid.pos, covid.neu, covid.neg],
-        legend: ["Melbourne", "Adelaide"],
+        ydata1: [covidMel.pos, covidMel.neu, covidMel.pos],
+        ydata2: [covid.pos, this.piechartData('bris', 'neu'), this.piechartData('bris', 'neg')],
+        legend: ["Melbourne", "Brisbane"],
       },
 
       barchart2: {
         title: "Medical facilities comparison",
-        xdata: ["Melbourne", "Adelaide"],
-        xLabel: {rotate:0},
+        xdata: ["Melbourne", "Brisbane"],
+        xLabel: { rotate: 0 },
         yAxis: {},
         ydata1: [covidMel.hos / 1000, covid.hos / 1000],
         ydata2: [covidMel.clinincs / 100, covid.clinincs / 100],
@@ -376,7 +369,7 @@ export default {
 
       barchart3: {
         title: "Active cases and vaccination rate comparison",
-        xLabel: {rotate:0},
+        xLabel: { rotate: 0 },
         yAxis: [
           {
             name: "Cases",
@@ -391,7 +384,7 @@ export default {
             splitNumber: 6,
           },
         ],
-        xdata: ["Melbourne", "Adelaide"],
+        xdata: ["Melbourne", "Brisbane"],
         ydata1: [covidMel.active, covidMel.active],
         ydata2: [covid.rate, covid.rate],
         yAxisIndex: 1,
@@ -400,49 +393,74 @@ export default {
 
       barchart4: {
         title: "Twitter regarding policy",
-        xdata: [twitterperday.date1,twitterperday.date2,twitterperday.date3,twitterperday.date4,twitterperday.date5],
-        xLabel: {rotate:0},
+        xdata: [
+          twitterperday.date1,
+          twitterperday.date2,
+          twitterperday.date3,
+          twitterperday.date4,
+          twitterperday.date5,
+        ],
+        xLabel: { rotate: 0 },
         yAxis: {},
-        ydata1: [twitterperday.number1, twitterperday.number2,twitterperday.number3,twitterperday.number4,twitterperday.number5],
-        ydata2: [twitterperdayMel.number1, twitterperdayMel.number2,twitterperdayMel.number3,twitterperdayMel.number4,twitterperdayMel.number5],
-        legend: ["Adelaide", "Melbourne"],
+        ydata1: [
+          twitterperday.number1,
+          twitterperday.number2,
+          twitterperday.number3,
+          twitterperday.number4,
+          twitterperday.number5,
+        ],
+        ydata2: [
+          twitterperdayMel.number1,
+          twitterperdayMel.number2,
+          twitterperdayMel.number3,
+          twitterperdayMel.number4,
+          twitterperdayMel.number5,
+        ],
+        legend: ["Brisbane", "Melbourne"],
       },
-    
-     barchart5: {
+
+      barchart5: {
         title: "Gender & Immigration rate",
-        xdata: ["Male%","Born overseas%"],
-        xLabel: {rotate:0},
+        xdata: ["Male%", "Born overseas%"],
+        xLabel: { rotate: 0 },
         yAxis: {},
-        ydata1: [enagement.male,adelaide.overper*100],
-        ydata2: [enagementMel.male,enagementMel.overper],
-        legend: ["Adelaide", "Melbourne"],
+        ydata1: [enagement.male, brisbane.overper * 100],
+        ydata2: [enagementMel.male, enagementMel.overper],
+        legend: ["Brisbane", "Melbourne"],
       },
 
       barchart6: {
         title: "Total income quartile",
-        xdata: ["Lowest","Second","Third","Highest"],
-        xLabel: {rotate:0},
+        xdata: ["Lowest", "Second", "Third", "Highest"],
+        xLabel: { rotate: 0 },
         yAxis: {},
         ydata1: [income],
         ydata2: [incomeMel],
-        legend: ["Adelaide", "Melbourne"],
+        legend: ["Brisbane", "Melbourne"],
       },
 
       barchart7: {
         title: "Highest degree",
-        xdata: ["Postgraduate","Diploma","Bachelor","Certificate","Non-school"],
-        xLabel: {rotate:40},
+        xdata: [
+          "Postgraduate",
+          "Diploma",
+          "Bachelor",
+          "Certificate",
+          "Non-school",
+        ],
+        xLabel: { rotate: 40 },
         yAxis: {},
         ydata1: [income],
         ydata2: [incomeMel],
-        legend: ["Adelaide", "Melbourne"],
+        legend: ["Brisbane", "Melbourne"],
       },
 
       wordCloudChart: {
         title: "Word Cloud chart of inflation",
         legend: {},
-        data: this.sendWordCloudData('adel'),
+        data: this.sendWordCloudData('bris'),
       },
+
     };
   },
 
@@ -484,7 +502,7 @@ export default {
         
       console.log(json_list)
       return json_list
-    },
+    },    
     piechartData(city, senti){
       var result
       $.ajax({
@@ -503,7 +521,7 @@ export default {
       });      
 
       return result
-    }    
+    }   
   },
 };
 </script>

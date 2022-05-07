@@ -361,9 +361,9 @@ export default {
         title: "Twitter Comments",
         legend: { data: ["Positive", "Neutral", "Negative"] },
         data: [
-          { value: covid.pos, name: "Positive" },
-          { value: covid.neu, name: "Neutral" },
-          { value: covid.neg, name: "Negative" },
+          { value: this.piechartData('melb', 'pos'), name: "Positive" },
+          { value: this.piechartData('melb', 'pos'), name: "Neutral" },
+          { value: this.piechartData('melb', 'pos'), name: "Negative" },
         ],
       },
 

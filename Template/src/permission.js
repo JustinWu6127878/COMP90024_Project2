@@ -50,9 +50,10 @@ router.beforeEach(async(to, from, next) => {
     if (whiteList.indexOf(to.path) !== -1) {
       // in the free login whitelist, go directly
       next()
+      NProgress.done()
     } else {
       // other pages that do not have permission to access are redirected to the login page.
-      next(`/login?redirect=${to.path}`)
+      next()
       NProgress.done()
     }
   }

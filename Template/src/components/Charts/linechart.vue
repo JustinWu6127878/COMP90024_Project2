@@ -1,68 +1,76 @@
 <template>
   <!-- 为 ECharts 准备一个具备大小（宽高）的 DOM -->
-  <div id="chartLine" class="line-wrap"></div>
+  <div id="chartLine" class="line-wrap" />
 </template>
- 
+
 <script>
-import * as echarts from "echarts";
-require("echarts/theme/shine"); //引入主题
+import * as echarts from 'echarts'
+require('echarts/theme/shine') // 引入主题
 
 export default {
+  props: ['chartsource'],
   data() {
     return {
-      chartLine: null,
-    };
+      chartLine: null
+    }
   },
-  props: ["chartsource"],
 
   mounted() {
     this.$nextTick(() => {
-      this.drawLineChart();
-    });
+      this.drawLineChart()
+    })
   },
   methods: {
     drawLineChart() {
       if (this.chartsource) {
-        this.chartLine = echarts.init(this.$el, "shine"); // 基于准备好的dom，初始化echarts实例
-        let option = {
+        this.chartLine = echarts.init(this.$el, 'shine') // 基于准备好的dom，初始化echarts实例
+        const option = {
           title: {
             text: this.chartsource.title,
-            x: "center",
+            x: 'center',
+            textStyle: { // 主标题文本样式{"fontSize": 18,"fontWeight": "bolder","color": "#333"}
+              fontFamily: 'Arial',
+              fontSize: 24,
+              fontStyle: 'normal',
+              fontWeight: 'bold',
+              color: '#2277D2'
+            }
           },
           // tooltip : {
           //     trigger: 'axis'
           // },
           legend: {
             data: this.chartsource.legend.data,
-            left: "center",
-            top: "bottom",
-            orient: "horizontal",
+            left: 'center',
+            top: 'bottom',
+            orient: 'horizontal'
+
           },
           calculable: true,
+          color: ['rgb(46 199 201)', 'rgb(90 177 239)', 'rgb(182 162 222)'],
           xAxis: [
             {
-              type: "value",
+              type: 'value',
               // boundaryGap : false,
               axisTick: {
-                show: false,
+                show: false
               },
               name: this.chartsource.xdata,
-              nameLocation: "middle",
-              nameTextStyle:{padding: 10, 
-              },
-            },
+              nameLocation: 'middle',
+              nameTextStyle: { padding: 10
+              }
+            }
           ],
           yAxis: [
             {
-              type: "value",
+              type: 'value',
               axisTick: {
-                show: false,
+                show: false
               },
-              name: this.chartsource.ydata,
-            },
+              name: this.chartsource.ydata
+            }
           ],
-          series: this.chartsource.series,
-
+          series: this.chartsource.series
           // [
           //     {
           //         name:'邮件营销',
@@ -105,15 +113,15 @@ export default {
           //         data:[820, 932, 901, 934, 1290, 1330, 1320]
           //     }
           // ]
-        };
+        }
         // 使用刚指定的配置项和数据显示图表
-        this.chartLine.setOption(option);
+        this.chartLine.setOption(option)
       }
-    },
-  },
-};
+    }
+  }
+}
 </script>
- 
+
 <style scope>
 .line-wrap {
   width: 50%;

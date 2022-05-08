@@ -1,58 +1,65 @@
 <template>
-  <div id="chartPie" class="pie-wrap"></div>
+  <div id="chartPie" class="pie-wrap" />
 </template>
- 
+
 <script>
-import * as echarts from "echarts";
-require("echarts/theme/macarons"); //引入主题
+import * as echarts from 'echarts'
+require('echarts/theme/macarons') // 引入主题
 
 export default {
+
+  props: ['chartsource'],
   data() {
     return {
-      chartPie: null,
-    };
+      chartPie: null
+    }
   },
-
-  props: ["chartsource"],
 
   updated() {
     this.$nextTick(() => {
-      console.log("update123");
+      console.log('update123')
       if (this.show) {
-        this.drawPieChart();
+        this.drawPieChart()
       }
-    });
+    })
   },
 
   mounted() {
     this.$nextTick(() => {
-      this.drawPieChart();
-    });
+      this.drawPieChart()
+    })
   },
   methods: {
     drawPieChart() {
-      let mytextStyle = {
-        color: "#333",
-        fontSize: 18,
-      };
-      let mylabel = {
+      const mytextStyle = {
+        color: '#2277D2',
+        fontSize: 18
+      }
+      const mylabel = {
         show: true,
-        position: "center",
+        position: 'center',
         offset: [40, 50],
-        formatter: "{b} :{d}%",
-        textStyle: mytextStyle,
-      };
+        formatter: '{b} :{d}%',
+        textStyle: mytextStyle
+      }
       this.chartPie = echarts.init(
-        document.getElementById("chartPie"),
-        "macarons"
-      );
+        document.getElementById('chartPie'),
+        'macarons'
+      )
 
       if (this.chartsource) {
-        this.chartPie = echarts.init(this.$el, "shine"); 
+        this.chartPie = echarts.init(this.$el, 'shine')
         this.chartPie.setOption({
           title: {
+            textStyle: { // 主标题文本样式{"fontSize": 18,"fontWeight": "bolder","color": "#333"}
+              fontFamily: 'Arial',
+              fontSize: 24,
+              fontStyle: 'normal',
+              fontWeight: 'bold',
+              color: '#2277D2'
+            },
             text: this.chartsource.title,
-            x: "center",
+            x: 'center'
           },
           //   tooltip: {
           //     trigger: 'item',
@@ -60,16 +67,17 @@ export default {
           //   },
           legend: {
             data: this.chartsource.legend.data,
-            left: "center",
-            top: "bottom",
-            orient: "horizontal",
+            left: 'center',
+            top: 'bottom',
+            orient: 'horizontal'
           },
+          color: ['rgb(46 199 201)', 'rgb(90 177 239)', 'rgb(182 162 222)'],
           series: [
             {
-              name: "Percentage",
-              type: "pie",
-              radius: ["50%", "70%"],
-              center: ["50%", "50%"],
+              name: 'Percentage',
+              type: 'pie',
+              radius: ['50%', '70%'],
+              center: ['50%', '50%'],
               data: this.chartsource.data,
               //   [
               //     // {value: 335, name: '直接访问'},
@@ -82,20 +90,20 @@ export default {
               //   animationEasing: 'cubicInOut',
               //   animationDuration: 2600,
               label: {
-                emphasis: mylabel,
-              },
-            },
-          ],
-        });
+                emphasis: mylabel
+              }
+            }
+          ]
+        })
       }
-    },
-  },
-};
+    }
+  }
+}
 </script>
- 
+
 <style  scope>
 .pie-wrap {
-  width: 50%;
+  width: 100%;
   height: 400px;
 }
 </style>

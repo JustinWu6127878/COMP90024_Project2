@@ -1,41 +1,37 @@
 <template>
   <div class="dashboard-container">
-    <div style="display: flex">
       <div class="dashboard-intro">
-        <div class="dashboard-title">
-          <h1>{{ adelaide.name }}</h1>
-          <p>State:</p>
-          <p>{{ adelaide.state }}</p>
-        </div>
+        <div class="background">
+          <div class="dashboard-title">
+            <h1 style="color: #2277d2">{{ adelaide.name }}</h1>
+            <p class="white">State:</p>
+            <p style="color: #2277d2">{{ adelaide.state }}</p>
+          </div>
 
-        <div class="dashboard-overview">
-          <p>
-            Total population:
-            <b>{{ milliFormat(adelaide.pop) }} </b>
-          </p>
-          <p>
-            Born overseas:
-            <b>{{ milliFormat(adelaide.over) }}</b>
-          </p>
-          <p>
-            Age 50+ percentage: <b>{{ adelaide.age50 + "%" }}</b>
-          </p>
-          <p>
-            Age 60+ percentage: <b>{{ adelaide.age65 + "%" }}</b>
-          </p>
-          <p>
-            Median annual income:
-            <b>{{ "$" + milliFormat(adelaide.income) }}</b>
-          </p>
+          <div class="dashboard-overview">
+            <p class="white">
+              Total population:
+              <b>{{ milliFormat(adelaide.pop) }} </b>
+            </p>
+            <p class="white">
+              Born overseas:
+              <b>{{ milliFormat(adelaide.over) }}</b>
+            </p>
+            <p class="white">
+              Age 50+ percentage: <b>{{ adelaide.age50 + "%" }}</b>
+            </p>
+            <p class="white">
+              Age 60+ percentage: <b>{{ adelaide.age65 + "%" }}</b>
+            </p>
+            <p class="white">
+              Median annual income:
+              <b>{{ "$" + milliFormat(adelaide.income) }}</b>
+            </p>
+          </div>
         </div>
       </div>
 
-      <div class="dashboard-image">
-        <img src="./Adelaide.jpeg" height="700px" width="400px" />
-      </div>
-    </div>
-
-    <el-divider></el-divider>
+    <el-divider />
 
     <div class="dashboard-topics">
       <h2>Topics</h2>
@@ -51,27 +47,22 @@
         :barchart1="barchart1"
         :barchart2="barchart2"
         :barchart3="barchart3"
-       
-        :covidRow1="covidRow1"
-        :covidColumn1="covidColumn1"
-        :covidRow2="covidRow2"
-        :covidColumn2="covidColumn2"
-
+        :covid-row1="covidRow1"
+        :covid-column1="covidColumn1"
+        :covid-row2="covidRow2"
+        :covid-column2="covidColumn2"
         :barchart4="barchart4"
         :barchart5="barchart5"
         :barchart6="barchart6"
         :barchart7="barchart7"
-
-        :enagementRow1="enagementRow1"
-        :enagementColumn1="enagementColumn1"
-        :enagementRow2="enagementRow2"
-        :enagementColumn2="enagementColumn2"
-
-        :inflationRow1="inflationRow1"
-        :inflationColumn1="inflationColumn1"
-        :inflationRow2="inflationRow2"
-        :inflationColumn2="inflationColumn2"
-        
+        :enagement-row1="enagementRow1"
+        :enagement-column1="enagementColumn1"
+        :enagement-row2="enagementRow2"
+        :enagement-column2="enagementColumn2"
+        :inflation-row1="inflationRow1"
+        :inflation-column1="inflationColumn1"
+        :inflation-row2="inflationRow2"
+        :inflation-column2="inflationColumn2"
       />
     </div>
   </div>
@@ -119,8 +110,8 @@ const twitterperdayMel = new TwitterPerDay(
   ["29/04/2022", 12345]
 );
 
-const income = ["23.8","23.6","24.4","28.2"]
-const incomeMel = [24.4,24.8,25.4,25.5];
+const income = ["23.8", "23.6", "24.4", "28.2"];
+const incomeMel = [24.4, 24.8, 25.4, 25.5];
 
 const gas = new Price(
   ["2022", 12345],
@@ -154,7 +145,7 @@ const adelaide = new CityOverview(
 );
 
 export default {
-  name: "dashboard",
+  name: "Dashboard",
   computed: {
     ...mapGetters(["name"]),
   },
@@ -351,7 +342,7 @@ export default {
 
       barchart1: {
         title: "Twitter comments comparison",
-        xLabel: {rotate:0},
+        xLabel: { rotate: 0 },
         yAxis: {},
         xdata: ["Positive", "Neutral", "Negative"],
         ydata1: [covidMel.pos, covidMel.neu, covidMel.neg],
@@ -362,7 +353,7 @@ export default {
       barchart2: {
         title: "Medical facilities comparison",
         xdata: ["Melbourne", "Adelaide"],
-        xLabel: {rotate:0},
+        xLabel: { rotate: 0 },
         yAxis: {},
         ydata1: [covidMel.hos / 1000, covid.hos / 1000],
         ydata2: [covidMel.clinincs / 100, covid.clinincs / 100],
@@ -371,7 +362,7 @@ export default {
 
       barchart3: {
         title: "Active cases and vaccination rate comparison",
-        xLabel: {rotate:0},
+        xLabel: { rotate: 0 },
         yAxis: [
           {
             name: "Cases",
@@ -395,28 +386,46 @@ export default {
 
       barchart4: {
         title: "Twitter regarding policy",
-        xdata: [twitterperday.date1,twitterperday.date2,twitterperday.date3,twitterperday.date4,twitterperday.date5],
-        xLabel: {rotate:0},
+        xdata: [
+          twitterperday.date1,
+          twitterperday.date2,
+          twitterperday.date3,
+          twitterperday.date4,
+          twitterperday.date5,
+        ],
+        xLabel: { rotate: 0 },
         yAxis: {},
-        ydata1: [twitterperday.number1, twitterperday.number2,twitterperday.number3,twitterperday.number4,twitterperday.number5],
-        ydata2: [twitterperdayMel.number1, twitterperdayMel.number2,twitterperdayMel.number3,twitterperdayMel.number4,twitterperdayMel.number5],
+        ydata1: [
+          twitterperday.number1,
+          twitterperday.number2,
+          twitterperday.number3,
+          twitterperday.number4,
+          twitterperday.number5,
+        ],
+        ydata2: [
+          twitterperdayMel.number1,
+          twitterperdayMel.number2,
+          twitterperdayMel.number3,
+          twitterperdayMel.number4,
+          twitterperdayMel.number5,
+        ],
         legend: ["Adelaide", "Melbourne"],
       },
-    
-     barchart5: {
+
+      barchart5: {
         title: "Gender & Immigration rate",
-        xdata: ["Male%","Born overseas%"],
-        xLabel: {rotate:0},
+        xdata: ["Male%", "Born overseas%"],
+        xLabel: { rotate: 0 },
         yAxis: {},
-        ydata1: [enagement.male,adelaide.overper*100],
-        ydata2: [enagementMel.male,enagementMel.overper],
+        ydata1: [enagement.male, adelaide.overper * 100],
+        ydata2: [enagementMel.male, enagementMel.overper],
         legend: ["Adelaide", "Melbourne"],
       },
 
       barchart6: {
         title: "Total income quartile",
-        xdata: ["Lowest","Second","Third","Highest"],
-        xLabel: {rotate:0},
+        xdata: ["Lowest", "Second", "Third", "Highest"],
+        xLabel: { rotate: 0 },
         yAxis: {},
         ydata1: [income],
         ydata2: [incomeMel],
@@ -425,14 +434,19 @@ export default {
 
       barchart7: {
         title: "Highest degree",
-        xdata: ["Postgraduate","Diploma","Bachelor","Certificate","Non-school"],
-        xLabel: {rotate:40},
+        xdata: [
+          "Postgraduate",
+          "Diploma",
+          "Bachelor",
+          "Certificate",
+          "Non-school",
+        ],
+        xLabel: { rotate: 40 },
         yAxis: {},
         ydata1: [income],
         ydata2: [incomeMel],
         legend: ["Adelaide", "Melbourne"],
       },
-   
     };
   },
 
@@ -449,13 +463,40 @@ export default {
 };
 </script>
 
-
 <style lang="scss" scoped>
+// 新增开始
+.white {
+  color: #fff;
+}
+.background {
+  background-color: rgba(0, 0, 0, 0.5) !important;
+}
+.dashboard-title{
+  padding: 30px;
+}
+.dashboard-intro {
+  margin-left: 0 !important;
+  text-align: center;
+  background: url(./Adelaide.jpeg);
+  background-size: contain;
+}
+.dashboard-container[data-v-35bc3b10] {
+    position: relative;
+    margin: 0px !important;
+    width: 100% !important;
+}
+.dashboard-topics{
+  padding: 0 40px;
+}
+.dashboard-collapse{
+  padding: 0 40px;
+}
+// 新增结束
 .dashboard {
   &-container {
     position: relative;
     margin: 40px;
-    width: 85%;
+    width: 95%;
   }
   &-intro {
     margin-left: 15%;
@@ -501,6 +542,16 @@ export default {
   //   margin-left: 20%;
   // }
 }
+.dashboard-overview b {
+  color: #2277d2;
+}
+h2 {
+  color: #2277d2;
+}
+p {
+  color: #a2a2a2;
+}
+
 // .chart-container {
 //   position: relative;
 //   width: 90%;

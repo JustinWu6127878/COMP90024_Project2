@@ -15,9 +15,21 @@ export default {
   },
   props: ["chartsource"],
 
+
+  updated() {
+    this.$nextTick(() => {
+      console.log("update123");
+      if (this.show) {
+        this.drawPieChart();
+      }
+    });
+  },
+
   mounted() {
     this.$nextTick(() => {
-      this.drawLineChart();
+      setTimeout(() => {
+      this.drawLineChart()
+      },20)
     });
   },
   methods: {
@@ -41,15 +53,15 @@ export default {
           calculable: true,
           xAxis: [
             {
-              type: "value",
+              type: this.chartsource.xtype,
               // boundaryGap : false,
               axisTick: {
                 show: false,
               },
-              name: this.chartsource.xdata,
-              nameLocation: "middle",
-              nameTextStyle:{padding: 10, 
-              },
+              data: this.chartsource.xdata,
+              // nameLocation: "middle",
+              // nameTextStyle:{padding: 10, 
+              // },
             },
           ],
           yAxis: [
@@ -116,6 +128,7 @@ export default {
  
 <style scope>
 .line-wrap {
+  float:left;
   width: 50%;
   height: 400px;
 }

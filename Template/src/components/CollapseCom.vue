@@ -22,6 +22,7 @@
               <Piechart :chartsource="piechart1" />
               <Barchart :chartsource="barchart1" :myChart="1" />
             </div>
+             <el-divider></el-divider>
             <div class="chart-container">
               <Barchart :chartsource="barchart2" :myChart="2" />
               <Barchart :chartsource="barchart3" :myChart="3" />
@@ -52,6 +53,7 @@
              <Barchart :chartsource="barchart4" :myChart="4" />
              <Barchart :chartsource="barchart5" :myChart="5" />
             </div>
+             <el-divider></el-divider>
             <div class="chart-container">
              <Barchart :chartsource="barchart6" :myChart="6" />
              <Barchart :chartsource="barchart7" :myChart="7" />
@@ -74,12 +76,22 @@
             <div class="dashboard-text5">
               <TableModel :row="inflationRow1" :column="inflationColumn1" />
             </div>
+            <el-divider></el-divider>
+            <div class="dashboard-text5">
+              <TableModel :row="inflationRow2" :column="inflationColumn2" />
+            </div>
 
           </el-tab-pane>
-          <el-tab-pane label="Graphs" name="second">Inflation Grpahs</el-tab-pane>
+          <el-tab-pane label="Graphs" name="second">
+            <div class="chart-container">
+              <Linechart :chartsource="linechart1" />
+              <Linechart :chartsource="linechart2" />
+            </div>
+             <el-divider></el-divider>
             <div class="chart-container">
               <WordCloud :chartsource="wordCloudChart" />
             </div>
+            </el-tab-pane>
         </el-tabs>
       </div>
     </el-collapse-item>
@@ -143,6 +155,11 @@ export default {
 
     "inflationRow1",
     "inflationColumn1",
+    "inflationRow2",
+    "inflationColumn2",
+
+    "linechart1",
+    "linechart2",
     "wordCloudChart"
   
   ],

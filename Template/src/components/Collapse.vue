@@ -19,9 +19,10 @@
           </el-tab-pane>
           <el-tab-pane style="font-size: 20px" label="Graphs" name="second">
             <div class="chart-container">
+              <Linechart :chartsource="linechart1"/>
               <Piechart :chartsource="piechart1" />
-              <Linechart :chartsource="linechart1" />
             </div>
+             <el-divider></el-divider>
             <div class="chart-container">
               <Linechart :chartsource="linechart2" />
               <Linechart :chartsource="linechart3" />
@@ -53,10 +54,12 @@
               <Piechart :chartsource="piechart2" />
               <Piechart :chartsource="piechart3" />
             </div>
+             <el-divider></el-divider>
             <div class="chart-container">
               <Linechart :chartsource="linechart4" />
               <Linechart :chartsource="linechart5" />
             </div>
+             <el-divider></el-divider>
             <div class="chart-container">
               <!-- <Smallchart :chartsource="piechart2" /> -->
               <Piechart :chartsource="piechart4" />
@@ -79,10 +82,19 @@
           <el-tab-pane label="Metrics" name="first">
             <div class="dashboard-text5">
               <TableModel :row="inflationRow1" :column="inflationColumn1" />
+            </div> 
+              <el-divider></el-divider>
+            <div class="dashboard-text5">
+              <TableModel :row="inflationRow2" :column="inflationColumn2" />
             </div>
 
           </el-tab-pane>
           <el-tab-pane label="Graphs" name="second">
+            <div class="chart-container">
+               <Linechart :chartsource="linechart6" />
+               <Linechart :chartsource="linechart7" />            
+            </div>
+             <el-divider></el-divider>
             <div class="chart-container">
               <WordCloud :chartsource="wordCloudChart" />             
             </div>
@@ -155,6 +167,11 @@ export default {
 
     "inflationRow1",
     "inflationColumn1",
+    "inflationRow2",
+    "inflationColumn2",
+
+    "linechart6",
+    "linechart7",
     "wordCloudChart"
   
   ],

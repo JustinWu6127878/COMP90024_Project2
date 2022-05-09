@@ -19,9 +19,10 @@
           </el-tab-pane>
           <el-tab-pane style="font-size: 20px" label="Graphs" name="second">
             <div class="chart-container">
+              <Linechart :chartsource="linechart1"/>
               <Piechart :chartsource="piechart1" />
-              <Linechart :chartsource="linechart1" />
             </div>
+             <el-divider></el-divider>
             <div class="chart-container">
               <Linechart :chartsource="linechart2" />
               <Linechart :chartsource="linechart3" />
@@ -53,10 +54,12 @@
               <Piechart :chartsource="piechart2" />
               <Piechart :chartsource="piechart3" />
             </div>
+             <el-divider></el-divider>
             <div class="chart-container">
               <Linechart :chartsource="linechart4" />
               <Linechart :chartsource="linechart5" />
             </div>
+             <el-divider></el-divider>
             <div class="chart-container">
               <!-- <Smallchart :chartsource="piechart2" /> -->
               <Piechart :chartsource="piechart4" />
@@ -91,6 +94,7 @@
                <Linechart :chartsource="linechart6" />
                <Linechart :chartsource="linechart7" />            
             </div>
+             <el-divider></el-divider>
             <div class="chart-container">
               <WordCloud :chartsource="wordCloudChart" />             
             </div>

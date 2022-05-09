@@ -41,15 +41,15 @@ export default {
           calculable: true,
           xAxis: [
             {
-              type: "value",
+              type: this.chartsource.xtype,
               // boundaryGap : false,
               axisTick: {
                 show: false,
               },
-              name: this.chartsource.xdata,
-              nameLocation: "middle",
-              nameTextStyle:{padding: 10, 
-              },
+              data: this.chartsource.xdata,
+              // nameLocation: "middle",
+              // nameTextStyle:{padding: 10, 
+              // },
             },
           ],
           yAxis: [

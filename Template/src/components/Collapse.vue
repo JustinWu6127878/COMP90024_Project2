@@ -79,10 +79,18 @@
           <el-tab-pane label="Metrics" name="first">
             <div class="dashboard-text5">
               <TableModel :row="inflationRow1" :column="inflationColumn1" />
+            </div> 
+              <el-divider></el-divider>
+            <div class="dashboard-text5">
+              <TableModel :row="inflationRow2" :column="inflationColumn2" />
             </div>
 
           </el-tab-pane>
           <el-tab-pane label="Graphs" name="second">
+            <div class="chart-container">
+               <Linechart :chartsource="linechart6" />
+               <Linechart :chartsource="linechart7" />            
+            </div>
             <div class="chart-container">
               <WordCloud :chartsource="wordCloudChart" />             
             </div>
@@ -155,6 +163,11 @@ export default {
 
     "inflationRow1",
     "inflationColumn1",
+    "inflationRow2",
+    "inflationColumn2",
+
+    "linechart6",
+    "linechart7",
     "wordCloudChart"
   
   ],

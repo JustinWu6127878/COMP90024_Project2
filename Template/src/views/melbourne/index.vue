@@ -632,7 +632,7 @@ export default {
             name: "immigration percentage",
             type: "line",
             data: [
-              [melbourne.overper, twitterperday.number1],
+              [enagement.overper, twitterperday.number1],
               [enagementSyd.overper, twitterperday.number1],
               [enagementBris.overper, twitterperday.number1],
               [enagementAde.overper, twitterperday.number1],
@@ -641,7 +641,7 @@ export default {
               data: [
                 {
                   name: "immigration percentage",
-                  xAxis: melbourne.overper,
+                  xAxis: enagement.overper,
                   yAxis: twitterperday.number1,
                   value: "Melbourne",
                 },

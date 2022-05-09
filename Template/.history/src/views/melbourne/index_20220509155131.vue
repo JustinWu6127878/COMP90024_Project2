@@ -632,7 +632,7 @@ export default {
             name: "immigration percentage",
             type: "line",
             data: [
-              [enagement.overper, twitterperday.number1],
+              [melbourne.overper, twitterperday.number1],
               [enagementSyd.overper, twitterperday.number1],
               [enagementBris.overper, twitterperday.number1],
               [enagementAde.overper, twitterperday.number1],
@@ -641,7 +641,7 @@ export default {
               data: [
                 {
                   name: "immigration percentage",
-                  xAxis: enagement.overper,
+                  xAxis: melbourne.overper,
                   yAxis: twitterperday.number1,
                   value: "Melbourne",
                 },
@@ -716,7 +716,7 @@ export default {
       var result
       $.ajax({
         type:'GET',
-        url:"http://172.26.130.192:2889/wordCloud_data",
+        url:"http://127.0.0.1:2889/wordCloud_data",
         async:false,
         dataType:'json',
         success:function(data){
@@ -746,12 +746,12 @@ export default {
       var result
       $.ajax({
         type:'GET',
-        url:"http://172.26.130.192:2889/sentiData",
+        url:"http://127.0.0.1:2889/sentiData",
         async:false,
         dataType:'json',
         success:function(data){
           // console.log(data['data_line']);
-          // console.log(data[city][senti])
+          console.log(data[city][senti])
           result = data[city][senti]
         },
         error:function(){

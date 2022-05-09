@@ -572,11 +572,11 @@ export default {
     sendWordCloudData(city) {
       var result;
       $.ajax({
-        type:'GET',
-        url:"http://172.26.130.192:2889/wordCloud_data",
-        async:false,
-        dataType:'json',
-        success:function(data){
+        type: "GET",
+        url: "http://127.0.0.1:2889/wordCloud_data",
+        async: false,
+        dataType: "json",
+        success: function (data) {
           // console.log(data['data_line']);
           // console.log(data);
           result = data;
@@ -602,13 +602,13 @@ export default {
     piechartData(city, senti) {
       var result;
       $.ajax({
-        type:'GET',
-        url:"http://172.26.130.192:2889/sentiData",
-        async:false,
-        dataType:'json',
-        success:function(data){
+        type: "GET",
+        url: "http://127.0.0.1:2889/sentiData",
+        async: false,
+        dataType: "json",
+        success: function (data) {
           // console.log(data['data_line']);
-          // console.log(data[city][senti]);
+          console.log(data[city][senti]);
           result = data[city][senti];
         },
         error: function () {

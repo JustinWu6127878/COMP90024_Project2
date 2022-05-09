@@ -66,6 +66,7 @@ def tweetPerDay():
     return Response(json.dumps(city_count), mimetype='application/json')
 
 
+
 @app.route('/UoM.ico')
 def icon():
     return send_from_directory(os.path.join(app.root_path, 'dist'), 'UoM.ico', mimetype='image/vnd.microsoft.icon')

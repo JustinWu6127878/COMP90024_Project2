@@ -4,7 +4,7 @@ function tweetPerDay() {
     var result
     $.ajax({
       type:'GET',
-      url:"http://127.0.0.1:2889/tweetPerDay",
+      url:"http://172.26.130.192:2889/tweetPerDay",
       async:false,
       dataType:'json',
       success:function(data){

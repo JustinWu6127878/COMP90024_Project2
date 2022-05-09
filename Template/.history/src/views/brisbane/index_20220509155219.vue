@@ -607,7 +607,7 @@ export default {
         dataType:'json',
         success:function(data){
           // console.log(data['data_line']);
-          // console.log(data[city][senti])
+          console.log(data[city][senti])
           result = data[city][senti]
         },
         error:function(){

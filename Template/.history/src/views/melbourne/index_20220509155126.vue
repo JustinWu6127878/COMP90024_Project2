@@ -739,7 +739,7 @@ export default {
         json_list.push(json_dict)
       }
         
-      // console.log(json_list)
+      console.log(json_list)
       return json_list
     },
     piechartData(city, senti){
@@ -751,7 +751,7 @@ export default {
         dataType:'json',
         success:function(data){
           // console.log(data['data_line']);
-          // console.log(data[city][senti])
+          console.log(data[city][senti])
           result = data[city][senti]
         },
         error:function(){

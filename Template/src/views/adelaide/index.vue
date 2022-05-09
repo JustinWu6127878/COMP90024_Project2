@@ -99,23 +99,9 @@ import $ from "jquery";
 const enagement = new Enagement(49.17, 21.2333, 28.0, 25.03);
 const enagementMel = new Enagement(49.52, 27.4507, 31.5, 29.85);
 
-const twitterperday = new TwitterPerDay(
-  ["29/04", 12345],
-  ["29/04", 12345],
-  ["29/04", 12345],
-  ["29/04", 12345],
-  ["29/04", 12345],
-  ["29/04", 12345]
-);
+const twitterperday = new TwitterPerDay("adel");
 
-const twitterperdayMel = new TwitterPerDay(
-  ["29/04/2022", 12345],
-  ["29/04/2022", 12345],
-  ["29/04/2022", 12345],
-  ["29/04/2022", 12345],
-  ["29/04/2022", 12345],
-  ["29/04/2022", 12345]
-);
+const twitterperdayMel = new TwitterPerDay('melb');
 
 const income = [31.1, 24.8, 22.0, 3.9, 2.1, 8.5, 0.5, 6.9];
 const incomeMel = [26.6, 22.5, 23.0, 5.1, 3.4, 10.6, 0.6, 8.2];
@@ -131,8 +117,8 @@ const house = [406000, 425000, 440000, 450000, 465000, 475000];
 const houseMel = [547500,555000, 610500, 665000, 732000, 712000];
 const houseNa = [460000, 480000, 500000, 525000, 553000, 545000];
 
-const covid = new Covid(39, 20000, 448, 95, 33, 33, 33);
-const covidMel = new Covid(125, 20000, 1630, 95, 33, 33, 33);
+const covid = new Covid(39, 20000, 448, 95, 'adel');
+const covidMel = new Covid(125, 20000, 1630, 95, 'melb');
 
 const adelaide = new CityOverview(
   "Adelaide",
@@ -390,9 +376,9 @@ export default {
         title: "Twitter Comments",
         legend: { data: ["Positive", "Neutral", "Negative"] },
         data: [
-          { value: this.piechartData("adel", "pos"), name: "Positive" },
-          { value: this.piechartData("adel", "neu"), name: "Neutral" },
-          { value: this.piechartData("adel", "neg"), name: "Negative" },
+          { value: covid.pos, name: "Positive" },
+          { value: covid.neu, name: "Neutral" },
+          { value: covid.neg, name: "Negative" },
         ],
       },
 
@@ -401,16 +387,8 @@ export default {
         xLabel: { rotate: 0 },
         yAxis: {},
         xdata: ["Positive", "Neutral", "Negative"],
-        ydata1: [
-          this.piechartData("melb", "pos"),
-          this.piechartData("melb", "neu"),
-          this.piechartData("melb", "neg"),
-        ],
-        ydata2: [
-          this.piechartData("adel", "pos"),
-          this.piechartData("adel", "neu"),
-          this.piechartData("adel", "neg"),
-        ],
+        ydata1: [covidMel.pos, covidMel.neu, covidMel.neg],
+        ydata2: [covid.pos, covid.neu, covid.neg],
         legend: ["Melbourne", "Adelaide"],
       },
 
@@ -586,17 +564,12 @@ export default {
     sendWordCloudData(city) {
       var result;
       $.ajax({
-        type: "GET",
-        url: "http://127.0.0.1:2889/wordCloud_data",
-        async: false,
-        dataType: "json",
-        success: function (data) {
-          // console.log(data['data_line']);
-          console.log(data);
-          result = data;
-        },
-        error: function () {
-          alert("Cannot load the data");
+        type:'GET',
+        url:"http://127.0.0.1:2889/wordCloud_data",
+        async:false,
+        dataType:'json',
+        success:function(data){
+          result = data
         },
       });
 
@@ -609,6 +582,26 @@ export default {
         };
         json_list.push(json_dict);
       }
+        
+      // console.log(json_list)
+      return json_list
+    },
+    piechartData(city, senti){
+      var result
+      $.ajax({
+        type:'GET',
+        url:"http://127.0.0.1:2889/sentiData",
+        async:false,
+        dataType:'json',
+        success:function(data){
+          // console.log(data['data_line']);
+          console.log(data[city][senti])
+          result = data[city][senti]
+        },
+        error:function(){
+          alert("Cannot load the data")
+        }
+      });      
 
       console.log(json_list);
       return json_list;

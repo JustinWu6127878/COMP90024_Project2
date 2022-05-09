@@ -99,21 +99,9 @@ import $ from 'jquery';
 const enagement = new Enagement(49.40, 22.9017, 32.3, 23.52);
 const enagementMel = new Enagement(49.52, 27.4507, 31.5, 29.85);
 
-const twitterperday = new TwitterPerDay(
-  ["29/04", 12345],
-  ["29/04", 12345],
-  ["29/04", 12345],
-  ["29/04", 12345],
-  ["29/04", 12345],
-);
+const twitterperday = new TwitterPerDay('bris');
 
-const twitterperdayMel = new TwitterPerDay(
-  ["29/04/2022", 12345],
-  ["29/04/2022", 12345],
-  ["29/04/2022", 12345],
-  ["29/04/2022", 12345],
-  ["29/04/2022", 12345],
-);
+const twitterperdayMel = new TwitterPerDay('melb');
 
 const income = [26.5,23.9,24.1,5.1,3.1,8.8,0.5,8.1];
 const incomeMel = [26.6, 22.5, 23.0, 5.1, 3.4, 10.6, 0.6, 8.2];
@@ -129,8 +117,8 @@ const house = [465000, 480000, 495000, 510000, 530000, 540000];
 const houseMel = [547500,555000, 610500, 665000, 732000, 712000];
 const houseNa = [460000, 480000, 500000, 525000, 553000, 545000];
 
-const covid = new Covid(125, 20000, 1630, 95, 33, 33, 33);
-const covidMel = new Covid(125, 20000, 1630, 95, 33, 33, 33);
+const covid = new Covid(125, 20000, 1630, 95, 'syd');
+const covidMel = new Covid(125, 20000, 1630, 95, 'melb');
 
 const brisbane = new CityOverview(
   "Brisbane",
@@ -387,9 +375,9 @@ export default {
         title: "Twitter Comments",
         legend: { data: ["Positive", "Neutral", "Negative"] },
         data: [
-          { value: this.piechartData('bris', 'pos'), name: "Positive" },
-          { value: this.piechartData('bris', 'neu'), name: "Neutral" },
-          { value: this.piechartData('bris', 'neg'), name: "Negative" },
+          { value: covid.pos, name: "Positive" },
+          { value: covid.neu, name: "Neutral" },
+          { value: covid.neg, name: "Negative" },
         ],
       },
 
@@ -398,8 +386,8 @@ export default {
         xLabel: { rotate: 0 },
         yAxis: {},
         xdata: ["Positive", "Neutral", "Negative"],
-        ydata1: [this.piechartData('melb', 'pos'), this.piechartData('melb', 'neu'), this.piechartData('melb', 'neg')],
-        ydata2: [this.piechartData('bris', 'pos'), this.piechartData('bris', 'neu'), this.piechartData('bris', 'neg')],
+        ydata1: [covidMel.pos, covidMel.neu, covidMel.neg],
+        ydata2: [covid.pos, covid.neu, covid.neg],
         legend: ["Melbourne", "Brisbane"],
       },
 

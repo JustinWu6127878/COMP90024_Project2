@@ -103,34 +103,10 @@ const enagementSyd = new Enagement(49.73, 28.3151, 34.2, 33.31);
 const enagementBris = new Enagement(49.40, 22.9017, 32.3, 23.52);
 const enagementAde = new Enagement(49.17, 21.2333, 28.0, 25.03);
 
-const twitterperday = new TwitterPerDay(
-  ["29/04/2022", 12345],
-  ["29/04/2022", 12345],
-  ["29/04/2022", 12345],
-  ["29/04/2022", 12345],
-  ["29/04/2022", 12345],
-);
-const twitterperdaySyd = new TwitterPerDay(
-  ["29/04/2022", 12345],
-  ["29/04/2022", 12345],
-  ["29/04/2022", 12345],
-  ["29/04/2022", 12345],
-  ["29/04/2022", 12345],
-);
-const twitterperdayBris = new TwitterPerDay(
-  ["29/04/2022", 12345],
-  ["29/04/2022", 12345],
-  ["29/04/2022", 12345],
-  ["29/04/2022", 12345],
-  ["29/04/2022", 12345],
-);
-const twitterperdayAde = new TwitterPerDay(
-  ["29/04/2022", 12345],
-  ["29/04/2022", 12345],
-  ["29/04/2022", 12345],
-  ["29/04/2022", 12345],
-  ["29/04/2022", 12345],
-);
+const twitterperday = new TwitterPerDay('melb');
+const twitterperdaySyd = new TwitterPerDay('syd');
+const twitterperdayBris = new TwitterPerDay('bris');
+const twitterperdayAde = new TwitterPerDay('adel');
 
 const gas = [145.7, 126.3, 116.4, 128.7, 143.4, 141.1, 123.9, 147.6];
 
@@ -140,10 +116,10 @@ const house = [547500,555000, 610500, 665000, 732000, 712000];
 
 const houseNa = [460000, 480000, 500000, 525000, 553000, 545000];
 
-const covid = new Covid(125, 20000, 1630, 95, 33, 33, 33);
-const covidSyd = new Covid(132, 20000, 2045, 95, 33, 33, 33);
-const covidBris = new Covid(51, 20000, 886, 95, 33, 33, 33);
-const covidAde = new Covid(39, 20000, 448, 95, 33, 33, 33);
+const covid = new Covid(125, 20000, 1630, 95, 'melb');
+const covidSyd = new Covid(132, 20000, 2045, 95, 'syd');
+const covidBris = new Covid(51, 20000, 886, 95, 'bris');
+const covidAde = new Covid(39, 20000, 448, 95, 'adel');
 
 const melbourne = new CityOverview(
   "Melbourne",
@@ -396,9 +372,9 @@ export default {
         title: "Twitter Comments",
         legend: { data: ["Positive", "Neutral", "Negative"] },
         data: [
-          { value: this.piechartData('melb', 'pos'), name: "Positive" },
-          { value: this.piechartData('melb', 'pos'), name: "Neutral" },
-          { value: this.piechartData('melb', 'pos'), name: "Negative" },
+          { value: covid.pos, name: "Positive" },
+          { value: covid.neu, name: "Neutral" },
+          { value: covid.neg, name: "Negative" },
         ],
       },
 

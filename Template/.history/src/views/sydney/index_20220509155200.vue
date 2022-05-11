@@ -3,35 +3,35 @@
     <div style="display: flex">
       <div class="dashboard-intro">
         <div class="dashboard-title">
-          <h1>{{ adelaide.name }}</h1>
+          <h1>{{ sydney.name }}</h1>
           <p>State:</p>
-          <p>{{ adelaide.state }}</p>
+          <p>{{ sydney.state }}</p>
         </div>
 
         <div class="dashboard-overview">
           <p>
             Total population:
-            <b>{{ milliFormat(adelaide.pop) }} </b>
+            <b>{{ milliFormat(sydney.pop) }} </b>
           </p>
           <p>
             Born overseas:
-            <b>{{ milliFormat(adelaide.over) }}</b>
+            <b>{{ milliFormat(sydney.over) }}</b>
           </p>
           <p>
-            Age 50+ percentage: <b>{{ adelaide.age50 + "%" }}</b>
+            Age 50+ percentage: <b>{{ sydney.age50 + "%" }}</b>
           </p>
           <p>
-            Age 60+ percentage: <b>{{ adelaide.age65 + "%" }}</b>
+            Age 60+ percentage: <b>{{ sydney.age65 + "%" }}</b>
           </p>
           <p>
             Median annual income:
-            <b>{{ "$" + milliFormat(adelaide.income) }}</b>
+            <b>{{ "$" + milliFormat(sydney.income) }}</b>
           </p>
         </div>
       </div>
 
       <div class="dashboard-image">
-        <img src="./Adelaide.jpeg" height="700px" width="400px" />
+        <img src="./Sydney.jpeg" height="700px" width="400px" />
       </div>
     </div>
 
@@ -40,7 +40,7 @@
     <div class="dashboard-topics">
       <h2>Topics</h2>
       <p>
-        These are three topics for Adelaide, SA. Explore the metrics and graphs
+        These are three topics for Sydney, NSW. Explore the metrics and graphs
         behind the numbers.
       </p>
     </div>
@@ -96,38 +96,38 @@ import Linechart from "@/components/Charts/linechart.vue";
 
 import $ from "jquery";
 
-const enagement = new Enagement(49.17, 21.2333, 28.0, 25.03);
+const enagement = new Enagement(49.73, 28.3151, 34.2, 33.31);
 const enagementMel = new Enagement(49.52, 27.4507, 31.5, 29.85);
 
-const twitterperday = new TwitterPerDay("adel");
+const twitterperday = new TwitterPerDay("syd");
 
-const twitterperdayMel = new TwitterPerDay('melb');
+const twitterperdayMel = new TwitterPerDay("melb");
 
-const income = [31.1, 24.8, 22.0, 3.9, 2.1, 8.5, 0.5, 6.9];
+const income = [24.8, 21.5, 23.6, 6.1, 4.5, 10.8, 0.5, 8.2];
 const incomeMel = [26.6, 22.5, 23.0, 5.1, 3.4, 10.6, 0.6, 8.2];
 
-const degree = [21.2333, 8.7648, 19.2852, 42.2988, 8.4178];
+const degree =[28.3151, 9.3275, 15.0543, 37.6952, 9.6078];
 const degreeMel = [27.4507, 9.4669, 15.2528, 38.618, 9.2116];
 
-const gas = [146.4, 127.6, 114.6, 126.9, 141.6, 142.7, 120.7, 142.8];
+const gas = [149, 130.4, 117.6, 128.3, 143.6, 141.1, 123.2, 148.7];
 const gasMel = [145.7, 126.3, 116.4, 128.7, 143.4, 141.1, 123.9, 147.6];
 const gasNa = [148.8, 129.6, 117.8, 129.3, 144.3, 142, 123.4, 147.8];
 
-const house = [406000, 425000, 440000, 450000, 465000, 475000];
+const house = [725000, 820000, 906000, 961001, 990000, 920000];
 const houseMel = [547500,555000, 610500, 665000, 732000, 712000];
 const houseNa = [460000, 480000, 500000, 525000, 553000, 545000];
 
-const covid = new Covid(39, 20000, 448, 95, 'adel');
+const covid = new Covid(132, 20000, 2045, 95, 'syd');
 const covidMel = new Covid(125, 20000, 1630, 95, 'melb');
 
-const adelaide = new CityOverview(
-  "Adelaide",
-  "South Australia",
-  1359760,
-  340314,
-  35.9,
-  17.6,
-  48043
+const sydney = new CityOverview(
+  "Sydney",
+  "New South Wales",
+  5312163,
+  1769610,
+  30.4,
+  14.0,
+  51191
 );
 
 export default {
@@ -142,17 +142,16 @@ export default {
     Piechart,
     Linechart,
   },
-
   data() {
     return {
-      adelaide: new CityOverview(
-        "Adelaide",
-        "South Australia",
-        1359760,
-        340314,
-        35.9,
-        17.6,
-        48043
+      sydney: new CityOverview(
+        "Sydney",
+        "New South Wales",
+        5312163,
+        1769610,
+        30.4,
+        14.0,
+        51191
       ),
 
       covidRow1: [
@@ -227,7 +226,7 @@ export default {
           num: enagement.overper + "%",
         },
         {
-          item: "Annual income > $10,000 percentage: ",
+          item: "Person earning > $1000 per week:",
           num: enagement.income + "%",
         },
       ],
@@ -275,7 +274,7 @@ export default {
         },
       ],
 
-    inflationRow1: [
+      inflationRow1: [
         {
           item: "House Median Sale Price",
           year1: house[0],
@@ -389,12 +388,12 @@ export default {
         xdata: ["Positive", "Neutral", "Negative"],
         ydata1: [covidMel.pos, covidMel.neu, covidMel.neg],
         ydata2: [covid.pos, covid.neu, covid.neg],
-        legend: ["Melbourne", "Adelaide"],
+        legend: ["Melbourne", "Sydney"],
       },
 
       barchart2: {
         title: "Medical facilities comparison",
-        xdata: ["Melbourne", "Adelaide"],
+        xdata: ["Melbourne", "Sydney"],
         xLabel: { rotate: 0 },
         yAxis: {},
         ydata1: [covidMel.hos, covid.hos],
@@ -409,7 +408,7 @@ export default {
           {
             name: "Cases",
             min: 0,
-            max: 80000,
+            max: 50000,
             splitNumber: 6,
           },
           {
@@ -419,7 +418,7 @@ export default {
             splitNumber: 6,
           },
         ],
-        xdata: ["Melbourne", "Adelaide"],
+        xdata: ["Melbourne", "Sydney"],
         ydata1: [covidMel.active, covidMel.active],
         ydata2: [covid.rate, covid.rate],
         yAxisIndex: 1,
@@ -451,7 +450,7 @@ export default {
           twitterperdayMel.number4,
           twitterperdayMel.number5,
         ],
-        legend: ["Adelaide", "Melbourne"],
+        legend: ["Sydney", "Melbourne"],
       },
 
       barchart5: {
@@ -461,17 +460,26 @@ export default {
         yAxis: {},
         ydata1: [enagement.male, enagement.overper],
         ydata2: [enagementMel.male, enagementMel.overper],
-        legend: ["Adelaide", "Melbourne"],
+        legend: ["Sydney", "Melbourne"],
       },
 
       barchart6: {
         title: "Weekly persons earning",
-        xdata: ["$1-499","$500-999","$1000-1999 ","$2000-2999","$3000 or more","nil income","negative income","not stated"],
+        xdata: [
+          "$1-499",
+          "$500-999",
+          "$1000-1999 ",
+          "$2000-2999",
+          "$3000 or more",
+          "nil income",
+          "negative income",
+          "not stated",
+        ],
         xLabel: { rotate: 30 },
         yAxis: {},
         ydata1: income,
         ydata2: incomeMel,
-        legend: ["Adelaide", "Melbourne"],
+        legend: ["Sydney", "Melbourne"],
       },
 
       barchart7: {
@@ -483,24 +491,24 @@ export default {
           "No qualification",
           "Not stated",
         ],
-        xLabel: { rotate: 0},
+        xLabel: { rotate: 0 },
         yAxis: {},
         ydata1: degree,
         ydata2: degreeMel,
-        legend: ["Adelaide", "Melbourne"],
+        legend: ["Sydney", "Melbourne"],
       },
 
       linechart1: {
         title: "House Median Sale Price",
         legend: {
-          data: ["Adelaide", "Melbourne","National"],
+          data: ["Sydney", "Melbourne","National"],
         },
         xtype: "category",
         xdata: ["2014","2015","2016","2017","2018","2019"],
         ydata: "($)",
         series: [
           {
-            name: "Adelaide",
+            name: "Sydney",
             type: "line",
             data: house,
           },
@@ -520,14 +528,14 @@ export default {
        linechart2: {
         title: "Average petrol pump price",
         legend: {
-          data: ["Adelaide", "Melbourne","National"],
+          data: ["Sydney", "Melbourne","National"],
         },
         xtype: "category",
         xdata: ["2014","2015","2016","2017","2018","2019","2020","2021"],
         ydata: "($)",
         series: [
           {
-            name: "Adelaide",
+            name: "Sydney",
             type: "line",
             data: gas,
           },
@@ -547,7 +555,7 @@ export default {
       wordCloudChart: {
         title: "Word Cloud chart of inflation",
         legend: {},
-        data: this.sendWordCloudData("adel"),
+        data: this.sendWordCloudData("syd"),
       },
     };
   },
@@ -564,12 +572,17 @@ export default {
     sendWordCloudData(city) {
       var result;
       $.ajax({
-        type:'GET',
-        url:"http://172.26.132.252:2889/wordCloud_data",
-        async:false,
-        dataType:'json',
-        success:function(data){
-          result = data
+        type: "GET",
+        url: "http://127.0.0.1:2889/wordCloud_data",
+        async: false,
+        dataType: "json",
+        success: function (data) {
+          // console.log(data['data_line']);
+          // console.log(data);
+          result = data;
+        },
+        error: function () {
+          alert("Cannot load the data");
         },
       });
 
@@ -582,9 +595,28 @@ export default {
         };
         json_list.push(json_dict);
       }
-        
-      // console.log(json_list)
-      return json_list
+
+      // console.log(json_list);
+      return json_list;
+    },
+    piechartData(city, senti) {
+      var result;
+      $.ajax({
+        type: "GET",
+        url: "http://127.0.0.1:2889/sentiData",
+        async: false,
+        dataType: "json",
+        success: function (data) {
+          // console.log(data['data_line']);
+          // console.log(data[city][senti]);
+          result = data[city][senti];
+        },
+        error: function () {
+          alert("Cannot load the data");
+        },
+      });
+
+      return result;
     },
   },
 };

@@ -565,7 +565,7 @@ export default {
       var result;
       $.ajax({
         type:'GET',
-        url:"http://172.26.132.252:2889/wordCloud_data",
+        url:"http://127.0.0.1:2889/wordCloud_data",
         async:false,
         dataType:'json',
         success:function(data){
@@ -585,6 +585,45 @@ export default {
         
       // console.log(json_list)
       return json_list
+    },
+    piechartData(city, senti){
+      var result
+      $.ajax({
+        type:'GET',
+        url:"http://127.0.0.1:2889/sentiData",
+        async:false,
+        dataType:'json',
+        success:function(data){
+          // console.log(data['data_line']);
+          // console.log(data[city][senti])
+          result = data[city][senti]
+        },
+        error:function(){
+          alert("Cannot load the data")
+        }
+      });      
+
+      // console.log(json_list);
+      return json_list;
+    },
+    piechartData(city, senti) {
+      var result;
+      $.ajax({
+        type: "GET",
+        url: "http://127.0.0.1:2889/sentiData",
+        async: false,
+        dataType: "json",
+        success: function (data) {
+          // console.log(data['data_line']);
+          console.log(data[city][senti]);
+          result = data[city][senti];
+        },
+        error: function () {
+          alert("Cannot load the data");
+        },
+      });
+
+      return result;
     },
   },
 };

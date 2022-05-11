@@ -6,10 +6,7 @@
 <script>
 import * as echarts from "echarts";
 import "echarts-wordcloud/dist/echarts-wordcloud";
-import $ from 'jquery';
 require("echarts/theme/shine"); //引入主题
-
-console.log("Hello")
 
 export default {
   data() {
@@ -22,10 +19,22 @@ export default {
 
   mounted() {
     this.drawWordCloud()
-    
   },
   methods: {
     drawWordCloud() {
+
+      var JosnList = [
+          {name: "龙头镇", value: "111"},
+          {name: "大埔镇", value: "222"},
+          {name: "太平镇", value: "458"},
+          {name: "沙埔镇", value: "445"},
+          {name: "东泉镇", value: "456"},
+          {name: "凤山镇", value: "647"},
+          {name: "六塘镇", value: "189"},
+          {name: "冲脉镇", value: "864"},
+          {name: "寨隆镇", value: "652"},
+      ];
+
       let option = {
         title:{
           text: this.chartsource.title,
@@ -37,7 +46,6 @@ export default {
         series: [{
             name: 'WordCloud',
             type: 'wordCloud',
-            shape: 'circle',
             sizeRange: [10, 50],//文字范围
             //文本旋转范围，文本将通过rotationStep45在[-90,90]范围内随机旋转
             rotationRange: [-45, 90],
@@ -56,18 +64,12 @@ export default {
                     shadowColor: '#333'
                 }
             },
-            data: this.chartsource.data
+            data: JosnList
         }]
       };
       this.ChartWordCloud = echarts.init(this.$el);
       this.ChartWordCloud.setOption(option)
-    },
-
-    debug(){
-      console.log("Hello")
-    },
-
-
+    }
   }
 };
 </script>

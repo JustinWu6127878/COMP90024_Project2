@@ -35,63 +35,64 @@ export const constantRoutes = [
   {
     path: '/',
     component: Layout,
-    redirect: '/country',
+    redirect: '/melbourne',
     children: [{
-      path: 'country',
-      name: 'Country',
+      path: 'melbourne',
+      name: 'Melbourne',
       component: () => import('@/views/country/index'),
-      meta: { title: 'Map', icon: 'dashboard' }
+      meta: { title: 'MAP', icon: 'dashboard' }
     }]
   },
 
   {
-    path: '/cities',
+    path: '/example',
     component: Layout,
-    // redirect: '/cities',
+    redirect: '/cities',
     name: 'Cities',
-    meta: { title: 'Cities', icon: 'australia' },
+    meta: { title: 'CITIES', icon: 'australia' },
     children: [
       {
         path: 'melbourne',
-        name: 'Melbourne',
+        name: 'melbourne',
         component: () => import('@/views/melbourne/index'),
-        meta: { title: 'Melbourne', icon: 'melbourne' }
+        meta: { title: 'MELBOURNE', icon: 'melbourne' }
       },
       {
         path: 'sydney',
         name: 'Sydney',
         component: () => import('@/views/sydney/index'),
-        meta: { title: 'Sydney', icon: 'sydney' }
+        meta: { title: 'SYDNEY', icon: 'syndey' }
       },
       {
         path: 'brisbane',
         name: 'Brisbane',
         component: () => import('@/views/brisbane/index'),
-        meta: { title: 'Brisbane', icon: 'brisbane' }
-      },{
+        meta: { title: 'BRISBANE', icon: 'brisbane' }
+      },
+      {
         path: 'adelaide',
         name: 'Adelaide',
         component: () => import('@/views/adelaide/index'),
-        meta: { title: 'Adelaide', icon: 'adelaide' }
+        meta: { title: 'ADELAIDE', icon: 'adelaide' }
       }
     ]
   },
 
   {
-    path: '/group',
+    path: '/form',
     component: Layout,
     children: [
       {
         path: 'index',
-        name: 'Group',
+        name: 'Form',
         component: () => import('@/views/group/group'),
-        meta: { title: 'Group', icon: 'form' }
+        meta: { title: 'GROUP', icon: 'form' }
       }
     ]
-  },
+  }
 
   // 404 page must be placed at the end !!!
-  { path: '*', redirect: '/404', hidden: true }
+  // { path: '*', redirect: '/404', hidden: true }
 ]
 
 const createRouter = () => new Router({
@@ -103,9 +104,9 @@ const createRouter = () => new Router({
 const router = createRouter()
 
 // Detail see: https://github.com/vuejs/vue-router/issues/1234#issuecomment-357941465
-export function resetRouter() {
-  const newRouter = createRouter()
-  router.matcher = newRouter.matcher // reset router
-}
+// export function resetRouter() {
+//   const newRouter = createRouter()
+//   router.matcher = newRouter.matcher // reset router
+// }
 
 export default router

@@ -5,7 +5,7 @@ function piechartData(){
     var result
     $.ajax({
       type:'GET',
-      url:"http://172.26.132.252:2889/sentiData",
+      url:process.env.VUE_APP_BACKEND_URL+"/sentiData",
       async:false,
       dataType:'json',
       success:function(data){

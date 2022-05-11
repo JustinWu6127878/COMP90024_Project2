@@ -565,7 +565,7 @@ export default {
       var result;
       $.ajax({
         type:'GET',
-        url:"http://172.26.132.252:2889/wordCloud_data",
+        url:process.env.VUE_APP_BACKEND_URL+"/wordCloud_data",
         async:false,
         dataType:'json',
         success:function(data){

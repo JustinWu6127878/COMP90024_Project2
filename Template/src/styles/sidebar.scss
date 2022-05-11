@@ -1,10 +1,10 @@
 #app {
+
   .main-container {
     min-height: 100%;
     transition: margin-left .28s;
     margin-left: $sideBarWidth;
     position: relative;
-    font-family: Sans;
   }
 
   .sidebar-container {
@@ -14,7 +14,6 @@
     height: 100%;
     position: fixed;
     font-size: 0px;
-    font-family: Sans;
     top: 0;
     bottom: 0;
     left: 0;
@@ -95,12 +94,10 @@
   .hideSidebar {
     .sidebar-container {
       width: 54px !important;
-      font-family: Light;
     }
 
     .main-container {
       margin-left: 60px;
-      font-family: Sans;
     }
 
     .submenu-title-noDropdown {

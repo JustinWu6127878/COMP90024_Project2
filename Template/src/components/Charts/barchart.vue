@@ -5,11 +5,11 @@
 <script>
 import * as echarts from "echarts";
 
-export default {
+export default {  
   data() {
     return {
       chartBar: null,
-      myChartStyle: { float: "center", width: "100%", height: "400px" } //图表样式
+      myChartStyle: { float: "left", width: "50%", height: "400px" } //图表样式
     };
   },
 
@@ -25,13 +25,6 @@ export default {
         title: {
           text: this.chartsource.title,
           x:"center",
-          textStyle: { // 主标题文本样式{"fontSize": 18,"fontWeight": "bolder","color": "#333"}
-                     fontFamily: 'Arial',
-                     fontSize: 24,
-                     fontStyle: 'normal',
-                     fontWeight: 'bold',
-                     color:'#2277D2'
-                 }
         },
         xAxis: {
           data: this.chartsource.xdata,
@@ -43,7 +36,7 @@ export default {
           y:"bottom",
           x:"center",
         },
-
+    
         yAxis: this.chartsource.yAxis,
         //  [{
         //   name: "zuoce",
@@ -91,3 +84,6 @@ export default {
   }
 };
 </script>
+
+
+

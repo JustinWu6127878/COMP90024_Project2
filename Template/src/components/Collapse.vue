@@ -148,7 +148,7 @@ export default {
 
     'inflationRow1',
     'inflationColumn1',
-    'wordCloudChart'
+    'wordCloudChart',
 
     "inflationRow1",
     "inflationColumn1",

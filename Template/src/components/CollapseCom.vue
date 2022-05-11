@@ -33,15 +33,15 @@
     </el-collapse-item>
     <el-collapse-item name="2">
       <template slot="title">
-        <h2 style="font-size: 32px; text-align: left">Enagement</h2>
+        <h2 style="font-size: 32px; text-align: left">Engagement</h2>
       </template>
       <div>
         <el-tabs v-model="activeName2" @tab-click="handleClick">
           <el-tab-pane label="Metrics" name="first">
             <div style="padding: 40px 0px;text-align: center;">
               <el-row :gutter="20">
-                <el-col :span="12">              <TableModel :row="enagementRow1" :column="enagementColumn1" /></el-col>
-                <el-col :span="12"> <TableModel :row="enagementRow2" :column="enagementColumn2" /></el-col>
+                <el-col :span="12">              <TableModel :row="engagementRow1" :column="engagementColumn1" /></el-col>
+                <el-col :span="12"> <TableModel :row="engagementRow2" :column="engagementColumn2" /></el-col>
               </el-row>
             </div>
 
@@ -76,10 +76,11 @@
               <el-row :gutter="20">
                 <el-col :span="12">              <TableModel :row="inflationRow1" :column="inflationColumn1" /></el-col>
                 <el-col :span="12">              <TableModel :row="inflationRow2" :column="inflationColumn2" /></el-col>
-         </el-row>
+               </el-row>
+            </div>
          </el-tab-pane>
-                <el-tab-pane label="Graphs" name="second">
-                  <div class="chart-container">
+         <el-tab-pane label="Graphs" name="second">
+            <div class="chart-container">
               <Linechart :chartsource="linechart1" />
               <Linechart :chartsource="linechart2" />
             </div>
@@ -88,11 +89,7 @@
               <WordCloud :chartsource="wordCloudChart" />
             </div>
                   
-                  </el-tab-pane>
-              
-            </div>
-          
-
+         </el-tab-pane>
         </el-tabs>
       </div>
     </el-collapse-item>
@@ -100,17 +97,17 @@
 </template>
 
 <script>
-import TableModel from '@/components/TableModel.vue'
+import TableModel from "@/components/TableModel.vue";
 
-import Piechart from '@/components/Charts/piechart.vue'
+import Piechart from "@/components/Charts/piechart.vue";
 
 // import Smallchart from "@/components/Charts/smallchart.vue";
 
-import Linechart from '@/components/Charts/linechart.vue'
+import Linechart from "@/components/Charts/linechart.vue";
 
-import Barchart from '@/components/Charts/barchart.vue'
+import Barchart from "@/components/Charts/barchart.vue";
 
-import WordCloud from  "@/components/Charts/wordCloud.vue";
+import WordCloud from "@/components/Charts/wordCloud.vue";
 
 export default {
   components: {
@@ -119,7 +116,7 @@ export default {
     // Smallchart,
     Linechart,
     Barchart,
-    WordCloud
+    WordCloud,
   },
 
   data() {
@@ -133,57 +130,56 @@ export default {
   },
 
   props: [
-    'piechart1',
-    'barchart1',
-    'barchart2',
-    'barchart3',
+    "piechart1",
+    "barchart1",
+    "barchart2",
+    "barchart3",
 
-    'covidRow1',
-    'covidColumn1',
-    'covidRow2',
-    'covidColumn2',
+    "covidRow1",
+    "covidColumn1",
+    "covidRow2",
+    "covidColumn2",
 
-    'barchart4',
-    'barchart5',
-    'barchart6',
-    'barchart7',
+    "barchart4",
+    "barchart5",
+    "barchart6",
+    "barchart7",
 
-    'enagementRow1',
-    'enagementColumn1',
-    'enagementRow2',
-    'enagementColumn2',
+    "engagementRow1",
+    "engagementColumn1",
+    "engagementRow2",
+    "engagementColumn2",
 
-    'inflationRow1',
-    'inflationColumn1'
+    "inflationRow1",
+    "inflationColumn1",
     "inflationRow2",
     "inflationColumn2",
 
     "linechart1",
     "linechart2",
-    "wordCloudChart"
-
+    "wordCloudChart",
   ],
 
   data() {
     return {
-      activeNames: ['1', '2', '3'],
-      activeName1: 'second',
-      activeName2: 'second',
-      activeName3: 'second'
+      activeNames: ["1", "2", "3"],
+      activeName1: "second",
+      activeName2: "second",
+      activeName3: "second",
       // isshow: false,
-    }
+    };
   },
 
   methods: {
     handleChange(val) {
-      console.log(val)
+      console.log(val);
     },
     handleClick(tab, event) {
-      console.log(tab, event)
-      this.isshow = true
-    }
-  }
-}
+      console.log(tab, event);
+      this.isshow = true;
+    },
+  },
+};
 </script>
 
 <style scoped>
@@ -197,10 +193,10 @@ export default {
   margin: 0 auto;
   width: 70%;
 }
-h2{
-  color: #2277D2 ;
+h2 {
+  color: #2277d2;
 }
-p{
- color: #a2a2a2 ;
+p {
+  color: #a2a2a2;
 }
 </style>

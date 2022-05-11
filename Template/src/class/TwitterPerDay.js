@@ -4,12 +4,12 @@ function tweetPerDay() {
     var result
     $.ajax({
       type:'GET',
-      url:"http://172.26.132.252:2889/tweetPerDay",
+      url:process.env.VUE_APP_BACKEND_URL+"/tweetPerDay",
       async:false,
       dataType:'json',
       success:function(data){
           result = data
-          // console.log(result)
+          // console.log(result)s
       },
       error:function(){
         alert("Cannot load the data")

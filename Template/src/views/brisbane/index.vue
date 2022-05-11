@@ -59,10 +59,10 @@
         :barchart5="barchart5"
         :barchart6="barchart6"
         :barchart7="barchart7"
-        :enagementRow1="enagementRow1"
-        :enagementColumn1="enagementColumn1"
-        :enagementRow2="enagementRow2"
-        :enagementColumn2="enagementColumn2"
+        :engagementRow1="engagementRow1"
+        :engagementColumn1="engagementColumn1"
+        :engagementRow2="engagementRow2"
+        :engagementColumn2="engagementColumn2"
         :inflationRow1="inflationRow1"
         :inflationColumn1="inflationColumn1"
         :inflationRow2="inflationRow2"
@@ -80,7 +80,7 @@ import { mapGetters } from 'vuex'
 
 import CityOverview from '../../class/Overview.js'
 
-import Enagement from '../../class/Enagement.js'
+import Engagement from '../../class/Engagement.js'
 
 import TwitterPerDay from '../../class/TwitterPerDay.js'
 
@@ -96,8 +96,8 @@ import Linechart from '@/components/Charts/linechart.vue'
 
 import $ from 'jquery';
 
-const enagement = new Enagement(49.40, 22.9017, 32.3, 23.52);
-const enagementMel = new Enagement(49.52, 27.4507, 31.5, 29.85);
+const engagement = new Engagement(49.40, 22.9017, 32.3, 23.52);
+const engagementMel = new Engagement(49.52, 27.4507, 31.5, 29.85);
 
 const twitterperday = new TwitterPerDay('bris');
 
@@ -208,32 +208,32 @@ export default {
         }
       ],
 
-      enagementRow1: [
+      engagementRow1: [
         {
           item: 'Male percentage: ',
-          num: enagement.male + '%'
+          num: engagement.male + '%'
         },
         {
           item: 'Female percentage: ',
-          num: enagement.female + '%'
+          num: engagement.female + '%'
         },
         {
           item: 'Graduate higher than bachelor degree:',
-          num: enagement.edu + '%'
+          num: engagement.edu + '%'
         },
         {
           item: "Born overseas percentage:",
-          num: enagement.overper + "%",
+          num: engagement.overper + "%",
         },
         {
           item: 'Annual income > $10,000 percentage: ',
-          num: enagement.income + '%'
+          num: engagement.income + '%'
         }
       ],
-      enagementColumn1: [
+      engagementColumn1: [
         {
           prop: 'item',
-          label: 'Enagement data of the city'
+          label: 'Engagement data of the city'
         },
         {
           prop: 'num',
@@ -241,7 +241,7 @@ export default {
         }
       ],
 
-      enagementRow2: [
+      engagementRow2: [
         {
           item: twitterperday.date1,
           num: twitterperday.number1
@@ -263,7 +263,7 @@ export default {
           num: twitterperday.number5,
         },
       ],
-      enagementColumn2: [
+      engagementColumn2: [
         {
           prop: 'item',
           label: 'Date'
@@ -458,8 +458,8 @@ export default {
         xdata: ['Male%', 'Born overseas%'],
         xLabel: { rotate: 0 },
         yAxis: {},
-        ydata1: [enagement.male, enagement.overper],
-        ydata2: [enagementMel.male, enagementMel.overper],
+        ydata1: [engagement.male, engagement.overper],
+        ydata2: [engagementMel.male, engagementMel.overper],
         legend: ['Brisbane', 'Melbourne']
       },
 
@@ -572,7 +572,7 @@ export default {
       var result
       $.ajax({
         type:'GET',
-        url:"http://172.26.132.252:2889/wordCloud_data",
+        url:process.env.VUE_APP_BACKEND_URL+"/wordCloud_data",
         async:false,
         dataType:'json',
         success:function(data){

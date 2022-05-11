@@ -63,10 +63,10 @@
         :covidColumn1="covidColumn1"
         :covidRow2="covidRow2"
         :covidColumn2="covidColumn2"
-        :enagementRow1="enagementRow1"
-        :enagementColumn1="enagementColumn1"
-        :enagementRow2="enagementRow2"
-        :enagementColumn2="enagementColumn2"
+        :engagementRow1="engagementRow1"
+        :engagementColumn1="engagementColumn1"
+        :engagementRow2="engagementRow2"
+        :engagementColumn2="engagementColumn2"
         :inflationRow1="inflationRow1"
         :inflationColumn1="inflationColumn1"
         :inflationRow2="inflationRow2"
@@ -82,7 +82,7 @@ import { mapGetters } from 'vuex'
 
 import CityOverview from '../../class/Overview.js'
 
-import Enagement from '../../class/Enagement.js'
+import Engagement from '../../class/Engagement.js'
 
 import TwitterPerDay from '../../class/TwitterPerDay.js'
 
@@ -98,10 +98,10 @@ import Linechart from '@/components/Charts/linechart.vue'
 
 import $ from 'jquery';
 
-const enagement = new Enagement(49.52, 27.4507, 31.5, 29.85);
-const enagementSyd = new Enagement(49.73, 28.3151, 34.2, 33.31);
-const enagementBris = new Enagement(49.40, 22.9017, 32.3, 23.52);
-const enagementAde = new Enagement(49.17, 21.2333, 28.0, 25.03);
+const engagement = new Engagement(49.52, 27.4507, 31.5, 29.85);
+const engagementSyd = new Engagement(49.73, 28.3151, 34.2, 33.31);
+const engagementBris = new Engagement(49.40, 22.9017, 32.3, 23.52);
+const engagementAde = new Engagement(49.17, 21.2333, 28.0, 25.03);
 
 const twitterperday = new TwitterPerDay('melb');
 const twitterperdaySyd = new TwitterPerDay('syd');
@@ -210,32 +210,32 @@ export default {
         }
       ],
 
-      enagementRow1: [
+      engagementRow1: [
         {
           item: 'Male percentage: ',
-          num: enagement.male + '%'
+          num: engagement.male + '%'
         },
         {
           item: 'Female percentage: ',
-          num: enagement.female + '%'
+          num: engagement.female + '%'
         },
         {
           item: 'Graduate higher than bachelor degree:',
-          num: enagement.edu + '%'
+          num: engagement.edu + '%'
         },
         {
           item: "Born overseas percentage:",
-          num: enagement.overper + "%",
+          num: engagement.overper + "%",
         },
         {
           item: "Person earning > $1000 per week: ",
-          num: enagement.income + "%",
+          num: engagement.income + "%",
         },
       ],
-      enagementColumn1: [
+      engagementColumn1: [
         {
           prop: 'item',
-          label: 'Enagement data of the city'
+          label: 'Engagement data of the city'
         },
         {
           prop: 'num',
@@ -243,7 +243,7 @@ export default {
         }
       ],
 
-      enagementRow2: [
+      engagementRow2: [
         {
           item: twitterperday.date1,
           num: twitterperday.number1
@@ -266,7 +266,7 @@ export default {
         },
 
       ],
-      enagementColumn2: [
+      engagementColumn2: [
         {
           prop: 'item',
           label: 'Date'
@@ -387,8 +387,8 @@ export default {
         title: 'Gender',
         legend: {},
         data: [
-          { value: enagement.male, name: 'Male' },
-          { value: enagement.female, name: 'Female' }
+          { value: engagement.male, name: 'Male' },
+          { value: engagement.female, name: 'Female' }
         ]
       },
 
@@ -405,16 +405,16 @@ export default {
         title: 'Highest degree',
         legend: {},
         data: [
-          { value: enagement.edu, name: 'Higher than bechalor' },
-          { value: 100 - enagement.edu, name: 'Lower than bechalor' }
+          { value: engagement.edu, name: 'Higher than bechalor' },
+          { value: 100 - engagement.edu, name: 'Lower than bechalor' }
         ]
       },
       piechart5: {
         title: "Persons earning per week",
         legend: {},
         data: [
-          { value: enagement.income, name: "> $1000" },
-          { value: 100 - enagement.income, name: "< $1000" },
+          { value: engagement.income, name: "> $1000" },
+          { value: 100 - engagement.income, name: "< $1000" },
         ],
       },
 
@@ -553,7 +553,7 @@ export default {
       },
 
       linechart4: {
-        title: 'Policy enagement vs education level & income level',
+        title: 'Policy engagement vs education level & income level',
         legend: {
           data: ["higher than bachelor", "Persons earning >$1000 per week"],
         },
@@ -565,16 +565,16 @@ export default {
             name: 'higher than bachelor',
             type: 'line',
             data: [
-              [enagement.edu, (twitterperday.number1+twitterperday.number2+twitterperday.number3+twitterperday.number4+twitterperday.number5)/5],
-              [enagementSyd.edu, (twitterperdaySyd.number1+twitterperdaySyd.number2+twitterperdaySyd.number3+twitterperdaySyd.number4+twitterperdaySyd.number5)/5],
-              [enagementBris.edu,(twitterperdayBris.number1+twitterperdayBris.number2+twitterperdayBris.number3+twitterperdayBris.number4+twitterperdayBris.number5)/5],
-              [enagementAde.edu,(twitterperdayAde.number1+twitterperdayAde.number2+twitterperdayAde.number3+twitterperdayAde.number4+twitterperdayAde.number5)/5],
+              [engagement.edu, (twitterperday.number1+twitterperday.number2+twitterperday.number3+twitterperday.number4+twitterperday.number5)/5],
+              [engagementSyd.edu, (twitterperdaySyd.number1+twitterperdaySyd.number2+twitterperdaySyd.number3+twitterperdaySyd.number4+twitterperdaySyd.number5)/5],
+              [engagementBris.edu,(twitterperdayBris.number1+twitterperdayBris.number2+twitterperdayBris.number3+twitterperdayBris.number4+twitterperdayBris.number5)/5],
+              [engagementAde.edu,(twitterperdayAde.number1+twitterperdayAde.number2+twitterperdayAde.number3+twitterperdayAde.number4+twitterperdayAde.number5)/5],
             ],
             markPoint: {
               data: [
                 {
                   name: 'higher than bachelor',
-                  xAxis: enagement.edu,
+                  xAxis: engagement.edu,
                   yAxis: (twitterperday.number1+twitterperday.number2+twitterperday.number3+twitterperday.number4+twitterperday.number5)/5,
                   value: "Melbourne",
                 },
@@ -585,16 +585,16 @@ export default {
             name: "Persons earning >$1000 per week",
             type: "line",
             data: [
-              [enagement.income, (twitterperday.number1+twitterperday.number2+twitterperday.number3+twitterperday.number4+twitterperday.number5)/5],
-              [enagementSyd.income, (twitterperdaySyd.number1+twitterperdaySyd.number2+twitterperdaySyd.number3+twitterperdaySyd.number4+twitterperdaySyd.number5)/5],
-              [enagementBris.income,(twitterperdayBris.number1+twitterperdayBris.number2+twitterperdayBris.number3+twitterperdayBris.number4+twitterperdayBris.number5)/5],
-              [enagementAde.income,(twitterperdayAde.number1+twitterperdayAde.number2+twitterperdayAde.number3+twitterperdayAde.number4+twitterperdayAde.number5)/5],
+              [engagement.income, (twitterperday.number1+twitterperday.number2+twitterperday.number3+twitterperday.number4+twitterperday.number5)/5],
+              [engagementSyd.income, (twitterperdaySyd.number1+twitterperdaySyd.number2+twitterperdaySyd.number3+twitterperdaySyd.number4+twitterperdaySyd.number5)/5],
+              [engagementBris.income,(twitterperdayBris.number1+twitterperdayBris.number2+twitterperdayBris.number3+twitterperdayBris.number4+twitterperdayBris.number5)/5],
+              [engagementAde.income,(twitterperdayAde.number1+twitterperdayAde.number2+twitterperdayAde.number3+twitterperdayAde.number4+twitterperdayAde.number5)/5],
             ],
             markPoint: {
               data: [
                 {
                   name: "Persons earning >$1000 per week",
-                  xAxis: enagement.income,
+                  xAxis: engagement.income,
                   yAxis: (twitterperday.number1+twitterperday.number2+twitterperday.number3+twitterperday.number4+twitterperday.number5)/5,
                   value: "Melbourne",
                 },
@@ -605,7 +605,7 @@ export default {
       },
 
       linechart5: {
-        title: 'Policy enagement vs gender & immigration',
+        title: 'Policy engagement vs gender & immigration',
         legend: {
           data: ['male percentage', 'immigration percentage']
         },
@@ -617,16 +617,16 @@ export default {
             name: "male percentage",
             type: "line",
             data: [
-              [enagement.male, twitterperday.number1],
-              [enagementSyd.male, twitterperdaySyd.number1],
-              [enagementBris.male, twitterperdayBris.number1],
-              [enagementAde.male, twitterperdayAde.number1]
+              [engagement.male, twitterperday.number1],
+              [engagementSyd.male, twitterperdaySyd.number1],
+              [engagementBris.male, twitterperdayBris.number1],
+              [engagementAde.male, twitterperdayAde.number1]
             ],
             markPoint: {
               data: [
                 {
                   name: 'male percentage',
-                  xAxis: enagement.male,
+                  xAxis: engagement.male,
                   yAxis: twitterperday.number1,
                   value: 'Melbourne'
                 }
@@ -637,16 +637,16 @@ export default {
             name: 'immigration percentage',
             type: 'line',
             data: [
-              [enagement.overper, twitterperday.number1],
-              [enagementSyd.overper, twitterperday.number1],
-              [enagementBris.overper, twitterperday.number1],
-              [enagementAde.overper, twitterperday.number1]
+              [engagement.overper, twitterperday.number1],
+              [engagementSyd.overper, twitterperday.number1],
+              [engagementBris.overper, twitterperday.number1],
+              [engagementAde.overper, twitterperday.number1]
             ],
             markPoint: {
               data: [
                 {
                   name: "immigration percentage",
-                  xAxis: enagement.overper,
+                  xAxis: engagement.overper,
                   yAxis: twitterperday.number1,
                   value: 'Melbourne'
                 }
@@ -721,7 +721,7 @@ export default {
       var result
       $.ajax({
         type:'GET',
-        url:"http://172.26.132.252:2889/wordCloud_data",
+        url:process.env.VUE_APP_BACKEND_URL+"/wordCloud_data",
         async:false,
         dataType:'json',
         success:function(data){

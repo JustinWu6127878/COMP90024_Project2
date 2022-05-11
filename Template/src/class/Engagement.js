@@ -1,4 +1,4 @@
-class Enagement {
+class Engagement {
     constructor (male, edu, income, overper){
         this.male = male;
         this.female = 100-male;
@@ -8,4 +8,4 @@ class Enagement {
     }
 }
 
-export default Enagement
+export default Engagement

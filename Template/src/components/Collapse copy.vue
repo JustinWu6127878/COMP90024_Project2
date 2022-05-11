@@ -33,15 +33,15 @@
     </el-collapse-item>
     <el-collapse-item name="2">
       <template slot="title">
-        <h2 style="font-size: 32px; text-align: left">Enagement</h2>
+        <h2 style="font-size: 32px; text-align: left">Engagement</h2>
       </template>
       <div>
         <el-tabs v-model="activeName2" @tab-click="handleClick">
           <el-tab-pane label="Metrics" name="first">
             <div style="padding: 20px 0px;text-align: center;">
               <el-row :gutter="20">
-                <el-col :span="12"> <TableModel :row="enagementRow1" :column="enagementColumn1" /></el-col>
-                <el-col :span="12"><TableModel :row="enagementRow2" :column="enagementColumn2" /></el-col>
+                <el-col :span="12"> <TableModel :row="engagementRow1" :column="engagementColumn1" /></el-col>
+                <el-col :span="12"><TableModel :row="engagementRow2" :column="engagementColumn2" /></el-col>
               </el-row>
             </div>
           </el-tab-pane>
@@ -117,10 +117,10 @@ export default {
     'linechart2',
     'linechart3',
     'linechart4',
-    'enagementRow1',
-    'enagementColumn1',
-    'enagementRow2',
-    'enagementColumn2'
+    'engagementRow1',
+    'engagementColumn1',
+    'engagementRow2',
+    'engagementColumn2'
   ],
 
   data() {

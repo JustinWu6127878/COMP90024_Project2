@@ -35,19 +35,19 @@ export const constantRoutes = [
   {
     path: '/',
     component: Layout,
-    redirect: '/melbourne',
+    redirect: '/country',
     children: [{
-      path: 'melbourne',
-      name: 'Melbourne',
+      path: 'country',
+      name: 'Country',
       component: () => import('@/views/country/index'),
       meta: { title: 'MAP', icon: 'dashboard' }
     }]
   },
 
   {
-    path: '/example',
+    path: '/cities',
     component: Layout,
-    redirect: '/cities',
+    // redirect: '/cities',
     name: 'Cities',
     meta: { title: 'CITIES', icon: 'australia' },
     children: [
@@ -79,12 +79,12 @@ export const constantRoutes = [
   },
 
   {
-    path: '/form',
+    path: '/group',
     component: Layout,
     children: [
       {
         path: 'index',
-        name: 'Form',
+        name: 'Group',
         component: () => import('@/views/group/group'),
         meta: { title: 'GROUP', icon: 'form' }
       }

@@ -15,6 +15,16 @@ export default {
     }
   },
 
+
+  updated() {
+    this.$nextTick(() => {
+      console.log("update123");
+      if (this.show) {
+        this.drawPieChart();
+      }
+    });
+  },
+
   mounted() {
     this.$nextTick(() => {
       this.drawLineChart()
@@ -50,7 +60,7 @@ export default {
           color: ['rgb(46 199 201)', 'rgb(90 177 239)', 'rgb(182 162 222)'],
           xAxis: [
             {
-              type: 'value',
+              type: this.chartsource.xtype,
               // boundaryGap : false,
               axisTick: {
                 show: false
@@ -124,6 +134,7 @@ export default {
 
 <style scope>
 .line-wrap {
+  float:left;
   width: 50%;
   height: 400px;
 }

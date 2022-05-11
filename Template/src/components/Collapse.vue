@@ -80,12 +80,18 @@
             <div style="padding:40px 0px;text-align: center;">
               <el-row :gutter="20">
                 <el-col :span="24">              <TableModel :row="inflationRow1" :column="inflationColumn1" /></el-col>
+                <el-col :span="24">              <TableModel :row="inflationRow2" :column="inflationColumn2" /></el-col>
               </el-row>
             </div>
           </el-tab-pane>
           <el-tab-pane label="Graphs" name="second">
             <div class="chart-container">
-              <WordCloud :chartsource="wordCloudChart" />
+               <Linechart :chartsource="linechart6" />
+               <Linechart :chartsource="linechart7" />            
+            </div>
+             <el-divider></el-divider>
+            <div class="chart-container">
+              <WordCloud :chartsource="wordCloudChart" />             
             </div>
           </el-tab-pane>
         </el-tabs>
@@ -144,6 +150,15 @@ export default {
     'inflationColumn1',
     'wordCloudChart'
 
+    "inflationRow1",
+    "inflationColumn1",
+    "inflationRow2",
+    "inflationColumn2",
+
+    "linechart6",
+    "linechart7",
+    "wordCloudChart"
+  
   ],
 
   data() {

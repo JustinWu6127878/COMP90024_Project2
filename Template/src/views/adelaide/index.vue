@@ -47,22 +47,25 @@
         :barchart1="barchart1"
         :barchart2="barchart2"
         :barchart3="barchart3"
-        :covid-row1="covidRow1"
-        :covid-column1="covidColumn1"
-        :covid-row2="covidRow2"
-        :covid-column2="covidColumn2"
+        :covidRow1="covidRow1"
+        :covidColumn1="covidColumn1"
+        :covidRow2="covidRow2"
+        :covidColumn2="covidColumn2"
         :barchart4="barchart4"
         :barchart5="barchart5"
         :barchart6="barchart6"
         :barchart7="barchart7"
-        :enagement-row1="enagementRow1"
-        :enagement-column1="enagementColumn1"
-        :enagement-row2="enagementRow2"
-        :enagement-column2="enagementColumn2"
-        :inflation-row1="inflationRow1"
-        :inflation-column1="inflationColumn1"
-        :inflation-row2="inflationRow2"
-        :inflation-column2="inflationColumn2"
+        :enagementRow1="enagementRow1"
+        :enagementColumn1="enagementColumn1"
+        :enagementRow2="enagementRow2"
+        :enagementColumn2="enagementColumn2"
+        :inflationRow1="inflationRow1"
+        :inflationColumn1="inflationColumn1"
+        :inflationRow2="inflationRow2"
+        :inflationColumn2="inflationColumn2"
+        :linechart1="linechart1"
+        :linechart2="linechart2"
+        :wordCloudChart="wordCloudChart"
       />
     </div>
   </div>
@@ -77,8 +80,6 @@ import Enagement from "../../class/Enagement.js";
 
 import TwitterPerDay from "../../class/TwitterPerDay.js";
 
-import Price from "../../class/Price.js";
-
 import Covid from "../../class/Covid.js";
 
 import TableModel from "../../components/TableModel.vue";
@@ -89,59 +90,40 @@ import Piechart from "../../components/Charts/piechart.vue";
 
 import Linechart from "@/components/Charts/linechart.vue";
 
-const enagement = new Enagement(49.5, 30, 25);
-const enagementMel = new Enagement(49.5, 30, 25, 30);
+import $ from "jquery";
 
-const twitterperday = new TwitterPerDay(
-  ["29/04", 12345],
-  ["29/04", 12345],
-  ["29/04", 12345],
-  ["29/04", 12345],
-  ["29/04", 12345],
-  ["29/04", 12345]
-);
+const enagement = new Enagement(49.17, 21.2333, 28.0, 25.03);
+const enagementMel = new Enagement(49.52, 27.4507, 31.5, 29.85);
 
-const twitterperdayMel = new TwitterPerDay(
-  ["29/04/2022", 12345],
-  ["29/04/2022", 12345],
-  ["29/04/2022", 12345],
-  ["29/04/2022", 12345],
-  ["29/04/2022", 12345],
-  ["29/04/2022", 12345]
-);
+const twitterperday = new TwitterPerDay("adel");
 
-const income = ["23.8", "23.6", "24.4", "28.2"];
-const incomeMel = [24.4, 24.8, 25.4, 25.5];
+const twitterperdayMel = new TwitterPerDay('melb');
 
-const gas = new Price(
-  ["2022", 12345],
-  ["2021", 12345],
-  ["2020", 12345],
-  ["2019", 12345],
-  ["2018", 12345],
-  ["2017", 12345]
-);
+const income = [31.1, 24.8, 22.0, 3.9, 2.1, 8.5, 0.5, 6.9];
+const incomeMel = [26.6, 22.5, 23.0, 5.1, 3.4, 10.6, 0.6, 8.2];
 
-const house = new Price(
-  ["2022", 12345],
-  ["2021", 12345],
-  ["2020", 12345],
-  ["2019", 12345],
-  ["2018", 12345],
-  ["2017", 12345]
-);
+const degree = [21.2333, 8.7648, 19.2852, 42.2988, 8.4178];
+const degreeMel = [27.4507, 9.4669, 15.2528, 38.618, 9.2116];
 
-const covid = new Covid(5000, 20000, 300, 95, 33, 33, 33);
-const covidMel = new Covid(5000, 20000, 300, 95, 33, 33, 33);
+const gas = [146.4, 127.6, 114.6, 126.9, 141.6, 142.7, 120.7, 142.8];
+const gasMel = [145.7, 126.3, 116.4, 128.7, 143.4, 141.1, 123.9, 147.6];
+const gasNa = [148.8, 129.6, 117.8, 129.3, 144.3, 142, 123.4, 147.8];
+
+const house = [406000, 425000, 440000, 450000, 465000, 475000];
+const houseMel = [547500,555000, 610500, 665000, 732000, 712000];
+const houseNa = [460000, 480000, 500000, 525000, 553000, 545000];
+
+const covid = new Covid(39, 20000, 448, 95, 'adel');
+const covidMel = new Covid(125, 20000, 1630, 95, 'melb');
 
 const adelaide = new CityOverview(
   "Adelaide",
   "South Australia",
-  5312163,
-  1769610,
-  30.4,
-  14.0,
-  51191
+  1359760,
+  340314,
+  35.9,
+  17.6,
+  48043
 );
 
 export default {
@@ -156,16 +138,17 @@ export default {
     Piechart,
     Linechart,
   },
+
   data() {
     return {
       adelaide: new CityOverview(
         "Adelaide",
         "South Australia",
-        5312163,
-        1769610,
-        30.4,
-        14.0,
-        51191
+        1359760,
+        340314,
+        35.9,
+        17.6,
+        48043
       ),
 
       covidRow1: [
@@ -237,7 +220,7 @@ export default {
         },
         {
           item: "Born overseas percentage:",
-          num: enagement.over + "%",
+          num: enagement.overper + "%",
         },
         {
           item: "Annual income > $10,000 percentage: ",
@@ -272,6 +255,10 @@ export default {
           item: twitterperday.date4,
           num: twitterperday.number4,
         },
+        {
+          item: twitterperday.date5,
+          num: twitterperday.number5,
+        },
       ],
       enagementColumn2: [
         {
@@ -284,22 +271,15 @@ export default {
         },
       ],
 
-      inflationRow1: [
+    inflationRow1: [
         {
-          item: "Gas price",
-          year1: gas.number1,
-          year2: gas.number2,
-          year3: gas.number3,
-          year4: gas.number4,
-          year5: gas.number5,
-        },
-        {
-          item: "House price",
-          year1: house.number1,
-          year2: house.number2,
-          year3: house.number3,
-          year4: house.number4,
-          year5: house.number5,
+          item: "House Median Sale Price",
+          year1: house[0],
+          year2: house[1],
+          year3: house[2],
+          year4: house[3],
+          year5: house[4],
+          year6: house[5],
         },
       ],
 
@@ -310,25 +290,83 @@ export default {
         },
         {
           prop: "year1",
-          label: gas.year1,
+          label: "2014",
         },
         {
           prop: "year2",
-          label: gas.year2,
+          label: "2015",
         },
         {
           prop: "year3",
-          label: gas.year3,
+          label: "2016",
         },
         {
           prop: "year4",
-          label: gas.year4,
+          label: "2017",
         },
         {
           prop: "year5",
-          label: gas.year5,
+          label: "2018",
+        },
+        {
+          prop: "year6",
+          label: "2019",
         },
       ],
+
+      inflationRow2: [
+        {
+          item: "Average petrol pump prices",
+          year1: gas[0],
+          year2: gas[1],
+          year3: gas[2],
+          year4: gas[3],
+          year5: gas[4],
+          year6: gas[5],
+          year7: gas[6],
+          year8: gas[7],
+        },
+      ],
+
+      inflationColumn2: [
+        {
+          prop: "item",
+          label: "Year",
+        },
+        {
+          prop: "year1",
+          label: "2014",
+        },
+        {
+          prop: "year2",
+          label: "2015",
+        },
+        {
+          prop: "year3",
+          label: "2016",
+        },
+        {
+          prop: "year4",
+          label: "2017",
+        },
+        {
+          prop: "year5",
+          label: "2018",
+        },
+         {
+          prop: "year6",
+          label: "2019",
+        },
+        {
+          prop: "year7",
+          label: "2020",
+        }, 
+        {
+          prop: "year8",
+          label: "2021",
+        },
+      ],
+
 
       piechart1: {
         title: "Twitter Comments",
@@ -355,9 +393,9 @@ export default {
         xdata: ["Melbourne", "Adelaide"],
         xLabel: { rotate: 0 },
         yAxis: {},
-        ydata1: [covidMel.hos / 1000, covid.hos / 1000],
-        ydata2: [covidMel.clinincs / 100, covid.clinincs / 100],
-        legend: ["Thousand of hospitals", "Hundred of vaccination clinics"],
+        ydata1: [covidMel.hos, covid.hos],
+        ydata2: [covidMel.clinincs, covid.clinincs],
+        legend: ["# of hospitals", "# of vaccination clinics"],
       },
 
       barchart3: {
@@ -417,35 +455,95 @@ export default {
         xdata: ["Male%", "Born overseas%"],
         xLabel: { rotate: 0 },
         yAxis: {},
-        ydata1: [enagement.male, adelaide.overper * 100],
+        ydata1: [enagement.male, enagement.overper],
         ydata2: [enagementMel.male, enagementMel.overper],
         legend: ["Adelaide", "Melbourne"],
       },
 
       barchart6: {
-        title: "Total income quartile",
-        xdata: ["Lowest", "Second", "Third", "Highest"],
-        xLabel: { rotate: 0 },
+        title: "Weekly persons earning",
+        xdata: ["$1-499","$500-999","$1000-1999 ","$2000-2999","$3000 or more","nil income","negative income","not stated"],
+        xLabel: { rotate: 30 },
         yAxis: {},
-        ydata1: [income],
-        ydata2: [incomeMel],
+        ydata1: income,
+        ydata2: incomeMel,
         legend: ["Adelaide", "Melbourne"],
       },
 
       barchart7: {
         title: "Highest degree",
         xdata: [
-          "Postgraduate",
+          "Bachelor or Higher",
           "Diploma",
-          "Bachelor",
-          "Certificate",
-          "Non-school",
+          "Vocational",
+          "No qualification",
+          "Not stated",
         ],
-        xLabel: { rotate: 40 },
+        xLabel: { rotate: 0},
         yAxis: {},
-        ydata1: [income],
-        ydata2: [incomeMel],
+        ydata1: degree,
+        ydata2: degreeMel,
         legend: ["Adelaide", "Melbourne"],
+      },
+
+      linechart1: {
+        title: "House Median Sale Price",
+        legend: {
+          data: ["Adelaide", "Melbourne","National"],
+        },
+        xtype: "category",
+        xdata: ["2014","2015","2016","2017","2018","2019"],
+        ydata: "($)",
+        series: [
+          {
+            name: "Adelaide",
+            type: "line",
+            data: house,
+          },
+          {
+            name: "Melbourne",
+            type: "line",
+            data: houseMel,
+          },
+          {
+            name: "National",
+            type: "line",
+            data: houseNa,
+          },
+        ],
+      },
+
+       linechart2: {
+        title: "Average petrol pump price",
+        legend: {
+          data: ["Adelaide", "Melbourne","National"],
+        },
+        xtype: "category",
+        xdata: ["2014","2015","2016","2017","2018","2019","2020","2021"],
+        ydata: "($)",
+        series: [
+          {
+            name: "Adelaide",
+            type: "line",
+            data: gas,
+          },
+          {
+            name: "Melbourne",
+            type: "line",
+            data: gasMel,
+          },
+          {
+            name: "National",
+            type: "line",
+            data: gasNa,
+          },
+        ],
+      },
+
+      wordCloudChart: {
+        title: "Word Cloud chart of inflation",
+        legend: {},
+        data: this.sendWordCloudData("adel"),
       },
     };
   },
@@ -458,6 +556,31 @@ export default {
           return s.replace(/(\d)(?=(\d{3})+$)/g, "$1,");
         })
       );
+    },
+    sendWordCloudData(city) {
+      var result;
+      $.ajax({
+        type:'GET',
+        url:"http://172.26.132.252:2889/wordCloud_data",
+        async:false,
+        dataType:'json',
+        success:function(data){
+          result = data
+        },
+      });
+
+      var json_data = result[city];
+      var json_list = [];
+      for (var i = 0; i < json_data.length; i++) {
+        var json_dict = {
+          name: json_data[i].name,
+          value: json_data[i].value,
+        };
+        json_list.push(json_dict);
+      }
+        
+      // console.log(json_list)
+      return json_list
     },
   },
 };

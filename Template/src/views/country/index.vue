@@ -177,15 +177,15 @@ export default {
     },
     gotoAdelaide() {
       this.$router.push({
-        path: "/example/adelaide",
-        query: {
-          index: this.dropdown,
-        },
-      });
+  	path: '/cities/adelaide',
+  	query: {
+  		index: this.dropdown
+  	}
+      })
     },
     gotoBrisbane() {
       this.$router.push({
-        path: "/example/brisbane",
+        path: '/cities/brisbane',
         query: {
           index: this.dropdown,
         },
@@ -193,7 +193,7 @@ export default {
     },
     gotoMelbourne() {
       this.$router.push({
-        path: "./example/melbourne",
+        path: './cities/melbourne',
         query: {
           index: this.dropdown,
         },
@@ -201,7 +201,7 @@ export default {
     },
     gotoSydney() {
       this.$router.push({
-        path: "./example/sydney",
+        path: './cities/sydney',
         query: {
           index: this.dropdown,
         },

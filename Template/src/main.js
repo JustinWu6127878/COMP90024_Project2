@@ -14,7 +14,7 @@ import store from './store'
 import router from './router'
 
 import '@/icons' // icon
-import '@/permission' // permission control
+// import '@/permission' // permission control
 
 import Highcharts from 'highcharts'
 import HighchartsVue from 'highcharts-vue'

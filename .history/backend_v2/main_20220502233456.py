@@ -1,0 +1,5 @@
+from flask_cors import *
+from flask import Flask,render_template,request,Response,redirect,url_for
+import json
+import couchdb
+

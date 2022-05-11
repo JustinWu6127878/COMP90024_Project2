@@ -57,19 +57,21 @@
         :linechart3="linechart3"
         :linechart4="linechart4"
         :linechart5="linechart5"
-        :covid-row1="covidRow1"
-        :covid-column1="covidColumn1"
-        :covid-row2="covidRow2"
-        :covid-column2="covidColumn2"
-        :enagement-row1="enagementRow1"
-        :enagement-column1="enagementColumn1"
-        :enagement-row2="enagementRow2"
-        :enagement-column2="enagementColumn2"
-        :inflation-row1="inflationRow1"
-        :inflation-column1="inflationColumn1"
-        :inflation-row2="inflationRow2"
-        :inflation-column2="inflationColumn2"
-        :word-cloud-chart="wordCloudChart"
+        :linechart6="linechart6"
+        :linechart7="linechart7"
+        :covidRow1="covidRow1"
+        :covidColumn1="covidColumn1"
+        :covidRow2="covidRow2"
+        :covidColumn2="covidColumn2"
+        :enagementRow1="enagementRow1"
+        :enagementColumn1="enagementColumn1"
+        :enagementRow2="enagementRow2"
+        :enagementColumn2="enagementColumn2"
+        :inflationRow1="inflationRow1"
+        :inflationColumn1="inflationColumn1"
+        :inflationRow2="inflationRow2"
+        :inflationColumn2="inflationColumn2"
+        :wordCloudChart="wordCloudChart"
       />
     </div>
   </div>
@@ -84,9 +86,7 @@ import Enagement from '../../class/Enagement.js'
 
 import TwitterPerDay from '../../class/TwitterPerDay.js'
 
-import Price from '../../class/Price.js'
-
-import Covid from '../../class/Covid.js'
+import Covid from "../../class/Covid.js";
 
 import TableModel from '../../components/TableModel.vue'
 
@@ -96,66 +96,30 @@ import Piechart from '../../components/Charts/piechart.vue'
 
 import Linechart from '@/components/Charts/linechart.vue'
 
-const enagement = new Enagement(49.5, 30, 25)
-const enagementSyd = new Enagement(49.5, 30, 25, 30)
-const enagementBris = new Enagement(49.5, 30, 25, 30)
-const enagementAde = new Enagement(49.5, 30, 25, 30)
+import $ from 'jquery';
 
-const twitterperday = new TwitterPerDay(
-  ['29/04/2022', 12345],
-  ['29/04/2022', 12345],
-  ['29/04/2022', 12345],
-  ['29/04/2022', 12345],
-  ['29/04/2022', 12345],
-  ['29/04/2022', 12345]
-)
-const twitterperdaySyd = new TwitterPerDay(
-  ['29/04/2022', 12345],
-  ['29/04/2022', 12345],
-  ['29/04/2022', 12345],
-  ['29/04/2022', 12345],
-  ['29/04/2022', 12345],
-  ['29/04/2022', 12345]
-)
-const twitterperdayBris = new TwitterPerDay(
-  ['29/04/2022', 12345],
-  ['29/04/2022', 12345],
-  ['29/04/2022', 12345],
-  ['29/04/2022', 12345],
-  ['29/04/2022', 12345],
-  ['29/04/2022', 12345]
-)
-const twitterperdayAde = new TwitterPerDay(
-  ['29/04/2022', 12345],
-  ['29/04/2022', 12345],
-  ['29/04/2022', 12345],
-  ['29/04/2022', 12345],
-  ['29/04/2022', 12345],
-  ['29/04/2022', 12345]
-)
+const enagement = new Enagement(49.52, 27.4507, 31.5, 29.85);
+const enagementSyd = new Enagement(49.73, 28.3151, 34.2, 33.31);
+const enagementBris = new Enagement(49.40, 22.9017, 32.3, 23.52);
+const enagementAde = new Enagement(49.17, 21.2333, 28.0, 25.03);
 
-const gas = new Price(
-  ['2022', 12345],
-  ['2021', 12345],
-  ['2020', 12345],
-  ['2019', 12345],
-  ['2018', 12345],
-  ['2017', 12345]
-)
+const twitterperday = new TwitterPerDay('melb');
+const twitterperdaySyd = new TwitterPerDay('syd');
+const twitterperdayBris = new TwitterPerDay('bris');
+const twitterperdayAde = new TwitterPerDay('adel');
 
-const house = new Price(
-  ['2022', 12345],
-  ['2021', 12345],
-  ['2020', 12345],
-  ['2019', 12345],
-  ['2018', 12345],
-  ['2017', 12345]
-)
+const gas = [145.7, 126.3, 116.4, 128.7, 143.4, 141.1, 123.9, 147.6];
 
-const covid = new Covid(5000, 20000, 300, 95, 33, 33, 33)
-const covidSyd = new Covid(5000, 20000, 300, 95, 33, 33, 33)
-const covidBris = new Covid(5000, 20000, 300, 95, 33, 33, 33)
-const covidAde = new Covid(5000, 20000, 300, 95, 33, 33, 33)
+const gasNa = [148.8, 129.6, 117.8, 129.3, 144.3, 142, 123.4, 147.8];
+
+const house = [547500,555000, 610500, 665000, 732000, 712000];
+
+const houseNa = [460000, 480000, 500000, 525000, 553000, 545000];
+
+const covid = new Covid(125, 20000, 1630, 95, 'melb');
+const covidSyd = new Covid(132, 20000, 2045, 95, 'syd');
+const covidBris = new Covid(51, 20000, 886, 95, 'bris');
+const covidAde = new Covid(39, 20000, 448, 95, 'adel');
 
 const melbourne = new CityOverview(
   'Melbourne',
@@ -166,6 +130,7 @@ const melbourne = new CityOverview(
   13.8,
   49260
 )
+
 
 export default {
   name: 'Dashboard',
@@ -259,13 +224,13 @@ export default {
           num: enagement.edu + '%'
         },
         {
-          item: 'Born overseas percentage:',
-          num: enagement.over + '%'
+          item: "Born overseas percentage:",
+          num: enagement.overper + "%",
         },
         {
-          item: 'Annual income > $10,000 percentage: ',
-          num: enagement.income + '%'
-        }
+          item: "Person earning > $1000 per week: ",
+          num: enagement.income + "%",
+        },
       ],
       enagementColumn1: [
         {
@@ -293,8 +258,13 @@ export default {
         },
         {
           item: twitterperday.date4,
-          num: twitterperday.number4
-        }
+          num: twitterperday.number4,
+        },
+        {
+          item: twitterperday.date5,
+          num: twitterperday.number5,
+        },
+
       ],
       enagementColumn2: [
         {
@@ -309,21 +279,14 @@ export default {
 
       inflationRow1: [
         {
-          item: 'Gas price',
-          year1: gas.number1,
-          year2: gas.number2,
-          year3: gas.number3,
-          year4: gas.number4,
-          year5: gas.number5
+          item: "House Median Sale Price",
+          year1: house[0],
+          year2: house[1],
+          year3: house[2],
+          year4: house[3],
+          year5: house[4],
+          year6: house[5],
         },
-        {
-          item: 'House price',
-          year1: house.number1,
-          year2: house.number2,
-          year3: house.number3,
-          year4: house.number4,
-          year5: house.number5
-        }
       ],
 
       inflationColumn1: [
@@ -332,26 +295,82 @@ export default {
           label: 'Year'
         },
         {
-          prop: 'year1',
-          label: gas.year1
+          prop: "year1",
+          label: "2014",
         },
         {
-          prop: 'year2',
-          label: gas.year2
+          prop: "year2",
+          label: "2015",
         },
         {
-          prop: 'year3',
-          label: gas.year3
+          prop: "year3",
+          label: "2016",
         },
         {
-          prop: 'year4',
-          label: gas.year4
+          prop: "year4",
+          label: "2017",
         },
         {
-          prop: 'year5',
-          label: gas.year5
-        }
+          prop: "year5",
+          label: "2018",
+        },
+        {
+          prop: "year6",
+          label: "2019",
+        },
+      ],
 
+      inflationRow2: [
+        {
+          item: "Average petrol pump prices",
+          year1: gas[0],
+          year2: gas[1],
+          year3: gas[2],
+          year4: gas[3],
+          year5: gas[4],
+          year6: gas[5],
+          year7: gas[6],
+          year8: gas[7],
+        },
+      ],
+
+      inflationColumn2: [
+        {
+          prop: "item",
+          label: "Year",
+        },
+        {
+          prop: "year1",
+          label: "2014",
+        },
+        {
+          prop: "year2",
+          label: "2015",
+        },
+        {
+          prop: "year3",
+          label: "2016",
+        },
+        {
+          prop: "year4",
+          label: "2017",
+        },
+        {
+          prop: "year5",
+          label: "2018",
+        },
+         {
+          prop: "year6",
+          label: "2019",
+        },
+        {
+          prop: "year7",
+          label: "2020",
+        }, 
+        {
+          prop: "year8",
+          label: "2021",
+        },
       ],
 
       piechart1: {
@@ -391,45 +410,37 @@ export default {
         ]
       },
       piechart5: {
-        title: 'Annual income',
+        title: "Persons earning per week",
         legend: {},
         data: [
-          { value: enagement.income, name: '> $100,000' },
-          { value: 100 - enagement.income, name: '< $100,000' }
-        ]
+          { value: enagement.income, name: "> $1000" },
+          { value: 100 - enagement.income, name: "< $1000" },
+        ],
       },
 
       linechart1: {
         title: 'Positive comments vs Medical facilities',
         legend: {
-          data: ['Thousand hospitals', 'Hundred Vaccination clinics']
+          data: ["Hundreds of hospitals", "Thousands of Vaccination clinics"],
         },
+        xtype: "value",
         xdata: [],
         ydata: '(Positive comments%)',
         series: [
           {
-            name: 'Thousand hospitals',
-            type: 'line',
-            // itemStyle:{
-            //   normal:{
-            //     color: "yellow",
-            //   }
-            // },
-
-            // lineStyle:{
-            //     color: "yellow",
-            // },
+            name: "Hundreds of hospitals",
+            type: "line",
             data: [
-              [covid.hos / 1000, covid.pos],
-              [covidSyd.hos / 1000, covidSyd.pos],
-              [covidBris.hos / 1000, covidBris.pos],
-              [covidAde.hos / 1000, covidAde.pos]
+              [covid.hos/100, covid.pos],
+              [covidSyd.hos/100 , covidSyd.pos],
+              [covidBris.hos/100 , covidBris.pos],
+              [covidAde.hos/100 , covidAde.pos],
             ],
             markPoint: {
               data: [
                 {
-                  name: 'Thousand hospitals',
-                  xAxis: covid.hos / 1000,
+                  name: "Hundreds of hospitals",
+                  xAxis: covid.hos/100 ,
                   yAxis: covid.pos,
                   value: 'Melbourne'
                 }
@@ -437,56 +448,26 @@ export default {
             }
           },
           {
-            name: 'Hundred Vaccination clinics',
-            type: 'line',
+            name: "Thousands of Vaccination clinics",
+            type: "line",
             data: [
-              [covid.clinincs / 100, covid.pos],
-              [covidSyd.clinincs / 100, covidSyd.pos],
-              [covidBris.clinincs / 100, covidBris.pos],
-              [covidAde.clinincs / 100, covidAde.pos]
+              [covid.clinincs/1000 , covid.pos],
+              [covidSyd.clinincs/1000 , covidSyd.pos],
+              [covidBris.clinincs/1000 , covidBris.pos],
+              [covidAde.clinincs/1000 , covidAde.pos],
             ],
             markPoint: {
               data: [
                 {
-                  name: 'Hundred Vaccination clinics',
-                  xAxis: covid.clinincs / 100,
+                  name: "Thousands of Vaccination clinics",
+                  xAxis: covid.clinincs/1000,
                   yAxis: covid.pos,
-                  value: 'Melbourne'
-                }
-              ]
-            }
-          }
-          // {
-          //   name: "Vacci",
-          //   type: "line",
-          //   data: [
-          //     [220, 40],
-          //     [182, 30],
-          //     [191, 20],
-          //     [234, 30],
-          //   ],
-          // },
-          // {
-          //   name: "Active",
-          //   type: "line",
-          //   data: [
-          //     [150, 33],
-          //     [232, 11],
-          //     [201, 45],
-          //     [154, 50],
-          //   ],
-          // },
-          // {
-          //   name: "Rate",
-          //   type: "line",
-          //   data: [
-          //     [320, 30],
-          //     [332, 34],
-          //     [301, 25],
-          //     [334, 35],
-          //   ],
-          // },
-        ]
+                  value: "Melbourne",
+                },
+              ],
+            },
+          },
+        ],
       },
 
       linechart2: {
@@ -494,6 +475,7 @@ export default {
         legend: {
           data: ['Vaccination rates']
         },
+        xtype: "value",
         xdata: [],
         ydata: 'Active cases',
         series: [
@@ -534,6 +516,7 @@ export default {
         legend: {
           data: ['Active cases in the state']
         },
+        xtype: "value",
         xdata: [],
         ydata: '(Positive %)',
         series: [
@@ -572,72 +555,53 @@ export default {
       linechart4: {
         title: 'Policy enagement vs education level & income level',
         legend: {
-          data: ['higher than bachelor', 'annual income >$100,000']
+          data: ["higher than bachelor", "Persons earning >$1000 per week"],
         },
         xdata: [],
-        ydata: '# of twitters of a day',
+        xtype: "value",
+        ydata: "# of twitters of a day",
         series: [
           {
             name: 'higher than bachelor',
             type: 'line',
             data: [
-              [enagement.edu, twitterperday.number1],
-              [enagementSyd.edu, twitterperdaySyd.number1],
-              [enagementBris.edu, twitterperdayBris.number1],
-              [enagementAde.edu, twitterperdayAde.number1]
+              [enagement.edu, (twitterperday.number1+twitterperday.number2+twitterperday.number3+twitterperday.number4+twitterperday.number5)/5],
+              [enagementSyd.edu, (twitterperdaySyd.number1+twitterperdaySyd.number2+twitterperdaySyd.number3+twitterperdaySyd.number4+twitterperdaySyd.number5)/5],
+              [enagementBris.edu,(twitterperdayBris.number1+twitterperdayBris.number2+twitterperdayBris.number3+twitterperdayBris.number4+twitterperdayBris.number5)/5],
+              [enagementAde.edu,(twitterperdayAde.number1+twitterperdayAde.number2+twitterperdayAde.number3+twitterperdayAde.number4+twitterperdayAde.number5)/5],
             ],
             markPoint: {
               data: [
                 {
                   name: 'higher than bachelor',
                   xAxis: enagement.edu,
-                  yAxis: twitterperday.number1,
-                  value: 'Melbourne'
-                }
-              ]
-            }
+                  yAxis: (twitterperday.number1+twitterperday.number2+twitterperday.number3+twitterperday.number4+twitterperday.number5)/5,
+                  value: "Melbourne",
+                },
+              ],
+            },
           },
           {
-            name: 'annual income >$100,000',
-            type: 'line',
+            name: "Persons earning >$1000 per week",
+            type: "line",
             data: [
-              [enagement.income, twitterperday.number1],
-              [enagementSyd.income, twitterperdaySyd.number1],
-              [enagementBris.income, twitterperdayBris.number1],
-              [enagementAde.income, twitterperdayAde.number1]
+              [enagement.income, (twitterperday.number1+twitterperday.number2+twitterperday.number3+twitterperday.number4+twitterperday.number5)/5],
+              [enagementSyd.income, (twitterperdaySyd.number1+twitterperdaySyd.number2+twitterperdaySyd.number3+twitterperdaySyd.number4+twitterperdaySyd.number5)/5],
+              [enagementBris.income,(twitterperdayBris.number1+twitterperdayBris.number2+twitterperdayBris.number3+twitterperdayBris.number4+twitterperdayBris.number5)/5],
+              [enagementAde.income,(twitterperdayAde.number1+twitterperdayAde.number2+twitterperdayAde.number3+twitterperdayAde.number4+twitterperdayAde.number5)/5],
             ],
             markPoint: {
               data: [
                 {
-                  name: 'annual income >$100,000',
+                  name: "Persons earning >$1000 per week",
                   xAxis: enagement.income,
-                  yAxis: twitterperday.number1,
-                  value: 'Melbourne'
-                }
-              ]
-            }
-          }
-          // {
-          //   name: "Immi",
-          //   type: "line",
-          //   data: [
-          //     [33, 12234],
-          //     [23, 12356],
-          //     [45, 12453],
-          //     [30, 14352],
-          //   ],
-          // },
-          // {
-          //   name: "Income",
-          //   type: "line",
-          //   data: [
-          //     [30, 12234],
-          //     [34, 12356],
-          //     [25, 12453],
-          //     [35, 14352],
-          //   ],
-          // },
-        ]
+                  yAxis: (twitterperday.number1+twitterperday.number2+twitterperday.number3+twitterperday.number4+twitterperday.number5)/5,
+                  value: "Melbourne",
+                },
+              ],
+            },
+          },
+        ],
       },
 
       linechart5: {
@@ -645,21 +609,13 @@ export default {
         legend: {
           data: ['male percentage', 'immigration percentage']
         },
+        xtype: "value",
         xdata: [],
         ydata: '(# of twitters of a day)',
         series: [
           {
-            name: 'male percentage',
-            type: 'line',
-            // itemStyle:{
-            //   normal:{
-            //     color: "yellow",
-            //   }
-            // },
-
-            // lineStyle:{
-            //     color: "yellow",
-            // },
+            name: "male percentage",
+            type: "line",
             data: [
               [enagement.male, twitterperday.number1],
               [enagementSyd.male, twitterperdaySyd.number1],
@@ -681,7 +637,7 @@ export default {
             name: 'immigration percentage',
             type: 'line',
             data: [
-              [melbourne.overper, twitterperday.number1],
+              [enagement.overper, twitterperday.number1],
               [enagementSyd.overper, twitterperday.number1],
               [enagementBris.overper, twitterperday.number1],
               [enagementAde.overper, twitterperday.number1]
@@ -689,8 +645,8 @@ export default {
             markPoint: {
               data: [
                 {
-                  name: 'immigration percentage',
-                  xAxis: melbourne.overper,
+                  name: "immigration percentage",
+                  xAxis: enagement.overper,
                   yAxis: twitterperday.number1,
                   value: 'Melbourne'
                 }
@@ -700,15 +656,56 @@ export default {
         ]
       },
 
+      linechart6: {
+        title: "House Median Sale Price",
+        legend: {
+          data: ["Melbourne", "National"],
+        },
+        xtype: "category",
+        xdata: ["2014","2015","2016","2017","2018","2019"],
+        ydata: "($)",
+        series: [
+          {
+            name: "Melbourne",
+            type: "line",
+            data: house,
+          },
+          {
+            name: "National",
+            type: "line",
+            data: houseNa,
+          },
+        ],
+      },
+
+       linechart7: {
+        title: "Average petrol pump price",
+        legend: {
+          data: ["Melbourne", "National"],
+        },
+        xtype: "category",
+        xdata: ["2014","2015","2016","2017","2018","2019","2020","2021"],
+        ydata: "($)",
+        series: [
+          {
+            name: "Melbourne",
+            type: "line",
+            data: gas,
+          },
+          {
+            name: "National",
+            type: "line",
+            data: gasNa,
+          },
+        ],
+      },
+
       wordCloudChart: {
         title: 'Word Cloud chart of inflation',
         legend: {},
-        data: [
-          { value: enagement.income, name: '> $100,000' },
-          { value: 100 - enagement.income, name: '< $100,000' }
-        ]
-      }
-    }
+        data: this.sendWordCloudData('melb'),
+      },
+    };
   },
 
   methods: {
@@ -718,10 +715,61 @@ export default {
         num.toString().replace(/\d+/, function(s) {
           return s.replace(/(\d)(?=(\d{3})+$)/g, '$1,')
         })
-      )
-    }
-  }
-}
+      );
+    },
+    sendWordCloudData(city){
+      var result
+      $.ajax({
+        type:'GET',
+        url:"http://172.26.132.252:2889/wordCloud_data",
+        async:false,
+        dataType:'json',
+        success:function(data){
+          // console.log(data['data_line']);
+          // console.log(data)
+          result = data
+        },
+        error:function(){
+          alert("Cannot load the data")
+        }
+      });
+
+      var json_data = result[city]
+      var json_list = []
+      for (var i=0; i < json_data.length; i++){
+        var json_dict = {
+          name: json_data[i].name,
+          value: json_data[i].value,
+        }
+        json_list.push(json_dict)
+      }
+        
+      // console.log(json_list)
+      return json_list
+    },
+    piechartData(city, senti){
+      var result
+      $.ajax({
+        type:'GET',
+        url:"http://172.26.130.192:2889/sentiData",
+        async:false,
+        dataType:'json',
+        success:function(data){
+          // console.log(data['data_line']);
+          // console.log(data[city][senti])
+          result = data[city][senti]
+        },
+        error:function(){
+          alert("Cannot load the data")
+        }
+      });      
+
+      return result
+    }       
+  },
+
+  
+};
 </script>
 
 <style lang="scss" scoped>

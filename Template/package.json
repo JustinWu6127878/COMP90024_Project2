@@ -22,6 +22,7 @@
     "element-ui": "2.13.2",
     "highcharts": "^10.1.0",
     "highcharts-vue": "^1.4.0",
+    "jquery": "^3.6.0",
     "js-cookie": "2.2.0",
     "normalize.css": "7.0.0",
     "nprogress": "0.2.0",
@@ -29,7 +30,9 @@
     "ramda": "^0.28.0",
     "vue": "2.6.10",
     "vue-router": "3.0.6",
-    "vuex": "3.1.0"
+    "vue-text-format": "^1.2.6",
+    "vuex": "3.1.0",
+    "webpack": "^4.46.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "4.4.4",

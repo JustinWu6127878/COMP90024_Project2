@@ -75,10 +75,23 @@
             <div style="padding: 40px 0px;text-align: center;">
               <el-row :gutter="20">
                 <el-col :span="12">              <TableModel :row="inflationRow1" :column="inflationColumn1" /></el-col>
-                <el-col :span="12"><el-tab-pane label="Graphs" name="second">Inflation Grpahs</el-tab-pane></el-col>
-              </el-row>
+                <el-col :span="12">              <TableModel :row="inflationRow2" :column="inflationColumn2" /></el-col>
+         </el-row>
+         </el-tab-pane>
+                <el-tab-pane label="Graphs" name="second">
+                  <div class="chart-container">
+              <Linechart :chartsource="linechart1" />
+              <Linechart :chartsource="linechart2" />
             </div>
-          </el-tab-pane>
+         
+            <div class="chart-container">
+              <WordCloud :chartsource="wordCloudChart" />
+            </div>
+                  
+                  </el-tab-pane>
+              
+            </div>
+          
 
         </el-tabs>
       </div>
@@ -97,13 +110,26 @@ import Linechart from '@/components/Charts/linechart.vue'
 
 import Barchart from '@/components/Charts/barchart.vue'
 
+import WordCloud from  "@/components/Charts/wordCloud.vue";
+
 export default {
   components: {
     TableModel,
     Piechart,
     // Smallchart,
     Linechart,
-    Barchart
+    Barchart,
+    WordCloud
+  },
+
+  data() {
+    return {
+      activeNames: ["1", "2", "3"],
+      activeName1: "second",
+      activeName2: "second",
+      activeName3: "second",
+      // isshow: false,
+    };
   },
 
   props: [
@@ -129,6 +155,12 @@ export default {
 
     'inflationRow1',
     'inflationColumn1'
+    "inflationRow2",
+    "inflationColumn2",
+
+    "linechart1",
+    "linechart2",
+    "wordCloudChart"
 
   ],
 

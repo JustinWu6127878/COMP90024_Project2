@@ -260,6 +260,11 @@ export default {
           item: twitterperday.date4,
           num: twitterperday.number4,
         },
+        {
+          item: twitterperday.date5,
+          num: twitterperday.number5,
+        },
+
       ],
       enagementColumn2: [
         {

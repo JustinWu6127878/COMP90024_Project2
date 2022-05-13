@@ -492,8 +492,9 @@ export default {
               color: 'green'
             },
             data: [
-              [covid.rate, covid.active],
               [covidSyd.rate, covidSyd.active],
+              [covid.rate, covid.active],
+              
               [covidBris.rate, covidBris.active],
               [covidAde.rate, covidAde.active]
             ],
@@ -565,8 +566,9 @@ export default {
             name: 'higher than bachelor',
             type: 'line',
             data: [
-              [engagement.edu, (twitterperday.number1+twitterperday.number2+twitterperday.number3+twitterperday.number4+twitterperday.number5)/5],
               [engagementSyd.edu, (twitterperdaySyd.number1+twitterperdaySyd.number2+twitterperdaySyd.number3+twitterperdaySyd.number4+twitterperdaySyd.number5)/5],
+              [engagement.edu, (twitterperday.number1+twitterperday.number2+twitterperday.number3+twitterperday.number4+twitterperday.number5)/5],
+              
               [engagementBris.edu,(twitterperdayBris.number1+twitterperdayBris.number2+twitterperdayBris.number3+twitterperdayBris.number4+twitterperdayBris.number5)/5],
               [engagementAde.edu,(twitterperdayAde.number1+twitterperdayAde.number2+twitterperdayAde.number3+twitterperdayAde.number4+twitterperdayAde.number5)/5],
             ],
@@ -585,9 +587,10 @@ export default {
             name: "Persons earning >$1000 per week",
             type: "line",
             data: [
-              [engagement.income, (twitterperday.number1+twitterperday.number2+twitterperday.number3+twitterperday.number4+twitterperday.number5)/5],
+              
               [engagementSyd.income, (twitterperdaySyd.number1+twitterperdaySyd.number2+twitterperdaySyd.number3+twitterperdaySyd.number4+twitterperdaySyd.number5)/5],
               [engagementBris.income,(twitterperdayBris.number1+twitterperdayBris.number2+twitterperdayBris.number3+twitterperdayBris.number4+twitterperdayBris.number5)/5],
+              [engagement.income, (twitterperday.number1+twitterperday.number2+twitterperday.number3+twitterperday.number4+twitterperday.number5)/5],
               [engagementAde.income,(twitterperdayAde.number1+twitterperdayAde.number2+twitterperdayAde.number3+twitterperdayAde.number4+twitterperdayAde.number5)/5],
             ],
             markPoint: {
@@ -637,10 +640,11 @@ export default {
             name: 'immigration percentage',
             type: 'line',
             data: [
-              [engagement.overper, (twitterperday.number1+twitterperday.number2+twitterperday.number3+twitterperday.number4+twitterperday.number5)/5],
               [engagementSyd.overper, (twitterperdaySyd.number1+twitterperdaySyd.number2+twitterperdaySyd.number3+twitterperdaySyd.number4+twitterperdaySyd.number5)/5],
+              [engagement.overper, (twitterperday.number1+twitterperday.number2+twitterperday.number3+twitterperday.number4+twitterperday.number5)/5],
+              [engagementAde.overper, (twitterperdayAde.number1+twitterperdayAde.number2+twitterperdayAde.number3+twitterperdayAde.number4+twitterperdayAde.number5)/5],
               [engagementBris.overper, (twitterperdayBris.number1+twitterperdayBris.number2+twitterperdayBris.number3+twitterperdayBris.number4+twitterperdayBris.number5)/5],
-              [engagementAde.overper, (twitterperdayAde.number1+twitterperdayAde.number2+twitterperdayAde.number3+twitterperdayAde.number4+twitterperdayAde.number5)/5]
+              
             ],
             markPoint: {
               data: [

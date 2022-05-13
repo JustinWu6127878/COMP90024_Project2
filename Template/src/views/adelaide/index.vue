@@ -113,8 +113,8 @@ const house = [406000, 425000, 440000, 450000, 465000, 475000];
 const houseMel = [547500,555000, 610500, 665000, 732000, 712000];
 const houseNa = [460000, 480000, 500000, 525000, 553000, 545000];
 
-const covid = new Covid(39, 20000, 448, 95, 'adel');
-const covidMel = new Covid(125, 20000, 1630, 95, 'melb');
+const covid = new Covid(39, 4934, 448, 57.9, 'adel');
+const covidMel = new Covid(125, 1499, 1630, 54.9, 'melb');
 
 const adelaide = new CityOverview(
   "Adelaide",
@@ -405,7 +405,7 @@ export default {
           {
             name: "Cases",
             min: 0,
-            max: 80000,
+            max: 10000,
             splitNumber: 6,
           },
           {
@@ -416,8 +416,8 @@ export default {
           },
         ],
         xdata: ["Melbourne", "Adelaide"],
-        ydata1: [covidMel.active, covidMel.active],
-        ydata2: [covid.rate, covid.rate],
+        ydata1: [covidMel.active, covid.active],
+        ydata2: [covidMel.rate, covid.rate],
         yAxisIndex: 1,
         legend: ["Avtive cases", "Vaccination rate"],
       },

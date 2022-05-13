@@ -117,8 +117,8 @@ const house = [465000, 480000, 495000, 510000, 530000, 540000];
 const houseMel = [547500,555000, 610500, 665000, 732000, 712000];
 const houseNa = [460000, 480000, 500000, 525000, 553000, 545000];
 
-const covid = new Covid(125, 20000, 1630, 95, 'syd');
-const covidMel = new Covid(125, 20000, 1630, 95, 'melb');
+const covid = new Covid(51, 1110, 886, 57.1, 'bris');
+const covidMel = new Covid(125, 1499, 1630, 54.9, 'melb');
 
 const brisbane = new CityOverview(
   'Brisbane',
@@ -408,7 +408,7 @@ export default {
           {
             name: 'Cases',
             min: 0,
-            max: 80000,
+            max: 10000,
             splitNumber: 6
           },
           {

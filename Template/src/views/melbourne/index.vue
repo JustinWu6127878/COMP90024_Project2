@@ -116,10 +116,10 @@ const house = [547500,555000, 610500, 665000, 732000, 712000];
 
 const houseNa = [460000, 480000, 500000, 525000, 553000, 545000];
 
-const covid = new Covid(125, 20000, 1630, 95, 'melb');
-const covidSyd = new Covid(132, 20000, 2045, 95, 'syd');
-const covidBris = new Covid(51, 20000, 886, 95, 'bris');
-const covidAde = new Covid(39, 20000, 448, 95, 'adel');
+const covid = new Covid(125, 1499, 1630, 54.9, 'melb');
+const covidSyd = new Covid(132, 1733, 2045, 49.9, 'syd');
+const covidBris = new Covid(51, 1110, 886, 57.1, 'bris');
+const covidAde = new Covid(39, 4934, 448, 57.9, 'adel');
 
 const melbourne = new CityOverview(
   'Melbourne',
@@ -617,17 +617,17 @@ export default {
             name: "male percentage",
             type: "line",
             data: [
-              [engagement.male, twitterperday.number1],
-              [engagementSyd.male, twitterperdaySyd.number1],
-              [engagementBris.male, twitterperdayBris.number1],
-              [engagementAde.male, twitterperdayAde.number1]
+              [engagement.male, (twitterperday.number1+twitterperday.number2+twitterperday.number3+twitterperday.number4+twitterperday.number5)/5],
+              [engagementSyd.male, (twitterperdaySyd.number1+twitterperdaySyd.number2+twitterperdaySyd.number3+twitterperdaySyd.number4+twitterperdaySyd.number5)/5],
+              [engagementBris.male, (twitterperdayBris.number1+twitterperdayBris.number2+twitterperdayBris.number3+twitterperdayBris.number4+twitterperdayBris.number5)/5],
+              [engagementAde.male, (twitterperdayAde.number1+twitterperdayAde.number2+twitterperdayAde.number3+twitterperdayAde.number4+twitterperdayAde.number5)/5]
             ],
             markPoint: {
               data: [
                 {
                   name: 'male percentage',
                   xAxis: engagement.male,
-                  yAxis: twitterperday.number1,
+                  yAxis: (twitterperday.number1+twitterperday.number2+twitterperday.number3+twitterperday.number4+twitterperday.number5)/5,
                   value: 'Melbourne'
                 }
               ]
@@ -637,17 +637,17 @@ export default {
             name: 'immigration percentage',
             type: 'line',
             data: [
-              [engagement.overper, twitterperday.number1],
-              [engagementSyd.overper, twitterperday.number1],
-              [engagementBris.overper, twitterperday.number1],
-              [engagementAde.overper, twitterperday.number1]
+              [engagement.overper, (twitterperday.number1+twitterperday.number2+twitterperday.number3+twitterperday.number4+twitterperday.number5)/5],
+              [engagementSyd.overper, (twitterperdaySyd.number1+twitterperdaySyd.number2+twitterperdaySyd.number3+twitterperdaySyd.number4+twitterperdaySyd.number5)/5],
+              [engagementBris.overper, (twitterperdayBris.number1+twitterperdayBris.number2+twitterperdayBris.number3+twitterperdayBris.number4+twitterperdayBris.number5)/5],
+              [engagementAde.overper, (twitterperdayAde.number1+twitterperdayAde.number2+twitterperdayAde.number3+twitterperdayAde.number4+twitterperdayAde.number5)/5]
             ],
             markPoint: {
               data: [
                 {
                   name: "immigration percentage",
                   xAxis: engagement.overper,
-                  yAxis: twitterperday.number1,
+                  yAxis: (twitterperday.number1+twitterperday.number2+twitterperday.number3+twitterperday.number4+twitterperday.number5)/5,
                   value: 'Melbourne'
                 }
               ]

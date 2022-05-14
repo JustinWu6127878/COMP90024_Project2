@@ -30,18 +30,10 @@ function rateData() {
       console.log(sa3_vaccine_vic)
       result = sa3_vaccine_vic
     })
-  console.log(result)
+  console.log()
   return result
 
 }
-
-function round(value, precision) {
-  var multiplier = Math.pow(10, precision || 0);
-  return Math.round(value * multiplier) / multiplier;
-}
-
-rateData()
-
 
 var result = piechartData()
 const sumValues = obj => Object.values(obj).reduce((a, b) => a + b);
@@ -52,9 +44,9 @@ class Covid {
         this.active = active;
         this.clinincs = clinincs;
         this.rate = rate;
-        this.pos = round(100 * ((result[city]['pos'] / sumValues(result[city]))), 2);
-        this.neg = round(100 * ((result[city]['neg'] / sumValues(result[city]))), 2);
-        this.neu = round(100 * ((result[city]['neu'] / sumValues(result[city]))), 2);
+        this.pos = 100 * ((result[city]['pos'] / sumValues(result[city])));
+        this.neg = 100 * ((result[city]['neg'] / sumValues(result[city])));
+        this.neu = 100 * ((result[city]['neu'] / sumValues(result[city])));
     }
 }
 

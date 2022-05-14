@@ -53,8 +53,8 @@ class Covid {
         this.clinincs = clinincs;
         this.rate = rate;
         this.pos = round(100 * ((result[city]['pos'] / sumValues(result[city]))), 2);
-        this.neg = round(100 * ((result[city]['neg'] / sumValues(result[city]))), 2);
-        this.neu = round(100 * ((result[city]['neu'] / sumValues(result[city]))), 2);
+        this.neg = round(100 * ((result[city]['neg'] / sumValues(result[city]))), ;
+        this.neu = 100 * ((result[city]['neu'] / sumValues(result[city])));
     }
 }
 

@@ -109,11 +109,15 @@ const twitterperdayBris = new TwitterPerDay('bris');
 const twitterperdayAde = new TwitterPerDay('adel');
 
 const gas = [145.7, 126.3, 116.4, 128.7, 143.4, 141.1, 123.9, 147.6];
-
+const gasSyd = [149, 130.4, 117.6, 128.3, 143.6, 141.1, 123.2, 148.7];
+const gasAde = [146.4, 127.6, 114.6, 126.9, 141.6, 142.7, 120.7, 142.8];
+const gasBris = [151, 131.8, 119.8, 131.1, 145.3, 142.8, 124.5, 148.9];
 const gasNa = [148.8, 129.6, 117.8, 129.3, 144.3, 142, 123.4, 147.8];
 
 const house = [547500,555000, 610500, 665000, 732000, 712000];
-
+const houseSyd = [725000, 820000, 906000, 961001, 990000, 920000];
+const houseAde = [406000, 425000, 440000, 450000, 465000, 475000];
+const houseBris = [465000, 480000, 495000, 510000, 530000, 540000];
 const houseNa = [460000, 480000, 500000, 525000, 553000, 545000];
 
 const covid = new Covid(125, 1499, 1630, 54.9, 'melb');
@@ -202,7 +206,7 @@ export default {
       covidColumn2: [
         {
           prop: 'item',
-          label: 'Twitter comments in the state'
+          label: 'Tweet comments in the state'
         },
         {
           prop: 'num',
@@ -273,7 +277,7 @@ export default {
         },
         {
           prop: 'num',
-          label: 'Twitter regarding election in one day'
+          label: 'Tweet regarding election in one day'
         }
       ],
 
@@ -374,7 +378,7 @@ export default {
       ],
 
       piechart1: {
-        title: 'Twitter Comments',
+        title: 'Tweet Comments',
         legend: { data: ['Positive', 'Neutral', 'Negative'] },
         data: [
           { value: covid.pos, name: 'Positive' },
@@ -405,8 +409,8 @@ export default {
         title: 'Highest degree',
         legend: {},
         data: [
-          { value: engagement.edu, name: 'Higher than bechalor' },
-          { value: 100 - engagement.edu, name: 'Lower than bechalor' }
+          { value: engagement.edu, name: 'Higher than bachelor' },
+          { value: 100 - engagement.edu, name: 'Lower than bachelor' }
         ]
       },
       piechart5: {
@@ -560,7 +564,7 @@ export default {
         },
         xdata: [],
         xtype: "value",
-        ydata: "# of twitters of a day",
+        ydata: "# of tweets of a day",
         series: [
           {
             name: 'higher than bachelor',
@@ -614,7 +618,7 @@ export default {
         },
         xtype: "value",
         xdata: [],
-        ydata: '(# of twitters of a day)',
+        ydata: '(# of tweets of a day)',
         series: [
           {
             name: "male percentage",
@@ -663,7 +667,7 @@ export default {
       linechart6: {
         title: "House Median Sale Price",
         legend: {
-          data: ["Melbourne", "National"],
+          data: ["Melbourne", "National","Sydney","Adelaide","Brisbane"],
         },
         xtype: "category",
         xdata: ["2014","2015","2016","2017","2018","2019"],
@@ -679,13 +683,28 @@ export default {
             type: "line",
             data: houseNa,
           },
+          {
+            name: "Sydney",
+            type: "line",
+            data: houseSyd,
+          },
+          {
+            name: "Adelaide",
+            type: "line",
+            data: houseAde,
+          },
+          {
+            name: "Brisbane",
+            type: "line",
+            data: houseBris,
+          },
         ],
       },
 
        linechart7: {
         title: "Average petrol pump price",
         legend: {
-          data: ["Melbourne", "National"],
+          data: ["Melbourne", "National","Sydney","Adelaide","Brisbane"],
         },
         xtype: "category",
         xdata: ["2014","2015","2016","2017","2018","2019","2020","2021"],
@@ -700,6 +719,21 @@ export default {
             name: "National",
             type: "line",
             data: gasNa,
+          },
+          {
+            name: "Sydney",
+            type: "line",
+            data: gasSyd,
+          },
+          {
+            name: "Adelaide",
+            type: "line",
+            data: gasAde,
+          },
+          {
+            name: "Brisbane",
+            type: "line",
+            data: gasBris,
           },
         ],
       },

@@ -200,7 +200,7 @@ export default {
       covidColumn2: [
         {
           prop: 'item',
-          label: 'Twitter comments in the state'
+          label: 'Tweet comments in the state'
         },
         {
           prop: 'num',
@@ -270,7 +270,7 @@ export default {
         },
         {
           prop: 'num',
-          label: 'Twitter regarding election in one day'
+          label: 'Tweet regarding election in one day'
         }
       ],
 
@@ -372,7 +372,7 @@ export default {
 
 
       piechart1: {
-        title: 'Twitter Comments',
+        title: 'Tweet Comments',
         legend: { data: ['Positive', 'Neutral', 'Negative'] },
         data: [
           { value: covid.pos, name: 'Positive' },
@@ -382,7 +382,7 @@ export default {
       },
 
       barchart1: {
-        title: "Twitter comments comparison",
+        title: "Tweet comments comparison",
         xLabel: { rotate: 0 },
         yAxis: {},
         xdata: ['Positive', 'Neutral', 'Negative'],
@@ -426,7 +426,7 @@ export default {
       },
 
       barchart4: {
-        title: "Twitter regarding policy",
+        title: "Tweet regarding policy",
         xdata: [
           twitterperday.date1,
           twitterperday.date2,
@@ -491,7 +491,7 @@ export default {
           "No qualification",
           "Not stated",
         ],
-        xLabel: { rotate: 0 },
+        xLabel: { rotate: 30 },
         yAxis: {},
         ydata1: degree,
         ydata2: degreeMel,

@@ -46,9 +46,10 @@ export default {
               color: '#2277D2'
             }
           },
-          // tooltip : {
-          //     trigger: 'axis'
-          // },
+          tooltip : {
+              trigger: 'axis',
+              backgroundColor: 'white',
+          },
           legend: {
             data: this.chartsource.legend.data,
             left: 'center',

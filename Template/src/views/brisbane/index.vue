@@ -489,7 +489,7 @@ export default {
           "No qualification",
           "Not stated",
         ],
-        xLabel: { rotate: 0},
+        xLabel: { rotate: 30},
         yAxis: {},
         ydata1: degree,
         ydata2: degreeMel,
@@ -531,6 +531,8 @@ export default {
         xtype: "category",
         xdata: ["2014","2015","2016","2017","2018","2019","2020","2021"],
         ydata: "($)",
+        min:110,
+        max:160,
         series: [
           {
             name: "Brisbane",

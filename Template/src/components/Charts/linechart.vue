@@ -66,10 +66,10 @@ export default {
               axisTick: {
                 show: false
               },
-              name: this.chartsource.xdata,
-              nameLocation: 'middle',
-              nameTextStyle: { padding: 10
-              }
+              data: this.chartsource.xdata,
+              // nameLocation: 'middle',
+              // nameTextStyle: { padding: 10
+              // }
             }
           ],
           yAxis: [

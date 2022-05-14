@@ -24,6 +24,8 @@ function round(value, precision) {
   return Math.round(value * multiplier) / multiplier;
 }
 
+
+
 var result = piechartData()
 const sumValues = obj => Object.values(obj).reduce((a, b) => a + b);
 

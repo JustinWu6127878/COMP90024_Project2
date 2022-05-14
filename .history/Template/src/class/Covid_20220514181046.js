@@ -19,10 +19,13 @@ function piechartData(){
     return result
 }   
   
+
 function round(value, precision) {
   var multiplier = Math.pow(10, precision || 0);
   return Math.round(value * multiplier) / multiplier;
 }
+
+
 
 var result = piechartData()
 const sumValues = obj => Object.values(obj).reduce((a, b) => a + b);

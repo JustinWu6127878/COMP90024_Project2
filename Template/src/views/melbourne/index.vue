@@ -326,7 +326,7 @@ export default {
 
       inflationRow2: [
         {
-          item: "Average petrol pump prices",
+          item: "Average gasoline pump prices",
           year1: gas[0],
           year2: gas[1],
           year3: gas[2],
@@ -624,6 +624,7 @@ export default {
         xtype: "value",
         xdata: [],
         ydata: '(# of tweets of a day)',
+       
         series: [
           {
             name: "male percentage",
@@ -707,7 +708,7 @@ export default {
       },
 
        linechart7: {
-        title: "Average petrol pump price",
+        title: "Average gasoline pump price",
         legend: {
           data: ["Melbourne", "National","Sydney","Adelaide","Brisbane"],
         },

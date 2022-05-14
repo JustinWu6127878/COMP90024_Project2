@@ -429,23 +429,25 @@ export default {
         },
         xtype: "value",
         xdata: [],
-        ydata: '(Positive comments%)',
+        ydata: '(Negative comments%)',
+        min: 28.4,
+        max: 28.9,
         series: [
           {
             name: "Hundreds of hospitals",
             type: "line",
             data: [
-              [covid.hos/100, covid.pos],
-              [covidSyd.hos/100 , covidSyd.pos],
-              [covidBris.hos/100 , covidBris.pos],
-              [covidAde.hos/100 , covidAde.pos],
+              [covid.hos/100, covid.neg],
+              [covidSyd.hos/100 , covidSyd.neg],
+              [covidBris.hos/100 , covidBris.neg],
+              [covidAde.hos/100 , covidAde.neg],
             ],
             markPoint: {
               data: [
                 {
                   name: "Hundreds of hospitals",
                   xAxis: covid.hos/100 ,
-                  yAxis: covid.pos,
+                  yAxis: covid.neg,
                   value: 'Melbourne'
                 }
               ]
@@ -455,17 +457,18 @@ export default {
             name: "Thousands of Vaccination clinics",
             type: "line",
             data: [
-              [covid.clinincs/1000 , covid.pos],
-              [covidSyd.clinincs/1000 , covidSyd.pos],
-              [covidBris.clinincs/1000 , covidBris.pos],
-              [covidAde.clinincs/1000 , covidAde.pos],
+              
+              [covidSyd.clinincs/1000 , covidSyd.neg],
+              [covid.clinincs/1000 , covid.neg],
+              [covidBris.clinincs/1000 , covidBris.neg],
+              [covidAde.clinincs/1000 , covidAde.neg],
             ],
             markPoint: {
               data: [
                 {
                   name: "Thousands of Vaccination clinics",
                   xAxis: covid.clinincs/1000,
-                  yAxis: covid.pos,
+                  yAxis: covid.neg,
                   value: "Melbourne",
                 },
               ],
@@ -519,14 +522,16 @@ export default {
       linechart3: {
         title: 'Positive comments vs Active cases',
         legend: {
-          data: ['Active cases in the state']
+          data: ['Active cases per 1,000,000 in the state']
         },
         xtype: "value",
         xdata: [],
-        ydata: '(Positive %)',
+        ydata: '(Negative comments %)',
+        min: 28.4,
+        max: 28.9,
         series: [
           {
-            name: 'Active cases in the state',
+            name: 'Active cases per 1,000,000 in the state',
             type: 'line',
             itemStyle: {
               normal: {
@@ -538,17 +543,17 @@ export default {
               color: 'purple'
             },
             data: [
-              [covid.active, covid.pos],
-              [covidSyd.active, covidSyd.pos],
-              [covidBris.active, covidBris.pos],
-              [covidAde.active, covidAde.pos]
+              [covid.active/melbourne.pop*1000000, covid.neg],
+              [covidSyd.active/5312163*1000000, covidSyd.neg],
+              [covidBris.active/2514184*1000000, covidBris.neg],
+              [covidAde.active/1359760*1000000, covidAde.neg]
             ],
             markPoint: {
               data: [
                 {
-                  name: 'Active cases in the state',
-                  xAxis: covid.active,
-                  yAxis: covid.pos,
+                  name: 'Active cases per 1,000,000 in the state',
+                  xAxis: covid.active/melbourne.pop*1000000,
+                  yAxis: covid.neg,
                   value: 'Melbourne'
                 }
               ]

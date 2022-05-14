@@ -77,7 +77,10 @@ export default {
               axisTick: {
                 show: false
               },
-              name: this.chartsource.ydata
+              name: this.chartsource.ydata,
+              min: this.chartsource.min,
+              max: this.chartsource.max,
+
             }
           ],
           series: this.chartsource.series

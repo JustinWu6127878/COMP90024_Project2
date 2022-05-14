@@ -423,7 +423,7 @@ export default {
       },
 
       linechart1: {
-        title: 'Positive comments vs Medical facilities',
+        title: 'Negative comments vs Medical facilities',
         legend: {
           data: ["Hundreds of hospitals", "Thousands of Vaccination clinics"],
         },
@@ -520,7 +520,7 @@ export default {
       },
 
       linechart3: {
-        title: 'Positive comments vs Active cases',
+        title: 'Negative comments vs Active cases',
         legend: {
           data: ['Active cases per 1,000,000 in the state']
         },

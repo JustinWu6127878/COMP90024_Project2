@@ -5,8 +5,9 @@ from textblob import TextBlob
 import re
 import time
 import sys
+import logging
 
-# 改一下自己的
+
 consumer_key = 'KE67SJbQMuD1b0Ytl6YwXRNQl'
 consumer_secret = 'A5orkbgnSeROt3iou1j2gbGNXBrSqw5RSOzNUkPXPco1Z3KjYY'
 access_token = '760152742140579841-i2QA4e2eYp38cSJqNAY956YRm6QaWz8'
@@ -18,12 +19,12 @@ try:
 except Exception as e:
     print(e) 
 
-# 也改一下自己的
-# Change to your database, if the dabase exist
-
-
-# if the databse does not exist, use couchServer.create()
-# db
+logging.basicConfig(level=logging.DEBUG #设置日志输出格式
+                    ,stream=sys.stdout
+                    ,format="%(asctime)s - %(name)s - %(levelname)-9s - %(filename)-8s : %(lineno)s line - %(message)s" #日志输出的格式
+                    # -8表示占位符，让输出左对齐，输出长度都为8位
+                    ,datefmt="%Y-%m-%d %H:%M:%S" 
+                    )
 
 def clean_tweet(tweet):
     return ' '.join(re.sub("(@[A-Za-z0-9]+) | ([^0-9A-Za-z \t]) | (\w+:\/\/\S+)", " ", tweet).split())
@@ -75,13 +76,15 @@ class MyStream(tw.Stream):
             }
             # print(item)
             db.save(item)
+            logging.info('New tweet save: ' + str(tweet['id']))
+            time.sleep(10)
 
         except Exception as e:
             print(e)
        
     def on_error(self, status_code):
 
-        print(status_code)
+        logging.error(status_code)
 
         if status_code == 420:
             time.sleep(10)
@@ -118,13 +121,14 @@ if __name__ == '__main__':
     else:
         print('wrong argv')
         exit(1)
-
+    logging.info('Connect to DB')
     try:
         db_key = 'vacc_' + sys.argv[1]
         db = couchServer[db_key]
     except Exception as e:
         print(e)
-
+        
+    logging.info('Start streaming')
     myStream.filter(track=['vaccination', 'pfizer','moderna','AstraZeneca'], locations=pos,languages=['en'])
 
 

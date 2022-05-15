@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
+rm front_end/.env
+touch front_end/.env
 
-ansible-playbook -i inventory/host.ini -u ubuntu  test.yaml
+ansible-playbook test.yaml

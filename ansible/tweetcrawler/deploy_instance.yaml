@@ -6,7 +6,6 @@
 
   roles:
     - role: common
-    # - role: show_images
     - role: create_security_group
     - role: create_instance
 

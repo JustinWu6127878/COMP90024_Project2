@@ -1,0 +1,14 @@
+---
+- name: Copy files
+  copy:
+    src: .env
+    dest: /home/ubuntu/comp90024-project2/Webserver/
+
+- name: chmod setup
+  become: true
+  shell: chmod +x /home/ubuntu/comp90024-project2/Webserver/setup.sh
+
+- name: run flask
+  ansible.builtin.shell:
+    chdir: /home/ubuntu/comp90024-project2/Webserver/
+    cmd: sh setup.sh

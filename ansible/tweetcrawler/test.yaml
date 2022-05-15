@@ -1,5 +1,5 @@
 ---
-- hosts: TweetCrawler
+- hosts: localhost
 
   roles:
-     - run_crawler
+     - print_line

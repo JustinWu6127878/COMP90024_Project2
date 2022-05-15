@@ -7,11 +7,19 @@ import re
 import time
 import sys
 import random
+import logging
 # 改一下自己的
 consumer_key = 'NdUZlILXc2tfu4L2PIMmhaETf'
 consumer_secret = 'rH8RKWEpvOI2h6ojBM3VkCk0pHfFc0sB2zu2GDz3oW3uhQFgkE'
 access_token = '1256582863622778880-v4eFANNXxTh9vXuHTG7r7vtueqGNSr'
 access_secret = 'g1IrXJi200uX2eaZ1pVxdlgWIuiQD3EweznRCaScdeNxp'
+
+logging.basicConfig(level=logging.DEBUG #设置日志输出格式
+                    ,stream=sys.stdout
+                    ,format="%(asctime)s - %(name)s - %(levelname)-9s - %(filename)-8s : %(lineno)s line - %(message)s" #日志输出的格式
+                    # -8表示占位符，让输出左对齐，输出长度都为8位
+                    ,datefmt="%Y-%m-%d %H:%M:%S" 
+                    )
 
 db_address = 'http://admin:123456@172.26.134.164:5984/'
 try:
@@ -74,15 +82,16 @@ class MyStream(tw.Stream):
                 'lang': tweet['lang'],
                 'sentiment': get_tweet_sentiment(raw_text)              
             }
-            # print(item)
+            logging.info('New tweet save: ' + str(tweet['id']))
             db.save(item)
+            
 
         except Exception as e:
             print(e)
        
     def on_error(self, status_code):
 
-        print(status_code)
+        logging.error(status_code)
 
         if status_code == 420:
             time.sleep(100)
@@ -120,12 +129,13 @@ if __name__ == '__main__':
         print('wrong argv')
         exit(1)
     # test function
+    logging.info('Connect to DB')
     try:
         db_key = 'government_' + sys.argv[1]
         db = couchServer[db_key]
     except Exception as e:
         print(e)
-
+    logging.info('Start streaming')
     myStream.filter(track=['scott morrison', 'scomo', 'Australian prime minister', 'Daniel Andrews', 'premier of victoria'], locations=pos,languages=['en'])
 
 

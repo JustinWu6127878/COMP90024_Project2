@@ -7,6 +7,7 @@ import re
 import time
 import sys
 import random
+import logging
 # 改一下自己的
 consumer_key = 'u0q3hIrh4nY9VuuLfayxm9dXo'
 consumer_secret = 'JvL0zud8wdIvAYwMbVxsfwEMLlbJIW0fHYc58qqRZMeAIoXLSZ'
@@ -19,12 +20,12 @@ try:
 except Exception as e:
     print(e) 
 
-# 也改一下自己的
-# Change to your database, if the dabase exist
-
-
-# if the databse does not exist, use couchServer.create()
-# db
+logging.basicConfig(level=logging.DEBUG #设置日志输出格式
+                    ,stream=sys.stdout
+                    ,format="%(asctime)s - %(name)s - %(levelname)-9s - %(filename)-8s : %(lineno)s line - %(message)s" #日志输出的格式
+                    # -8表示占位符，让输出左对齐，输出长度都为8位
+                    ,datefmt="%Y-%m-%d %H:%M:%S" 
+                    )
 
 def clean_tweet(tweet):
     return ' '.join(re.sub("(@[A-Za-z0-9]+) | ([^0-9A-Za-z \t]) | (\w+:\/\/\S+)", " ", tweet).split())
@@ -74,16 +75,16 @@ class MyStream(tw.Stream):
                 'lang': tweet['lang'],
                 'sentiment': get_tweet_sentiment(raw_text)              
             }
-            # print(item)
+            logging.info('New tweet save: ' + str(tweet['id']))
             db.save(item)
+            
 
         except Exception as e:
             print(e)
        
     def on_error(self, status_code):
 
-        print(status_code)
-
+        logging.error(status_code)
         if status_code == 420:
             time.sleep(100)
         elif status_code == 429:
@@ -91,6 +92,7 @@ class MyStream(tw.Stream):
         else:
             time.sleep(10)
 
+myStream = MyStream(consumer_key, consumer_secret, access_token, access_secret)
 
 if __name__ == '__main__':
     myStream = MyStream(consumer_key, consumer_secret, access_token, access_secret)
@@ -119,12 +121,13 @@ if __name__ == '__main__':
         print('wrong argv')
         exit(1)
     # test function
+    logging.info('Connect to DB')
     try:
         db_key = 'government_' + sys.argv[1]
         db = couchServer[db_key]
     except Exception as e:
         print(e)
-
+    logging.info('Start streaming')
     myStream.filter(track=['scott morrison', 'scomo', 'Australian prime minister', 'Daniel Andrews', 'premier of victoria'], locations=pos,languages=['en'])
 
 

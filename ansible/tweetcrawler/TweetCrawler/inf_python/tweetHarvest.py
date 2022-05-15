@@ -7,6 +7,7 @@ import re
 import time
 import sys
 import random
+import logging
 
 consumer_key = 'ZtJZdF62MWvcELinEo8fVMPIm'
 consumer_secret = 'ppkhNPXppe2B8rrRbGIQvWWH7FsJil7b9YPEY8gni0Ks1IMYYZ'
@@ -19,6 +20,12 @@ try:
 except Exception as e:
     print(e) 
 
+logging.basicConfig(level=logging.DEBUG #设置日志输出格式
+                    ,stream=sys.stdout
+                    ,format="%(asctime)s - %(name)s - %(levelname)-9s - %(filename)-8s : %(lineno)s line - %(message)s" #日志输出的格式
+                    # -8表示占位符，让输出左对齐，输出长度都为8位
+                    ,datefmt="%Y-%m-%d %H:%M:%S" 
+                    )
 
 
 def clean_tweet(tweet):
@@ -71,6 +78,7 @@ class MyStream(tw.Stream):
             }
             # print(item)
             db.save(item)
+            logging.info('New tweet save: ' + str(tweet['id']))
             time.sleep(30)
 
         except Exception as e:
@@ -78,7 +86,7 @@ class MyStream(tw.Stream):
        
     def on_error(self, status_code):
 
-        print(status_code)
+        logging.error(status_code)
 
         if status_code == 420:
             time.sleep(100)
@@ -116,12 +124,14 @@ if __name__ == '__main__':
         print('wrong argv')
         exit(1)
 
+    logging.info('Connect to DB')
     try:
         db_key = 'inflation_' + sys.argv[1]
         db = couchServer[db_key]
     except Exception as e:
         print(e)
-
+    
+    logging.info('Start streaming')
     myStream.filter(track=['inflation'], locations=pos,languages=['en'])
 
 

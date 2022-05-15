@@ -1,63 +1,78 @@
 ---
-- name: Copy files
+- name: Copy github key
   copy:
-    src: TweetCrawler
-    dest: /home/ubuntu/
+    src: keys/GithubKey
+    dest: /home/ubuntu/.ssh
+    mode: 0600
 
-    
+# - name: chmod key
+#   ansible.builtin.shell:
+#     chdir: /home/ubuntu/.ssh/
+#     cmd: chmod 600 GithubKey
+
+- name: configure ssh to use ansible key for github.com
+  template:
+    src: config/ssh_config
+    dest: /home/ubuntu/.ssh/config
+    mode: 0644
+
+- name: git clone
+  ansible.builtin.shell:
+    chdir: /home/ubuntu/
+    cmd: git clone git@github.com:kaichengw1/comp90024-project2.git --config core.sshCommand="ssh -i /home/ubuntu/.ssh/GithubKey"
 
 - name: chmod inf_python
   become: true
-  shell: chmod +x /home/ubuntu/TweetCrawler/inf_python/setup.sh
+  shell: chmod +x /home/ubuntu/comp90024-project2/TweetCrawler/inf_python/setup.sh
 
 - name: chmod inf_python_v2
   become: true
-  shell: chmod +x /home/ubuntu/TweetCrawler/inf_python_v2/setup.sh
+  shell: chmod +x /home/ubuntu/comp90024-project2/TweetCrawler/inf_python_v2/setup.sh
 
 - name: chmod government_python
   become: true
-  shell: chmod +x /home/ubuntu/TweetCrawler/government_python/setup.sh
+  shell: chmod +x /home/ubuntu/comp90024-project2/TweetCrawler/government_python/setup.sh
 
 - name: chmod government_python_v2
   become: true
-  shell: chmod +x /home/ubuntu/TweetCrawler/government_python_v2/setup.sh
+  shell: chmod +x /home/ubuntu/comp90024-project2/TweetCrawler/government_python_v2/setup.sh
 
 - name: chmod vacc_python
   become: true
-  shell: chmod +x /home/ubuntu/TweetCrawler/vacc_python/setup.sh
+  shell: chmod +x /home/ubuntu/comp90024-project2/TweetCrawler/vacc_python/setup.sh
 
 - name: chmod vacc_python_v2
   become: true
-  shell: chmod +x /home/ubuntu/TweetCrawler/vacc_python_v2/setup.sh
+  shell: chmod +x /home/ubuntu/comp90024-project2/TweetCrawler/vacc_python_v2/setup.sh
 
 
 
 - name: run governmentnment crawler v1
   ansible.builtin.shell:
-    chdir: /home/ubuntu/TweetCrawler/government_python/
+    chdir: /home/ubuntu/comp90024-project2/TweetCrawler/government_python/
     cmd: sh setup.sh
 
 - name: run governmentnment crawler v2
   ansible.builtin.shell:
-    chdir: /home/ubuntu/TweetCrawler/government_python_v2/
+    chdir: /home/ubuntu/comp90024-project2/TweetCrawler/government_python_v2/
     cmd: sh setup.sh
 
 - name: run inflation crawler v1
   ansible.builtin.shell:
-    chdir: /home/ubuntu/TweetCrawler/inf_python/
+    chdir: /home/ubuntu/comp90024-project2/TweetCrawler/inf_python/
     cmd: sh setup.sh
 
 - name: run inflation crawler v2
   ansible.builtin.shell:
-    chdir: /home/ubuntu/TweetCrawler/inf_python_v2/
+    chdir: /home/ubuntu/comp90024-project2/TweetCrawler/inf_python_v2/
     cmd: sh setup.sh
 
 - name: run vaccination crawler v1
   ansible.builtin.shell:
-    chdir: /home/ubuntu/TweetCrawler/vacc_python/
+    chdir: /home/ubuntu/comp90024-project2/TweetCrawler/vacc_python/
     cmd: sh setup.sh
 
 - name: run vaccination crawler v2
   ansible.builtin.shell:
-    chdir: /home/ubuntu/TweetCrawler/vacc_python_v2/
+    chdir: /home/ubuntu/comp90024-project2/TweetCrawler/vacc_python_v2/
     cmd: sh setup.sh

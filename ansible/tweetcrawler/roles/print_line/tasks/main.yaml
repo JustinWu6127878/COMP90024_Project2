@@ -1,0 +1,4 @@
+- lineinfile:
+    path: front_end/.env
+    line: "VUE_APP_BACKEND_URL = 'http://172.26.123123213:2889'"
+    create: yes

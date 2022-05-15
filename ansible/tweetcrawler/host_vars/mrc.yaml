@@ -13,6 +13,8 @@ security_groups:
     description: "HTTP"
   - name: simple_docker
     description: "simple_docker"
+  - name: Flask
+  - name: Webserver
 
 
 

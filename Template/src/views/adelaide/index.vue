@@ -1,35 +1,34 @@
 <template>
   <div class="dashboard-container">
-      <div class="dashboard-intro">
-        <div class="background">
-          <div class="dashboard-title">
-            <h1 style="color: #2277d2">{{ adelaide.name }}</h1>
-            <p class="white">State:</p>
-            <p style="color: #2277d2">{{ adelaide.state }}</p>
-          </div>
-
-          <div class="dashboard-overview">
-            <p class="white">
-              Total population:
-              <b>{{ milliFormat(adelaide.pop) }} </b>
-            </p>
-            <p class="white">
-              Born overseas:
-              <b>{{ milliFormat(adelaide.over) }}</b>
-            </p>
-            <p class="white">
-              Age 50+ percentage: <b>{{ adelaide.age50 + "%" }}</b>
-            </p>
-            <p class="white">
-              Age 60+ percentage: <b>{{ adelaide.age65 + "%" }}</b>
-            </p>
-            <p class="white">
-              Median annual income:
-              <b>{{ "$" + milliFormat(adelaide.income) }}</b>
-            </p>
-          </div>
+    <div class="dashboard-intro">
+      <div class="background">
+        <div class="dashboard-title">
+          <h1 style="color: #2277d2"> ADELAIDE </h1>
+          <p class="white">STATE:</p>
+          <p style="color: #2277d2">{{ adelaide.state }}</p>
+        </div>
+        <div class="dashboard-overview" style="border-left: 2px solid #2277d2;padding: 20px;text-align: left;">
+          <p class="white">
+            Total population:
+            <b>{{ milliFormat(adelaide.pop) }} </b>
+          </p>
+          <p class="white">
+            Born overseas:
+            <b>{{ milliFormat(adelaide.over) }}</b>
+          </p>
+          <p class="white">
+            Age 50+ percentage: <b>{{ adelaide.age50 + "%" }}</b>
+          </p>
+          <p class="white">
+            Age 60+ percentage: <b>{{ adelaide.age65 + "%" }}</b>
+          </p>
+          <p class="white">
+            Median annual income:
+            <b>{{ "$" + milliFormat(adelaide.income) }}</b>
+          </p>
         </div>
       </div>
+    </div>
 
     <el-divider />
 
@@ -591,19 +590,25 @@ export default {
 <style lang="scss" scoped>
 // 新增开始
 .white {
+
+  margin: 0;
   color: #fff;
 }
 .background {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: rgba(0, 0, 0, 0.5) !important;
 }
 .dashboard-title{
   padding: 30px;
+
 }
 .dashboard-intro {
   margin-left: 0 !important;
   text-align: center;
-  background: url(./Adelaide.jpeg);
-  background-size: contain;
+  background: url(./try.jpg);
+  background-size: 100%;
 }
 .dashboard-container[data-v-35bc3b10] {
     position: relative;

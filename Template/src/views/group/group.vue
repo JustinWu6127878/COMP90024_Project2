@@ -2,21 +2,18 @@
   <div style="background-color: #f8f8f8;text-align: center;">
     <div style="padding: 20px 20px;background-color:#f8f8f8 ;">
       <div>
-        <img src="./testtest.jpeg" width="40%" height="270px" style="border-radius:10px;">
-      </div>
-      <div>
-        <h1 style="color: #2277D2;">About</h1>
+        <img src="./cloudtest.jpg" width="100%" style="border-radius:10px;">
+        <h1 style="color: #2277D2; font-family: Sans;font-size: 40px;">ABOUT</h1>
         <p style="color: #a2a2a2;">{{ about }}</p>
       </div>
 
-      <img src="./cloud.jpeg" width="40%" height="270px" style="border-radius:10px;">
-      <h1 style="color: #2277D2;">Group 35</h1>
+      <h1 style="color: #2277D2; font-family: Sans;font-size: 40px;">GROUP 35</h1>
     </div>
     <div>
       <div v-for="(item,index) in teamMembers" :key="index" class="Member">
         <img :src="item.img">
         <h2>{{ item.name }}</h2>
-        <p style="color: #a2a2a2;">{{ about }}</p>
+        <p style="color: #a2a2a2;">{{ try1 }}</p>
       </div>
     </div>
   </div>
@@ -27,22 +24,23 @@
 export default {
   data() {
     return {
-      about: 'This website shows the results of COMP90024 Assignment2',
+      about: 'This website presents the analysis of Twitter data on Melbourne liveability from Group 35 in COMP90024. They comprehensively consider the inflation, medical level and election participation of the 4 cities. Line charts, pie charts, tables and word cloud graphs are used to present their cloud computing data results.',
+      try1: ' ',
       teamMembers: [
-        { name: 'Member1',
-          img: require('./member1.jpeg')
+        { name: 'KAICHENG WU',
+          img: require('./1.png')
         },
-        { name: 'Member2',
-          img: require('./member2.jpeg')
+        { name: 'JUNJIE WU',
+          img: require('./2.png')
         },
-        { name: 'Member3',
-          img: require('./member3.jpeg')
+        { name: 'ZIQIU HUANG',
+          img: require('./3.png')
         },
-        { name: 'Member4',
-          img: require('./member4.jpeg')
+        { name: 'JIAYI DAI',
+          img: require('./4.png')
         },
-        { name: 'Member5',
-          img: require('./member5.jpeg')
+        { name: 'YIFAN XIN',
+          img: require('./5.png')
         }
 
       ]
@@ -52,6 +50,9 @@ export default {
 </script>
 
 <style scoped>
+
+
+
 
 .group-about {
   font-size: 40px;

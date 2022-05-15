@@ -1,37 +1,32 @@
 <template>
   <div class="dashboard-container">
-    <div style="display: flex">
-      <div class="dashboard-intro">
+    <div class="dashboard-intro">
+      <div class="background">
         <div class="dashboard-title">
-          <h1 style="color:#2277D2">{{ sydney.name }}</h1>
-          <p>State:</p>
-          <p>{{ sydney.state }}</p>
+          <h1 style="color: #2277d2"> SYDNEY </h1>
+          <p class="white">STATE:</p>
+          <p style="color: #2277d2">{{ sydney.state }}</p>
         </div>
-
-        <div class="dashboard-overview">
-          <p>
+        <div class="dashboard-overview" style="border-left: 2px solid #2277d2;padding: 20px;text-align: left;">
+          <p class="white">
             Total population:
             <b>{{ milliFormat(sydney.pop) }} </b>
           </p>
-          <p>
+          <p class="white">
             Born overseas:
             <b>{{ milliFormat(sydney.over) }}</b>
           </p>
-          <p>
+          <p class="white">
             Age 50+ percentage: <b>{{ sydney.age50 + "%" }}</b>
           </p>
-          <p>
+          <p class="white">
             Age 60+ percentage: <b>{{ sydney.age65 + "%" }}</b>
           </p>
-          <p>
+          <p class="white">
             Median annual income:
             <b>{{ "$" + milliFormat(sydney.income) }}</b>
           </p>
         </div>
-      </div>
-
-      <div class="dashboard-image">
-        <img src="./Sydney.jpeg" height="700px" width="400px">
       </div>
     </div>
 
@@ -625,6 +620,41 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+.white {
+
+  margin: 0;
+  color: #fff;
+}
+.background {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5) !important;
+}
+.dashboard-title{
+  padding: 30px;
+
+}
+.dashboard-intro {
+  margin-left: 0 !important;
+  text-align: center;
+  background: url(./try1.jpg);
+  background-size: 100%;
+}
+.dashboard-container[data-v-078753dd] {
+    position: relative;
+    margin: 0px !important;
+    width: 100% !important;
+}
+.dashboard-topics{
+  padding: 0 40px;
+}
+.dashboard-collapse{
+  padding: 0 40px;
+}
+
+
 .dashboard {
   &-container {
     position: relative;

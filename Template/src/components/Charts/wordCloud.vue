@@ -1,6 +1,6 @@
 <template>
   <!-- 为 ECharts 准备一个具备大小（宽高）的 DOM -->
-  <div id="chartWordCloud" class="line-wrap"></div>
+  <div id="chartWordCloud" class="line-wrap" />
 </template>
  
 <script>
@@ -29,7 +29,14 @@ export default {
       let option = {
         title:{
           text: this.chartsource.title,
-          x:"center"
+          x:"center",
+          textStyle: { // 主标题文本样式{"fontSize": 18,"fontWeight": "bolder","color": "#333"}
+                     fontFamily: 'Arial',
+                     fontSize: 24,
+                     fontStyle: 'normal',
+                     fontWeight: 'bold',
+                     color:'#2277D2'
+                 }
         },
         tooltip: {
             show: true

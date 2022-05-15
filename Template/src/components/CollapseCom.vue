@@ -84,6 +84,7 @@
               <Linechart :chartsource="linechart1" />
               <Linechart :chartsource="linechart2" />
             </div>
+            <el-divider></el-divider>
          
             <div class="chart-container">
               <WordCloud :chartsource="wordCloudChart" />

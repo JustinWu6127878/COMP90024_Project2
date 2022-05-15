@@ -1,0 +1,12 @@
+FROM python:3.8
+
+RUN mkdir /data_ana
+
+WORKDIR /data_ana
+
+COPY requirements.txt inflation_update.py ./
+
+RUN pip install --no-cache-dir -r requirements.txt
+
+ENTRYPOINT ["python", "inflation_update.py"]
+

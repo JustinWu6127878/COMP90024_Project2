@@ -1,7 +1,7 @@
 import couchdb
 
 
-map_fun = "function (doc) { var words = doc.created_at.split(' '); emit(words.slice(0, 3).join(' '));}"
+map_fun = "function (doc) { var words = doc.created_at.split(' '); emit(words.slice(1, 3).join(' '));}"
 
 _doc = {
     "_id": "_design/created_at",
@@ -13,7 +13,7 @@ _doc = {
     }
 }
 
-db_address = 'http://admin:123456@172.26.132.252:5984/'
+db_address = 'http://admin:123456@localhost:5984/'
 
 try:
     couchServer =  couchdb.Server(db_address)

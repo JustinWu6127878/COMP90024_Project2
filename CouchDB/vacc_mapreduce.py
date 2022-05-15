@@ -10,7 +10,7 @@ _doc = {
     }
 }
 
-db_address = 'http://admin:123456@172.26.132.252:5984/'
+db_address = 'http://admin:123456@localhost:5984/'
 
 try:
     couchServer =  couchdb.Server(db_address)

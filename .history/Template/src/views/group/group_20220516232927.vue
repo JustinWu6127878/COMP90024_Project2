@@ -28,19 +28,19 @@ export default {
       try1: ' ',
       teamMembers: [
         { name: 'KAICHENG WU',
-          img: require('./member1.jpeg')
+          img: require('./member1.jpg')
         },
         { name: 'JUNJIE WU',
-          img: require('./member4.jpeg')
+          img: require('./2.png')
         },
         { name: 'ZIQIU HUANG',
-          img: require('./member5.jpeg')
+          img: require('./3.png')
         },
         { name: 'JIAYI DAI',
-          img: require('./member2.jpeg')
+          img: require('./4.png')
         },
         { name: 'YIFAN XIN',
-          img: require('./member3.jpeg')
+          img: require('./5.png')
         }
 
       ]

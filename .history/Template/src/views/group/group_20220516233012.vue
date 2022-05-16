@@ -31,16 +31,16 @@ export default {
           img: require('./member1.jpeg')
         },
         { name: 'JUNJIE WU',
-          img: require('./member4.jpeg')
+          img: require('./member2.png')
         },
         { name: 'ZIQIU HUANG',
-          img: require('./member5.jpeg')
+          img: require('./member3.png')
         },
         { name: 'JIAYI DAI',
-          img: require('./member2.jpeg')
+          img: require('./member4.png')
         },
         { name: 'YIFAN XIN',
-          img: require('./member3.jpeg')
+          img: require('./member5.png')
         }
 
       ]

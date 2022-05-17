@@ -50,7 +50,6 @@ def get_full_text(tweet):
     return raw_text
 
 class MyStream(tw.Stream):
-
     def on_status(self, status):
         tweet = status._json
         retweet = tweet.get('retweeted_status')
@@ -78,6 +77,7 @@ class MyStream(tw.Stream):
             # Save the item to the database
             db.save(item)
             
+
         except Exception as e:
             print(e)
        

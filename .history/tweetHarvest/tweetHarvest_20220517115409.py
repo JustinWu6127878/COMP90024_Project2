@@ -31,6 +31,7 @@ def clean_tweet(tweet):
     return ' '.join(re.sub("(@[A-Za-z0-9]+) | ([^0-9A-Za-z \t]) | (\w+:\/\/\S+)", " ", tweet).split())
 
 def get_tweet_sentiment(tweet):
+    
     # create TextBlob object of passed tweet text
     analysis = TextBlob(clean_tweet(tweet))
     # set sentiment
@@ -78,6 +79,7 @@ class MyStream(tw.Stream):
             # Save the item to the database
             db.save(item)
             
+
         except Exception as e:
             print(e)
        

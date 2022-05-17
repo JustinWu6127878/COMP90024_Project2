@@ -1,3 +1,4 @@
+
 import tweepy as tw
 import json
 import couchdb
@@ -125,7 +126,7 @@ if __name__ == '__main__':
     except Exception as e:
         print(e)
     logging.info('Start streaming')
-    # The key words here are example of the topic 'government', can change them to different words to meet the different topics' demand
+    # The key word here are example of the topic government, can change it to 
     myStream.filter(track=['scott morrison', 'scomo', 'Australian prime minister', 'Daniel Andrews', 'premier of victoria'], locations=pos,languages=['en'])
 
 

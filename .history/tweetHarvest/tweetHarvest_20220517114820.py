@@ -1,3 +1,4 @@
+
 import tweepy as tw
 import json
 import couchdb
@@ -76,7 +77,6 @@ class MyStream(tw.Stream):
                 'sentiment': get_tweet_sentiment(raw_text)              
             }
             logging.info('New tweet save: ' + str(tweet['id']))
-            # Save the item to the database
             db.save(item)
             
 
@@ -97,7 +97,12 @@ class MyStream(tw.Stream):
 
 if __name__ == '__main__':
     myStream = MyStream(consumer_key, consumer_secret, access_token, access_secret)
-    # Bounding Box of the four cities
+    # auth = tw.OAuthHandler(consumer_key, consumer_secret)
+    # auth.set_access_token(access_token, access_secret)
+    # myStream = tw.Stream(auth, myStreamListener, tweet_mode='extended')
+
+    # 这里也改一下自己的
+    # Change to your keyword
     melb_pos = [144.593742, -38.433859, 145.512529, -37.511274]
     syd_pos = [150.520929, -34.118347, 151.343021, -33.578141]
     perth_pos = [115.617614, -32.675715, 116.239023, -31.624486]
@@ -117,7 +122,7 @@ if __name__ == '__main__':
     else:
         print('wrong argv')
         exit(1)
-
+    # test function
     logging.info('Connect to DB')
     try:
         db_key = 'government_' + sys.argv[1]
@@ -125,7 +130,6 @@ if __name__ == '__main__':
     except Exception as e:
         print(e)
     logging.info('Start streaming')
-    # The key words here are example of the topic 'government', can change them to different words to meet the different topics' demand
     myStream.filter(track=['scott morrison', 'scomo', 'Australian prime minister', 'Daniel Andrews', 'premier of victoria'], locations=pos,languages=['en'])
 
 
